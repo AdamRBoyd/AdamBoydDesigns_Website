@@ -6,9 +6,11 @@ import { Settings } from '../atoms/JSONListings';
 import Link from '../atoms/Link';
 import PrimaryNavigation from '../molecules/PrimaryNavigation';
 
-const { saleTitle, saleStart, saleEnd, salePercentage } = Settings.sale;
+const { saleTitle, advertStart, saleStart, saleEnd, salePercentage } =
+  Settings.sale;
 
 const today = new Date();
+const advertiseStart = new Date(advertStart);
 const start = new Date(saleStart);
 const end = new Date(saleEnd);
 
@@ -84,15 +86,15 @@ const SaleWrapper = styled.div`
 const Header = (props) => {
   return (
     <>
-      {today > start && today < end && (
+      {today > advertiseStart && today < end && (
         <SaleWrapper>
           <SaleTitle>{saleTitle}</SaleTitle>
           <SalePercentage>{`${salePercentage}% off`}</SalePercentage>
           <SaleDate>{`${start.toLocaleString('default', {
-            month: 'long',
+            month: 'short',
             day: 'numeric',
           })} - ${end.toLocaleString('default', {
-            month: 'long',
+            month: 'short',
             day: 'numeric',
           })}`}</SaleDate>
         </SaleWrapper>

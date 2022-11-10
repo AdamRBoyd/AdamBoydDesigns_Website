@@ -8,9 +8,9 @@ import Spacer from '../atoms/Spacer';
 import HorizontalRule from '../atoms/HorizontalRule';
 import { Settings } from '../atoms/JSONListings';
 
-const { saleStart, saleEnd } = Settings.sale;
+const { saleEnd, advertStart } = Settings.sale;
 const today = new Date();
-const start = new Date(saleStart);
+const start = new Date(advertStart);
 const end = new Date(saleEnd);
 const saleOn = today > start && today < end;
 

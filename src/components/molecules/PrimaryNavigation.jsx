@@ -47,6 +47,13 @@ const PrimaryNavigation = (props) => {
       >
         Contact
       </Link>
+      <Link
+        href={'https://github.com/phoenix239/adamboyddesigns'}
+        target='_blank'
+        className={({ isActive }) => (isActive ? 'active' : null)}
+      >
+        Code
+      </Link>
     </StyledNav>
   );
 };

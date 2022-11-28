@@ -1,21 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
 import ShopItemCard from '../molecules/ShopItemCard';
 import PageTitleFrame from '../organisms/PageTitleFrame';
 import Spacer from '../atoms/Spacer';
 import { Earrings, Nose, Pendants, Rings, Sets } from '../atoms/JSONListings';
-import BackArrow from '../atoms/BackArrow';
-
-const NavWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: 90%;
-  cursor: pointer;
-  margin-top: 1rem;
-`;
+import { saleOn, salePercentage, saleTitle } from '../atoms/SaleDate';
 
 const getListing = (currentCategory, currentListing) => {
   let category = [];
@@ -48,9 +38,7 @@ const ShopListing = () => {
   const currentCategory = window.location.pathname.split('/')[2];
   const currentListing = window.location.pathname.split('/')[3];
 
-  const [listing, setListing] = useState(
-    getListing(currentCategory, currentListing)
-  );
+  const [listing] = useState(getListing(currentCategory, currentListing));
 
   return (
     <>
@@ -58,12 +46,13 @@ const ShopListing = () => {
         title={listing?.title || 'Nope!'}
         subtitle={listing?.subtitle}
       >
-        <NavWrapper>
-          <BackArrow to={`/shop/${currentCategory}`} position='left' />
-        </NavWrapper>
-        <ShopItemCard {...listing} />
+        <ShopItemCard
+          saleOn={saleOn}
+          salePercentage={salePercentage}
+          saleTitle={saleTitle}
+          {...listing}
+        />
       </PageTitleFrame>
-      <BackArrow to={`/shop/${currentCategory}`} />
       <Spacer padding='xxlarge' />
     </>
   );

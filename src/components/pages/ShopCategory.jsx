@@ -11,7 +11,7 @@ import Spacer from '../atoms/Spacer';
 import { Earrings, Nose, Pendants, Rings, Sets } from '../atoms/JSONListings';
 import { SORT_OPTIONS } from '../atoms/SortOptions';
 import HorizontalRule from '../atoms/HorizontalRule';
-import BackArrow from '../atoms/BackArrow';
+import { saleOn, salePercentage } from '../atoms/SaleDate';
 
 const GalleryWrapper = styled.div`
   display: flex;
@@ -40,64 +40,31 @@ const NavWrapper = styled.div`
   justify-content: space-between;
   align-content: center;
   align-items: center;
-  width: 90%;
+  width: 85%;
   text-align: center;
-  cursor: pointer;
-  margin-top: 1rem;
+  margin: 0rem 0 -0.5rem;
+  padding: 0.5rem 2rem 0;
+  height: 3rem;
+  border-radius: 0.5rem;
+  background-color: ${palette('grayscale', 6)};
 `;
 
 const StyledButton = styled(Button)`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  justify-items: center;
-  width: 15%;
-  height: 2rem;
+  width: 14%;
+  height: 1.75rem;
   cursor: pointer;
-  font-family: ${font('primary')};
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.5rem;
   border-radius: 0.5rem;
-  margin-top: -0.5rem;
-  margin-left: 3.5rem;
+  margin: -0.5rem 0 0 0;
 `;
 
 const StyledDropdown = styled(Dropdown)`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: center;
-  width: 100%;
   cursor: pointer;
-  border-color: transparent;
+  border: 1px solid ${palette('grayscale', 4)};
   color: ${palette('primary', 0)};
-  font-family: ${font('primary')};
   font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.5rem;
-
-  &:enabled {
-    color: ${palette('primary', 0)};
-  }
-
-  &:disabled {
-    color: ${palette('grayscale', 2)};
-    cursor: not-allowed;
-  }
-
-  &:hover {
-    color: ${palette('primary', 1)};
-  }
 
   &:focus {
     outline: none;
-  }
-
-  &:active {
-    color: ${palette('primary', 2)};
   }
 `;
 
@@ -107,10 +74,10 @@ const FreeShippingFlag = styled.div`
   font-family: ${font('primary')};
   color: ${palette('grayscale', 0)};
   font-weight: 500;
-  font-size: 0.8rem;
-  line-height: 1.6rem;
+  font-size: 0.9rem;
+  line-height: 2rem;
   text-align: center;
-  width: 90%;
+  width: 40%;
   text-transform: uppercase;
   text-align: center;
   background-color: ${palette('success', 3)};
@@ -205,10 +172,15 @@ const ShopCategory = () => {
     <>
       <PageTitleFrame title={listingsData.label}>
         <NavWrapper>
-          <BackArrow to='/shop' />
-          <StyledButton onClick={handleCheckChange}>
-            {showSold ? 'Hide Sold Out' : 'Show Sold Out'}
-          </StyledButton>
+          {showSold ? (
+            <StyledButton onClick={handleCheckChange}>
+              Hide Sold Out
+            </StyledButton>
+          ) : (
+            <StyledButton onClick={handleCheckChange} transparent>
+              Show Sold Out
+            </StyledButton>
+          )}
           <StyledDropdown
             onChange={handleSortChange}
             options={SORT_OPTIONS}
@@ -227,7 +199,12 @@ const ShopCategory = () => {
               title={listing.title}
               key={listing.listingId}
             >
-              <ShopListingGalleryCard showSold={showSold} {...listing} />
+              <ShopListingGalleryCard
+                showSold={showSold}
+                saleOn={saleOn}
+                salePercentage={salePercentage}
+                {...listing}
+              />
             </Link>
           ))}
         </GalleryWrapper>
@@ -237,7 +214,6 @@ const ShopCategory = () => {
         <Footnote>* Sold listings may be available for custom order</Footnote>
         <Footnote>Contact me for more Information </Footnote>
       </PageTitleFrame>
-      <BackArrow to='/shop' />
       <Spacer padding='xxlarge' />
     </>
   );

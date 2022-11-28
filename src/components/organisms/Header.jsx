@@ -2,17 +2,15 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { font, palette } from 'styled-theme';
 
-import { Settings } from '../atoms/JSONListings';
 import Link from '../atoms/Link';
 import PrimaryNavigation from '../molecules/PrimaryNavigation';
-
-const { saleTitle, advertStart, saleStart, saleEnd, salePercentage } =
-  Settings.sale;
-
-const today = new Date();
-const advertiseStart = new Date(advertStart);
-const start = new Date(saleStart);
-const end = new Date(saleEnd);
+import {
+  start,
+  end,
+  saleOn,
+  salePercentage,
+  saleTitle,
+} from '../atoms/SaleDate';
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,7 +19,7 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   padding: 0.5rem;
   font-family: ${font('primary')};
-  background-color: black;
+  background-color: ${palette('black', 0)};
   width: 100%;
   z-index: 1000;
 `;
@@ -86,7 +84,7 @@ const SaleWrapper = styled.div`
 const Header = (props) => {
   return (
     <>
-      {today > advertiseStart && today < end && (
+      {saleOn && (
         <SaleWrapper>
           <SaleTitle>{saleTitle}</SaleTitle>
           <SalePercentage>{`${salePercentage}% off`}</SalePercentage>

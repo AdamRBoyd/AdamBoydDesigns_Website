@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { palette } from 'styled-theme';
 
-import HorizontalRule from '../atoms/HorizontalRule';
 import PageTitleFrame from '../organisms/PageTitleFrame';
 import Spacer from '../atoms/Spacer';
-import BackArrow from '../atoms/BackArrow';
 import categories from '../json/Images.json';
 import Modal from '../molecules/Modal';
 
@@ -67,15 +65,6 @@ const DescriptionLine = styled.p`
   margin: 0.1rem;
 `;
 
-const NavWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: 90%;
-  cursor: pointer;
-  margin-top: 1rem;
-`;
-
 // Get Section from title
 const section = (props) => {
   switch (props) {
@@ -114,11 +103,6 @@ const GalleryImages = ({ title }) => {
   return (
     <>
       <PageTitleFrame title={title}>
-        <NavWrapper>
-          <BackArrow to='/gallery' />
-        </NavWrapper>
-        <Spacer padding='small' />
-        <HorizontalRule />
         <GalleryWrapper>
           {imagesInfo.images.map((image, index) => (
             <ImageCard key={index}>
@@ -126,6 +110,7 @@ const GalleryImages = ({ title }) => {
                 src={`/images/gallery/${image.filename}`}
                 key={`${image.filename}-${index}`}
                 alt={image.altText}
+                loading='lazy'
                 onClick={() =>
                   openModal({
                     imageSrc: `/images/gallery/${image.filename}`,
@@ -158,8 +143,6 @@ const GalleryImages = ({ title }) => {
         </Description>
       </Modal>
       <Spacer padding='small' />
-      <BackArrow to='/gallery' />
-      <Spacer padding='xxlarge' />
     </>
   );
 };

@@ -2,8 +2,8 @@
   "sale": {
     "saleTitle": "Holiday Sale",
     "salePercentage": 20,
-    "advertStart": "September 9, 2022 11:59:59 PM",
-    "saleStart": "October 24, 2022 12:00:00 AM",
-    "saleEnd": "November 18, 2022 11:59:59 PM"
+    "advertStart": "November 22, 2022 11:59:59 PM",
+    "saleStart": "November 22, 2022 12:00:00 AM",
+    "saleEnd": "December 23, 2022 11:59:59 PM"
   }
 }

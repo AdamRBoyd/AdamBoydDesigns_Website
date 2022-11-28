@@ -63,21 +63,12 @@ const LabelWrapper = styled.div`
   white-space: nowrap;
 `;
 
-const PriceAndShippingWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  padding-bottom: 0.5rem;
-`;
-
 const PriceAndShippingStyles = css`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0.2rem;
+  padding: 0.1rem;
   margin-bottom: 0.5rem;
 `;
 
@@ -87,8 +78,35 @@ const PriceWrapper = styled(LabelWrapper)`
   border-radius: 0.5rem;
   border: 1px solid ${palette('grayscale', 6)};
   font-size: 1.1rem;
-  width: 30%;
+  width: fit-content;
+  padding: 0.25rem 1.5rem;
   font-weight: 525;
+`;
+
+const SalePriceWrapper = styled.div`
+  font-size: 0.9rem;
+  text-decoration: line-through;
+  margin: 0 0.3rem;
+  color: ${palette('grayscale', 3)};
+`;
+
+const SalePercentWrapper = styled.div`
+  font-size: 0.9rem;
+  color: ${palette('grayscale', 3)};
+`;
+
+const VariationsWrapper = styled.div`
+  font-size: 0.7rem;
+  margin-right: 0.5rem;
+`;
+
+const InStockAndShippingWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0.5rem 0 0.5rem 0;
 `;
 
 const ShippingWrapper = styled(LabelWrapper)`
@@ -97,12 +115,8 @@ const ShippingWrapper = styled(LabelWrapper)`
   color: ${palette('grayscale', 0)};
   border-radius: 0.75rem;
   border: 1px solid ${palette('grayscale', 6)};
-  font-size: 0.6rem;
-  max-width: 75%;
-  height: 0.9rem;
-  padding-left: 0rem;
-  padding-right: 0rem;
-  margin-left: 0.75rem;
+  font-size: 0.7rem;
+  max-width: 45%;
 `;
 
 const InStockWrapper = styled(LabelWrapper)`
@@ -111,12 +125,7 @@ const InStockWrapper = styled(LabelWrapper)`
   border-radius: 0.75rem;
   color: ${palette('grayscale', 2)};
   font-size: 0.7rem;
-  width: 90%;
-  height: 0.9rem;
-  padding-left: 0rem;
-  padding-right: 0rem;
-  margin-top: -0.15rem;
-  margin-bottom: 1rem;
+  max-width: 45%;
 `;
 
 const SoldOutStatusStyling = css`
@@ -155,6 +164,8 @@ const ShopListingGalleryCard = ({
   images,
   price,
   hasVariations,
+  saleOn,
+  salePercentage,
   state,
   onClick,
   quantity,
@@ -167,24 +178,40 @@ const ShopListingGalleryCard = ({
           <ImageCard>
             <ImageWrapper src={images[0].imageUrl570xN} alt={title} />
             <LabelWrapper>{title}</LabelWrapper>
-            <PriceAndShippingWrapper>
+            {saleOn ? (
               <PriceWrapper>
-                {`$${price.amount}`}
-                {hasVariations ? ' +' : ''}
+                <VariationsWrapper>
+                  {hasVariations ? 'From' : ''}
+                </VariationsWrapper>
+                {`$${price.amount - price.amount * (salePercentage / 100)}`}
+                <SalePriceWrapper>{`$${price.amount}`}</SalePriceWrapper>
+                <SalePercentWrapper>
+                  {`(${salePercentage}% off)`}
+                </SalePercentWrapper>
+                {'   '}
               </PriceWrapper>
+            ) : (
+              <PriceWrapper>
+                <VariationsWrapper>
+                  {hasVariations ? 'From' : ''}
+                </VariationsWrapper>
+                {`$${price.amount}`}
+              </PriceWrapper>
+            )}
+            <InStockAndShippingWrapper>
+              <InStockWrapper>
+                {quantity > 0 && quantity < 20 && state === 'active'
+                  ? `${quantity} In Stock`
+                  : 'Made to Order'}
+              </InStockWrapper>
               {price.amount >= 35 ? (
                 <ShippingWrapper>FREE Shipping</ShippingWrapper>
               ) : (
                 <ShippingWrapper>{`Add $${Math.round(
                   35 - price.amount
-                )} more for FREE Shipping`}</ShippingWrapper>
+                )} more`}</ShippingWrapper>
               )}
-            </PriceAndShippingWrapper>
-            <InStockWrapper>
-              {quantity > 0 && quantity < 20 && state === 'active'
-                ? `${quantity} In Stock`
-                : 'Made to Order'}
-            </InStockWrapper>
+            </InStockAndShippingWrapper>
           </ImageCard>
           {state !== 'active' ? (
             <SoldOutWrapper>• Sold* •</SoldOutWrapper>
@@ -206,6 +233,8 @@ ShopListingGalleryCard.propTypes = {
   images: PropTypes.array,
   price: PropTypes.object,
   hasVariations: PropTypes.bool,
+  saleOn: PropTypes.bool,
+  salePercentage: PropTypes.number,
   state: PropTypes.string,
   quantity: PropTypes.number,
 };

@@ -1901,7 +1901,7 @@
     "processingMin": 5,
     "processingMax": 20,
     "hasVariations": false,
-    "price": { "amount": 29.99, "currency": "USD" },
+    "price": { "amount": 30, "currency": "USD" },
     "images": [
       {
         "rank": 1,

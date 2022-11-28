@@ -5,7 +5,7 @@ import { palette } from 'styled-theme';
 import Paragraph from '../atoms/Paragraph';
 
 const Wrapper = styled.div`
-  background-color: black;
+  background-color: ${palette('black', 0)};
   padding: 0.75rem;
 `;
 

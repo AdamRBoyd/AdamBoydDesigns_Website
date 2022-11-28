@@ -5,7 +5,7 @@ import { font, palette } from 'styled-theme';
 import Paragraph from '../atoms/Paragraph';
 import Modal from '../molecules/Modal';
 import Button from '../atoms/Button';
-import { ifProp } from 'styled-tools';
+import Spacer from '../atoms/Spacer';
 
 const IMAGE_HEIGHT = '400px';
 
@@ -27,13 +27,11 @@ const DescriptionWrapper = styled.div`
   justify-content: center;
   width: 50%;
   height: 100%;
-  padding-right: 4rem;
-  padding-top: 2.75rem;
-  padding-bottom: 2rem;
+  padding: 2.75rem 3rem 2rem 0;
 `;
 
 const ParagraphWrapper = styled(Paragraph)`
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin: 0.2rem;
 `;
 
@@ -49,9 +47,7 @@ const ImageCard = styled.div`
   width: 50%;
   margin-right: 1rem;
   margin-bottom: 3rem;
-  padding: 1.5rem;
-  padding-top: 0.5rem;
-  padding-bottom: 2rem;
+  padding: 0.5rem 1.5rem 2rem;
 `;
 
 const LargeImage = styled.img`
@@ -95,14 +91,11 @@ const QuantityWrapper = styled.div`
   display: flex;
   flex-direction: row;
   color: ${palette('primary', 0)};
-  margin-left: 2rem;
-  padding: 0.25rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  margin-left: 0rem;
+  padding: 0.25rem 0.7rem;
+  background-color: ${palette('grayscale', 6)};
   font-size: 0.8rem;
   font-weight: 550;
-  border-top: 1px solid ${palette('grayscale', 5)};
-  border-bottom: 1px solid ${palette('grayscale', 5)};
 `;
 
 const PriceWrapper = styled.div`
@@ -117,17 +110,41 @@ const PriceWrapper = styled.div`
   font-weight: 500;
   justify-content: center;
   line-height: 1.5rem;
-  margin-top: 3rem;
-  padding: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 0.5rem 0.8rem;
   text-align: center;
   text-transform: uppercase;
 `;
 
+const VariationWrapper = styled.div`
+  font-size: 0.7rem;
+  margin: 0 0.6rem;
+`;
+
+const SaleWrapper = styled.div`
+  align-items: center;
+  color: ${palette('grayscale', 1)};
+  background-color: ${palette('success', 3)};
+  display: flex;
+  flex-direction: row;
+  font-family: ${font('primary')};
+  font-size: 1.2rem;
+  font-weight: 500;
+  justify-content: center;
+  line-height: 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+`;
+
+const SalePrice = styled.div`
+  text-decoration: line-through;
+  font-size: 1rem;
+  color: ${palette('grayscale', 3)};
+  margin-right: 0.7rem;
+`;
+
 const StyledButton = styled(Button)`
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   width: 100%;
   &:enabled {
     background-color: ${palette('primary', 0)};
@@ -141,16 +158,15 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const Spacer = styled.div`
-  padding: ${ifProp('small', '0.5rem', '1.5rem')};
-`;
-
 const ShopItemCard = ({
   images,
   description,
   price,
   hasVariations,
   url,
+  saleOn,
+  salePercentage,
+  saleTitle,
   state,
   quantity,
   ...props
@@ -187,21 +203,46 @@ const ShopItemCard = ({
         {description.map((line, index) => (
           <ParagraphWrapper key={`key.${index}`}>{line}</ParagraphWrapper>
         ))}
-        <Spacer padding='small' />
 
+        {saleOn && (
+          <>
+            <Spacer padding='large' />
+            <SaleWrapper>{`${saleTitle} - ${salePercentage}% off`}</SaleWrapper>
+          </>
+        )}
+
+        <Spacer padding='large' />
         <PriceWrapper>
-          {'Price: '}
-          {price.currency === 'USD' ? '$' : price.currency}
-          {price.amount}
-          {hasVariations ? ' +' : ''}
-          <QuantityWrapper>
-            {quantity > 0 && quantity < 20
-              ? `${quantity} In Stock`
-              : 'Made to Order'}
-          </QuantityWrapper>
+          <VariationWrapper>
+            {hasVariations ? 'Price: From' : 'Price:'}
+          </VariationWrapper>
+          {saleOn ? (
+            <>
+              <SalePrice>
+                {price.currency === 'USD' ? '$' : price.currency}
+                {`${price.amount}`}
+              </SalePrice>
+              {price.currency === 'USD' ? '$' : price.currency}
+              {`${price.amount - price.amount * (salePercentage / 100)}`}
+            </>
+          ) : (
+            <>
+              {price.currency === 'USD' ? '$' : price.currency}
+              {`${price.amount}`}
+            </>
+          )}
+          <VariationWrapper>
+            {hasVariations ? 'Depending on variation' : ''}
+          </VariationWrapper>
         </PriceWrapper>
+        <Spacer padding='large' />
+        <QuantityWrapper>
+          {quantity > 0 && quantity < 20
+            ? `${quantity} In Stock`
+            : 'Made to Order'}
+        </QuantityWrapper>
 
-        <Spacer padding='small' />
+        <Spacer padding='medium' />
         <StyledButton
           onClick={() => window.open(url, '_blank')}
           disabled={state === 'active' ? false : true}
@@ -226,6 +267,9 @@ ShopItemCard.propTypes = {
   price: PropTypes.object,
   hasVariations: PropTypes.bool,
   url: PropTypes.string,
+  saleOn: PropTypes.bool,
+  salePercentage: PropTypes.number,
+  saleTitle: PropTypes.string,
   state: PropTypes.string,
   quantity: PropTypes.number,
 };

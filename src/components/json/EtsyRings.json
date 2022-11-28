@@ -234,7 +234,7 @@
     "processingMin": 5,
     "processingMax": 20,
     "hasVariations": true,
-    "price": { "amount": 159.99, "currency": "USD" },
+    "price": { "amount": 160, "currency": "USD" },
     "images": [
       {
         "rank": 1,
@@ -316,7 +316,7 @@
     "processingMin": 5,
     "processingMax": 20,
     "hasVariations": true,
-    "price": { "amount": 89.99, "currency": "USD" },
+    "price": { "amount": 90, "currency": "USD" },
     "images": [
       {
         "rank": 1,
@@ -413,7 +413,7 @@
     "processingMin": 5,
     "processingMax": 20,
     "hasVariations": true,
-    "price": { "amount": 99.99, "currency": "USD" },
+    "price": { "amount": 100, "currency": "USD" },
     "images": [
       {
         "rank": 1,
@@ -541,7 +541,7 @@
     "processingMin": 5,
     "processingMax": 20,
     "hasVariations": true,
-    "price": { "amount": 89.99, "currency": "USD" },
+    "price": { "amount": 90, "currency": "USD" },
     "images": [
       {
         "rank": 1,
@@ -683,7 +683,7 @@
     "processingMin": 5,
     "processingMax": 20,
     "hasVariations": true,
-    "price": { "amount": 89.99, "currency": "USD" },
+    "price": { "amount": 90, "currency": "USD" },
     "images": [
       {
         "rank": 1,
@@ -770,7 +770,7 @@
     "processingMin": 5,
     "processingMax": 20,
     "hasVariations": true,
-    "price": { "amount": 119.99, "currency": "USD" },
+    "price": { "amount": 120, "currency": "USD" },
     "images": [
       {
         "rank": 1,
@@ -856,7 +856,7 @@
     "processingMin": 5,
     "processingMax": 20,
     "hasVariations": true,
-    "price": { "amount": 99.99, "currency": "USD" },
+    "price": { "amount": 100, "currency": "USD" },
     "images": [
       {
         "rank": 1,

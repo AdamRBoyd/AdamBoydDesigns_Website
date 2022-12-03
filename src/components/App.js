@@ -5,12 +5,15 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import NotFoundPage from './pages/NotFoundPage';
 import HomePage from './pages/HomePage';
 import About from './pages/About';
+import Code from './pages/Code';
 import Contact from './pages/Contact';
 import Gallery from './pages/Gallery';
 import GalleryImages from './pages/GalleryImages';
 import ShopCategory from './pages/ShopCategory';
 import ShopListing from './pages/ShopListing';
 import Shop from './pages/Shop';
+import CodeDictionary from './pages/CodeDictionary';
+import CodeWeather from './pages/CodeWeather';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -29,6 +32,9 @@ function App() {
       <Route path='/' element={<HomePage />} />
       <Route path='about' element={<About />} />
       <Route path='contact' element={<Contact />} />
+      <Route path='code' element={<Code />} />
+      <Route path='code/dictionary' element={<CodeDictionary />} />
+      <Route path='code/weather' element={<CodeWeather />} />
       <Route path='gallery' element={<Gallery />} />
       <Route path='gallery/rings' element={<GalleryImages title='Rings' />} />
       <Route

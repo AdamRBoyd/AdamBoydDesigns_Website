@@ -5,17 +5,18 @@ import { palette } from 'styled-theme';
 import Paragraph from '../atoms/Paragraph';
 
 const Wrapper = styled.div`
-  background-color: ${palette('black', 0)};
-  padding: 0.75rem;
+  background-color: transparent;
+  padding: 0.6rem;
 `;
 
 const Credits = styled(Paragraph)`
   display: flex;
   justify-content: flex-end;
   color: ${palette('grayscale', 5, true)};
+  font-size: 0.7rem;
   vertical-align: center;
   text-align: right;
-  margin: 0;
+  margin: 0 1rem;
 `;
 
 const Footer = (props) => {

@@ -20,9 +20,10 @@ const GalleryWrapper = styled.div`
   align-items: center;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   margin-bottom: -2.5rem;
-  width: 90%;
+  width: 100%;
 `;
 
 const CardWrapper = styled.div`

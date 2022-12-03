@@ -8,8 +8,9 @@ const StyledNav = styled.nav`
   display: flex;
   list-style: none;
   > :not(:first-child) {
-    margin-left: 2rem;
+    margin-left: 1rem;
   }
+  margin: 0.5rem 3rem 0.5rem 0;
   a {
     font-weight: 300;
     color: ${palette('grayscale', 3)};
@@ -48,8 +49,7 @@ const PrimaryNavigation = (props) => {
         Contact
       </Link>
       <Link
-        href={'https://github.com/phoenix239/adamboyddesigns'}
-        target='_blank'
+        to='/code'
         className={({ isActive }) => (isActive ? 'active' : null)}
       >
         Code

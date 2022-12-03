@@ -6,13 +6,6 @@ import { font, palette } from 'styled-theme';
 import Heading from '../atoms/Heading';
 import Spacer from '../atoms/Spacer';
 import HorizontalRule from '../atoms/HorizontalRule';
-import { Settings } from '../atoms/JSONListings';
-
-const { saleEnd, advertStart } = Settings.sale;
-const today = new Date();
-const start = new Date(advertStart);
-const end = new Date(saleEnd);
-const saleOn = today > start && today < end;
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,7 +13,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding-top: 1.5rem;
+  padding-top: 1.7rem;
 `;
 
 const HeadingWrapper = styled(Heading)`
@@ -59,7 +52,6 @@ const PageTitleFrame = ({
 }) => {
   return (
     <Wrapper {...props}>
-      {saleOn && <Spacer padding='large' />}
       <HeadingWrapper>{title || 'OOPS!'}</HeadingWrapper>
       {subtitle && <SubtitleWrapper>{subtitle}</SubtitleWrapper>}
       <HorizontalRule />

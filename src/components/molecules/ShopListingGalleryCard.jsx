@@ -21,34 +21,6 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
-const ImageCard = styled.div`
-  align-content: center;
-  align-items: center;
-  align-self: center;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  margin: 0.3rem;
-  margin-bottom: -1.5rem;
-  width: ${CARD_WIDTH};
-  height: ${CARD_HEIGHT};
-
-  &:hover {
-    box-shadow: 0px 0px 10px ${palette('grayscale', 4)};
-  }
-`;
-
-const ImageWrapper = styled.img`
-  border-radius: 0.25rem;
-  border: 1px solid ${palette('grayscale', 4)};
-  margin: 0.5rem;
-  justify-self: flex-start;
-  width: ${IMAGE_WIDTH};
-  height: ${IMAGE_HEIGHT};
-  object-fit: cover;
-`;
-
 const LabelWrapper = styled.div`
   color: ${palette('primary', 0)};
   font-family: ${font('primary')};
@@ -63,6 +35,69 @@ const LabelWrapper = styled.div`
   white-space: nowrap;
 `;
 
+const ImageCard = styled.div`
+  align-content: center;
+  align-items: center;
+  align-self: center;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  margin: 0.3rem;
+  width: ${CARD_WIDTH};
+  height: ${CARD_HEIGHT};
+
+  &:hover {
+    box-shadow: 0px 0px 10px ${palette('grayscale', 4)};
+  }
+`;
+
+const ImageWrapper = styled.img`
+  border-radius: 0.25rem;
+  border: 1px solid ${palette('grayscale', 4)};
+  margin: 0.5rem;
+  justify-self: center;
+  width: ${IMAGE_WIDTH};
+  height: ${IMAGE_HEIGHT};
+  object-fit: cover;
+`;
+
+const ImageOverlay = styled.div`
+  display: grid;
+  margin-bottom: -2rem;
+`;
+
+const SoldOutStatusStyling = css`
+  position: relative;
+  top: -3rem;
+  justify-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 92%;
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 0.25rem;
+  border-radius: 0.3rem;
+`;
+
+const SoldOutWrapper = styled(LabelWrapper)`
+  ${SoldOutStatusStyling}
+  color: ${palette('grayscale', 4)};
+  text-shadow: 0px 0px 5px ${palette('grayscale', 1)};
+  background-color: ${palette('danger', 1)};
+  border: 1px solid transparent;
+  box-shadow: 0px 0px 10px ${palette('grayscale', 1)};
+`;
+
+const NotSoldOutWrapper = styled(LabelWrapper)`
+  ${SoldOutStatusStyling}
+  color: transparent;
+  background-color: transparent;
+  border: 1px solid transparent;
+`;
+
 const PriceAndShippingStyles = css`
   display: flex;
   flex-direction: row;
@@ -74,7 +109,7 @@ const PriceAndShippingStyles = css`
 
 const PriceWrapper = styled(LabelWrapper)`
   ${PriceAndShippingStyles}
-  background-color: ${palette('grayscale', 7)};
+  background-color: transparent;
   border-radius: 0.5rem;
   border: 1px solid ${palette('grayscale', 6)};
   font-size: 1.1rem;
@@ -121,41 +156,12 @@ const ShippingWrapper = styled(LabelWrapper)`
 
 const InStockWrapper = styled(LabelWrapper)`
   ${PriceAndShippingStyles}
-  background-color: ${palette('grayscale', 6)};
+  background-color: ${palette('grayscale', 7)};
+  border: 1px solid ${palette('grayscale', 6)};
   border-radius: 0.75rem;
   color: ${palette('grayscale', 2)};
   font-size: 0.7rem;
   max-width: 45%;
-`;
-
-const SoldOutStatusStyling = css`
-  position: relative;
-  top: -8.75rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 88%;
-  font-size: 1.15rem;
-  font-weight: 700;
-  padding: 0.25rem;
-  border-radius: 0.3rem;
-`;
-
-const SoldOutWrapper = styled(LabelWrapper)`
-  ${SoldOutStatusStyling}
-  color: ${palette('grayscale', 4)};
-  text-shadow: 0px 0px 5px ${palette('grayscale', 1)};
-  background-color: ${palette('danger', 0)};
-  border: 1px solid transparent;
-  box-shadow: 0px 0px 10px ${palette('grayscale', 1)};
-`;
-
-const NotSoldOutWrapper = styled(LabelWrapper)`
-  ${SoldOutStatusStyling}
-  color: transparent;
-  background-color: transparent;
-  border: 1px solid transparent;
 `;
 
 const ShopListingGalleryCard = ({
@@ -176,7 +182,14 @@ const ShopListingGalleryCard = ({
       {state === 'active' || showSold ? (
         <Wrapper {...props}>
           <ImageCard>
-            <ImageWrapper src={images[0].imageUrl570xN} alt={title} />
+            <ImageOverlay>
+              <ImageWrapper src={images[0].imageUrl570xN} alt={title} />
+              {state !== 'active' ? (
+                <SoldOutWrapper>• Sold* •</SoldOutWrapper>
+              ) : (
+                <NotSoldOutWrapper>Available</NotSoldOutWrapper>
+              )}
+            </ImageOverlay>
             <LabelWrapper>{title}</LabelWrapper>
             {saleOn ? (
               <PriceWrapper>
@@ -213,11 +226,6 @@ const ShopListingGalleryCard = ({
               )}
             </InStockAndShippingWrapper>
           </ImageCard>
-          {state !== 'active' ? (
-            <SoldOutWrapper>• Sold* •</SoldOutWrapper>
-          ) : (
-            <NotSoldOutWrapper>• Available •</NotSoldOutWrapper>
-          )}
         </Wrapper>
       ) : (
         <></>

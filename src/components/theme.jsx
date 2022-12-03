@@ -6,7 +6,7 @@ const theme = {};
 theme.palette = {
   primary: ['#b87333', '#d18238', '#f8b576', '#fccea2'],
   secondary: ['#b8860b', '#daa520', '#d4af37', '#c5b358'],
-  danger: ['#7d1009', '#c90d00', '#d32f2f', '#ffcdd2'],
+  danger: ['#3b0a06', '#7d1009', '#b1180d', '#c90d00', '#d32f2f', '#ffcdd2'],
   alert: ['#ffa000', '#ffc107', '#ffd761', '#ffecb3'],
   success: ['#388e3c', '#4caf50', '#7cc47f', '#c8e6c9'],
   white: ['#fff'],

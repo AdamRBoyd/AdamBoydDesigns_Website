@@ -14,14 +14,14 @@ import {
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   padding: 0.5rem;
   font-family: ${font('primary')};
-  background-color: ${palette('black', 0)};
+  background-color: ${palette('grayscale', 0)};
   width: 100%;
-  z-index: 1000;
 `;
 
 const ImageWrapper = styled.img`
@@ -33,74 +33,72 @@ const SaleStyle = css`
   color: ${palette('grayscale', 5)};
   font-family: ${font('primary')};
   stroke: ${palette('grayscale', 0)};
+  font-size: 1rem;
 `;
 
 const SaleTitle = styled.label`
   ${SaleStyle}
-  font-size: 1.3rem;
   font-weight: 500;
-  margin-right: 1rem;
-  margin-left: 2rem;
 `;
 
 const SalePercentage = styled.label`
   ${SaleStyle}
   font-size: 1.5rem;
   font-weight: 600;
-  margin-right: 1rem;
+  margin: 0 1.5rem;
 `;
 
 const SaleDate = styled.label`
   ${SaleStyle}
-  font-size: 1.3rem;
   font-weight: 500;
-  margin-right: 2rem;
 `;
 
 const SaleWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  align-content: center;
-  align-self: center;
-  background-color: ${palette('danger', 0)};
-  border: 1px solid ${palette('grayscale', 1)};
-  border-top: 1px solid transparent;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+  background-color: ${palette('danger', 2)};
+  border: 1px solid ${palette('danger', 0)};
+  border-radius: 1rem;
   height: 1.5rem;
-  z-index: -1;
-  position: absolute;
-  width: 600px;
-  margin-left: -300px;
-  top: 5rem;
-  left: 50%;
-  padding-top: 0.4rem;
-  padding-bottom: 0.25rem;
+  width: 350px;
+  padding: 0.5rem 1.5rem;
+  margin: 0 2rem;
 `;
+
+const SalePlaceholder = styled.div`
+  background-color: transparent;
+  width: 250px;
+  height: 0;
+  margin: 0 3rem 0 5rem;
+`;
+
+const StyledLink = styled(Link)``;
 
 const Header = (props) => {
   return (
     <>
-      {saleOn && (
-        <SaleWrapper>
-          <SaleTitle>{saleTitle}</SaleTitle>
-          <SalePercentage>{`${salePercentage}% off`}</SalePercentage>
-          <SaleDate>{`${start.toLocaleString('default', {
-            month: 'short',
-            day: 'numeric',
-          })} - ${end.toLocaleString('default', {
-            month: 'short',
-            day: 'numeric',
-          })}`}</SaleDate>
-        </SaleWrapper>
-      )}
       <Wrapper>
-        <Link to='/'>
+        <StyledLink to='/'>
           <ImageWrapper alt='Logo' src='/images/Signature.png' height='55' />
-        </Link>
+        </StyledLink>
+        {saleOn ? (
+          <SaleWrapper>
+            <SaleTitle>{saleTitle}</SaleTitle>
+            <SalePercentage>{`${salePercentage}% off`}</SalePercentage>
+            <SaleDate>{`${start.toLocaleString('default', {
+              month: 'short',
+              day: 'numeric',
+            })} - ${end.toLocaleString('default', {
+              month: 'short',
+              day: 'numeric',
+            })}`}</SaleDate>
+          </SaleWrapper>
+        ) : (
+          <SalePlaceholder />
+        )}
         <PrimaryNavigation />
       </Wrapper>
     </>

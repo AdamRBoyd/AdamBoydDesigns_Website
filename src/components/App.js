@@ -14,6 +14,7 @@ import ShopListing from './pages/ShopListing';
 import Shop from './pages/Shop';
 import CodeDictionary from './pages/CodeDictionary';
 import CodeWeather from './pages/CodeWeather';
+import CodeTicTacToe from './pages/CodeTicTacToe';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -35,6 +36,7 @@ function App() {
       <Route path='code' element={<Code />} />
       <Route path='code/dictionary' element={<CodeDictionary />} />
       <Route path='code/weather' element={<CodeWeather />} />
+      <Route path='code/tictactoe' element={<CodeTicTacToe />} />
       <Route path='gallery' element={<Gallery />} />
       <Route path='gallery/rings' element={<GalleryImages title='Rings' />} />
       <Route

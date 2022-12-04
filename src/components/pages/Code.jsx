@@ -95,6 +95,10 @@ const Code = () => {
           <StyledImage src='/images/Weather.jpg' alt='Weather' />
           <StyledHeading>Weather App</StyledHeading>
         </LinkCard>
+        <LinkCard to={'tictactoe'}>
+          <StyledImage src='/images/Tic_tac_toe.png' alt='TicTacToe' />
+          <StyledHeading>Tic-Tac-Toe</StyledHeading>
+        </LinkCard>
       </Wrapper>
     </PageTitleFrame>
   );

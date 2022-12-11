@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
 import PropTypes from 'prop-types';
-import Heading from '../atoms/Heading';
-import Label from '../atoms/Label';
+
+import { Heading, Label } from '../../components';
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,9 +19,15 @@ const Wrapper = styled.div`
 `;
 
 const StyledHeading = styled(Heading)`
-  font-size: 1.5rem;
-  font-style: italic;
-  margin: 2rem 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-bottom: 1px solid ${palette('grayscale', 4)};
+  background-color: ${palette('primary', 3)};
+  width: 100%;
+  align-self: center;
+  border-radius: 0.5rem 0.5rem 0 0;
+  box-shadow: 0px 0px 5px 0px ${palette('grayscale', 4)};
 `;
 
 const DefinitionWrapper = styled.div`

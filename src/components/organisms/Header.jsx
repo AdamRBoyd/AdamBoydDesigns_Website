@@ -2,8 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { font, palette } from 'styled-theme';
 
-import Link from '../atoms/Link';
-import PrimaryNavigation from '../molecules/PrimaryNavigation';
+import { Link, PrimaryNavigation } from '../../components';
 import {
   start,
   end,
@@ -12,7 +11,7 @@ import {
   saleTitle,
 } from '../Constants/SaleDate';
 
-const Wrapper = styled.div`
+const LogoSaleWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -24,9 +23,19 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
+const NavWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-bottom: 0.1rem;
+  font-family: ${font('primary')};
+  background-color: ${palette('grayscale', 1)};
+  width: 100%;
+`;
+
 const ImageWrapper = styled.img`
   margin-top: 0.5rem;
   align-self: center;
+  height: 60px;
 `;
 
 const SaleStyle = css`
@@ -64,15 +73,12 @@ const SaleWrapper = styled.div`
   border-radius: 1rem;
   height: 1.5rem;
   width: 350px;
-  padding: 0.5rem 1.5rem;
+  padding: 0.3rem 1.25rem 0.5rem 1.25rem;
   margin: 0 2rem;
 `;
 
 const SalePlaceholder = styled.div`
   background-color: transparent;
-  width: 250px;
-  height: 0;
-  margin: 0 3rem 0 5rem;
 `;
 
 const StyledLink = styled(Link)``;
@@ -80,9 +86,9 @@ const StyledLink = styled(Link)``;
 const Header = (props) => {
   return (
     <>
-      <Wrapper>
+      <LogoSaleWrapper>
         <StyledLink to='/'>
-          <ImageWrapper alt='Logo' src='/images/Signature.png' height='55' />
+          <ImageWrapper alt='Logo' src='/images/Signature.png' />
         </StyledLink>
         {saleOn ? (
           <SaleWrapper>
@@ -99,8 +105,10 @@ const Header = (props) => {
         ) : (
           <SalePlaceholder />
         )}
+      </LogoSaleWrapper>
+      <NavWrapper>
         <PrimaryNavigation />
-      </Wrapper>
+      </NavWrapper>
     </>
   );
 };

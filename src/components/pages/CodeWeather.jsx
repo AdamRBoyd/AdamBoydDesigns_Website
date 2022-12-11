@@ -172,6 +172,7 @@ const CodeWeather = () => {
 
   useEffect(() => {
     fetchLoc();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
 
-import Heading from '../atoms/Heading';
-import Spacer from '../atoms/Spacer';
-import HorizontalRule from '../atoms/HorizontalRule';
+import { Heading, HorizontalRule, Spacer } from '../../components';
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,7 +11,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding-top: 1.7rem;
+  padding-top: 4.5rem;
 `;
 
 const HeadingWrapper = styled(Heading)`

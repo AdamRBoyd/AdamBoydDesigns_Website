@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // import { useForm } from 'react-hook-form';
 import { font, palette } from 'styled-theme';
-import Paragraph from '../atoms/Paragraph';
 // import { resetState } from 'react-modal/lib/helpers/ariaAppHider';
 // import { resetWarningCache } from 'prop-types/checkPropTypes';
 import { ToastContainer, toast, Zoom } from 'react-toastify';
 // import emailjs from 'emailjs-com';
+
+import { Paragraph } from '../../components';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Wrapper = styled.div`

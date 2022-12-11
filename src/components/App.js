@@ -2,19 +2,21 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
-import NotFoundPage from './pages/NotFoundPage';
-import HomePage from './pages/HomePage';
-import About from './pages/About';
-import Code from './pages/Code';
-import Contact from './pages/Contact';
-import Gallery from './pages/Gallery';
-import GalleryImages from './pages/GalleryImages';
-import ShopCategory from './pages/ShopCategory';
-import ShopListing from './pages/ShopListing';
-import Shop from './pages/Shop';
-import CodeDictionary from './pages/CodeDictionary';
-import CodeWeather from './pages/CodeWeather';
-import CodeTicTacToe from './pages/CodeTicTacToe';
+import {
+  About,
+  Code,
+  CodeDictionary,
+  CodeTicTacToe,
+  CodeWeather,
+  Contact,
+  Gallery,
+  GalleryImages,
+  HomePage,
+  NotFoundPage,
+  Shop,
+  ShopCategory,
+  ShopListing,
+} from './pages';
 
 function ScrollToTop() {
   const { pathname } = useLocation();

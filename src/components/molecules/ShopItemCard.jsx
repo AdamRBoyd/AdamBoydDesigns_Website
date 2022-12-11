@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
-import Paragraph from '../atoms/Paragraph';
-import Modal from '../molecules/Modal';
-import Button from '../atoms/Button';
-import Spacer from '../atoms/Spacer';
+
+import { Button, Modal, Paragraph, Spacer } from '../../components';
 
 const IMAGE_HEIGHT = '400px';
 

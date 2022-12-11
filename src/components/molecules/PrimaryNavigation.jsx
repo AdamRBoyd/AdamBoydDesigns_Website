@@ -2,19 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { palette } from 'styled-theme';
-import Link from '../atoms/Link';
+
+import { Link } from '../../components';
 
 const StyledNav = styled.nav`
   display: flex;
   list-style: none;
   > :not(:first-child) {
-    margin-left: 1rem;
+    margin-left: 1.5rem;
   }
-  margin: 0.5rem 3rem 0.5rem 0;
+  margin: 0.5rem 0;
   a {
     font-weight: 300;
-    color: ${palette('grayscale', 3)};
-    font-size: 1.25rem;
+    color: ${palette('grayscale', 4)};
+    font-size: 1.1rem;
     &.active {
       color: ${palette('primary', 0)};
     }

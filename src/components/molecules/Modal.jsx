@@ -4,8 +4,7 @@ import styled, { css } from 'styled-components';
 import ReactModal from 'react-modal';
 import { font, palette } from 'styled-theme';
 
-import Heading from '../atoms/Heading';
-import IconButton from '../molecules/IconButton';
+import { IconButton, Heading } from '../../components';
 
 const overlayStyles = css`
   position: fixed;

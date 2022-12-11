@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Icon from '../atoms/Icon';
-import Button from '../atoms/Button';
+import { Button, Icon } from '../../components';
 
 const StyledButton = styled(Button)`
   display: flex;

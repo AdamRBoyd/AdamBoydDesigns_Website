@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
-import PageTitleFrame from '../organisms/PageTitleFrame';
-import Button from '../atoms/Button';
-import Spacer from '../atoms/Spacer';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Paragraph from '../atoms/Paragraph';
+
+import { Button, PageTitleFrame, Paragraph, Spacer } from '../../components';
 
 const Container = styled.div`
   display: flex;

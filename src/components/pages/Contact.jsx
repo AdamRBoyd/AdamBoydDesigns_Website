@@ -1,7 +1,6 @@
 import React from 'react';
 
-import ContactForm from '../organisms/ContactForm';
-import PageTitleFrame from '../organisms/PageTitleFrame';
+import { ContactForm, PageTitleFrame } from '../../components';
 
 const Contact = () => {
   return (

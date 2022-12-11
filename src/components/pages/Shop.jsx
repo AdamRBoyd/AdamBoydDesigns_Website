@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Link from '../atoms/Link';
-import ShopMainGalleryCard from '../molecules/ShopMainGalleryCard';
-import PageTitleFrame from '../organisms/PageTitleFrame';
-import Spacer from '../atoms/Spacer';
-import { Earrings, Nose, Pendants, Rings, Sets } from '../atoms/JSONListings';
+import { Earrings, Nose, Pendants, Rings, Sets } from '../json';
+import {
+  Link,
+  PageTitleFrame,
+  ShopMainGalleryCard,
+  Spacer,
+} from '../../components';
 
 const GalleryWrapper = styled.div`
   display: flex;

@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
 
-import Button from '../atoms/Button';
-import Link from '../atoms/Link';
-import ShopListingGalleryCard from '../molecules/ShopListingGalleryCard';
-import Dropdown from '../atoms/Dropdown';
-import PageTitleFrame from '../organisms/PageTitleFrame';
-import Spacer from '../atoms/Spacer';
-import { Earrings, Nose, Pendants, Rings, Sets } from '../atoms/JSONListings';
-import { SORT_OPTIONS } from '../atoms/SortOptions';
-import HorizontalRule from '../atoms/HorizontalRule';
-import { saleOn, salePercentage } from '../atoms/SaleDate';
+import { Earrings, Nose, Pendants, Rings, Sets } from '../json';
+import { SORT_OPTIONS } from '../Constants/SortOptions';
+import { saleOn, salePercentage } from '../Constants/SaleDate';
+import {
+  Button,
+  Dropdown,
+  HorizontalRule,
+  Link,
+  PageTitleFrame,
+  ShopListingGalleryCard,
+  Spacer,
+} from '../../components/';
 
 const GalleryWrapper = styled.div`
   display: flex;

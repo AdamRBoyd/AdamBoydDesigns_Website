@@ -10,7 +10,7 @@ import {
   saleOn,
   salePercentage,
   saleTitle,
-} from '../atoms/SaleDate';
+} from '../Constants/SaleDate';
 
 const Wrapper = styled.div`
   display: flex;

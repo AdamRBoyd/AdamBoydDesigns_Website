@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { palette } from 'styled-theme';
 
-import PageTitleFrame from '../organisms/PageTitleFrame';
-import Spacer from '../atoms/Spacer';
-import categories from '../json/Images.json';
-import Modal from '../molecules/Modal';
+import { Images } from '../json';
+import { Modal, PageTitleFrame, Spacer } from '../../components';
 
 const IMAGE_HEIGHT = '225px';
 const IMAGE_WIDTH = '225px';
@@ -69,15 +67,15 @@ const DescriptionLine = styled.p`
 const section = (props) => {
   switch (props) {
     case 'Rings':
-      return categories.rings;
+      return Images.rings;
     case 'Pendants':
-      return categories.pendants;
+      return Images.pendants;
     case 'Earrings':
-      return categories.earrings;
+      return Images.earrings;
     case 'Other':
-      return categories.other;
+      return Images.other;
     case 'Fabrication':
-      return categories.fabrication;
+      return Images.fabrication;
     default:
       break;
   }

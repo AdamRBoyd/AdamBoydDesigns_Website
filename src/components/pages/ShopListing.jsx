@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import ShopItemCard from '../molecules/ShopItemCard';
-import PageTitleFrame from '../organisms/PageTitleFrame';
-import Spacer from '../atoms/Spacer';
-import { Earrings, Nose, Pendants, Rings, Sets } from '../atoms/JSONListings';
-import { saleOn, salePercentage, saleTitle } from '../atoms/SaleDate';
+import { Earrings, Nose, Pendants, Rings, Sets } from '../json';
+import { saleOn, salePercentage, saleTitle } from '../Constants/SaleDate';
+import { PageTitleFrame, ShopItemCard, Spacer } from '../../components';
 
 const getListing = (currentCategory, currentListing) => {
   let category = [];

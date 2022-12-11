@@ -1,13 +1,15 @@
 import React from 'react';
-
 import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
-import Link from '../atoms/Link';
-import Heading from '../atoms/Heading';
-import PageTitleFrame from '../organisms/PageTitleFrame';
-import Paragraph from '../atoms/Paragraph';
-import Spacer from '../atoms/Spacer';
-import HorizontalRule from '../atoms/HorizontalRule';
+
+import {
+  Heading,
+  HorizontalRule,
+  Link,
+  PageTitleFrame,
+  Paragraph,
+  Spacer,
+} from '../../components';
 
 const IMAGE_HEIGHT = '230px';
 const IMAGE_WIDTH = '350px';

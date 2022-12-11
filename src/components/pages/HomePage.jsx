@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LandingPage from '../organisms/LandingPage';
+import { LandingPage } from '../../components';
 
 const HomePage = () => {
   return <LandingPage />;

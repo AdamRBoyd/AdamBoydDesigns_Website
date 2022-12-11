@@ -2,10 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { font, palette } from 'styled-theme';
 
-import PageTitleFrame from '../organisms/PageTitleFrame';
-import Paragraph from '../atoms/Paragraph';
-import Spacer from '../atoms/Spacer';
-import Link from '../atoms/Link';
+import { Link, PageTitleFrame, Paragraph, Spacer } from '../../components';
 
 const ParagraphWrapper = styled(Paragraph)`
   display: flex;

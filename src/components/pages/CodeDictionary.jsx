@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
 
-import PageTitleFrame from '../organisms/PageTitleFrame';
-import DictionaryMeaningCard from '../molecules/DictionaryMeaningCard';
-import Button from '../atoms/Button';
-import HorizontalRule from '../atoms/HorizontalRule';
-import Input from '../atoms/Input';
-import Label from '../atoms/Label';
-import Link from '../atoms/Link';
-import Spacer from '../atoms/Spacer';
+import {
+  PageTitleFrame,
+  DictionaryMeaningCard,
+  Button,
+  HorizontalRule,
+  Input,
+  Label,
+  Link,
+  Spacer,
+} from '../../components';
 
 const StyledForm = styled(Label)`
   display: flex;
@@ -66,7 +68,7 @@ const WordTitle = styled.div`
   text-transform: capitalize;
 `;
 
-const LinkCard = styled(Link)`
+const LinkCard = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 0.5rem;
@@ -145,7 +147,7 @@ const CodeDictionary = () => {
             <LinkCard>
               <Label>Source:</Label>
               {searchResult.sourceUrls.map((url, index) => (
-                <StyledLinks href={url} target='_blank'>
+                <StyledLinks href={url} target='_blank' key={index}>
                   <div>{`${url}`}</div>
                 </StyledLinks>
               ))}

@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { size } from 'styled-theme';
 
-import Header from '../organisms/Header';
-import Footer from '../organisms/Footer';
+import { Footer, Header } from '../../components';
 
 const Wrapper = styled.div`
   display: flex;

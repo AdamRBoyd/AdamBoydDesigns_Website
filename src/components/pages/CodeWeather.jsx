@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 
 import styled from 'styled-components';
 import { palette } from 'styled-theme';
-import PageTitleFrame from '../organisms/PageTitleFrame';
-import Spacer from '../atoms/Spacer';
-import Button from '../atoms/Button';
-import Label from '../atoms/Label';
-import Heading from '../atoms/Heading';
 import { useEffect } from 'react';
+
+import {
+  Button,
+  Heading,
+  Label,
+  PageTitleFrame,
+  Spacer,
+} from '../../components';
 
 const WeatherCard = styled.div`
   display: flex;

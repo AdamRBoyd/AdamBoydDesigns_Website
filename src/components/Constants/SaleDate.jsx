@@ -1,4 +1,4 @@
-import { Settings } from './JSONListings';
+import { Settings } from '../json';
 
 const { saleTitle, advertStart, saleStart, saleEnd, salePercentage } =
   Settings.sale;

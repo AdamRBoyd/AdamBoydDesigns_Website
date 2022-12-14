@@ -104,7 +104,7 @@ const ReviewCard = ({
       </RatingWrapper>
       <ReviewWrapper>{review}</ReviewWrapper>
       <ListingWrapper>
-        <ListingImage src={imageUrl} />
+        <ListingImage src={imageUrl} loading='lazy' />
         <Link href={listingUrl} target='_blank'>
           {title}
         </Link>

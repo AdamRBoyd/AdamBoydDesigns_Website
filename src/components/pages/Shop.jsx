@@ -26,14 +26,14 @@ const Shop = () => {
         <Link to='/shop/earrings'>
           <ShopMainGalleryCard listings={Earrings} label='Earrings' />
         </Link>
-        <Link to='/shop/nose'>
-          <ShopMainGalleryCard listings={Nose} label='Nose' />
-        </Link>
         <Link to='/shop/pendants'>
           <ShopMainGalleryCard listings={Pendants} label='Pendants' />
         </Link>
         <Link to='/shop/rings'>
           <ShopMainGalleryCard listings={Rings} label='Rings' />
+        </Link>
+        <Link to='/shop/nose'>
+          <ShopMainGalleryCard listings={Nose} label='Nose' />
         </Link>
         <Link to='/shop/sets'>
           <ShopMainGalleryCard listings={Sets} label='Sets' />

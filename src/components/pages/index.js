@@ -14,3 +14,4 @@ export { default as PageTemplate } from './PageTemplate';
 export { default as Shop } from './Shop';
 export { default as ShopCategory } from './ShopCategory';
 export { default as ShopListing } from './ShopListing';
+export { default as CodeToDo } from './CodeToDo';

@@ -101,6 +101,10 @@ const Code = () => {
           <StyledImage src='/images/Tic_tac_toe.png' alt='TicTacToe' />
           <StyledHeading>Tic-Tac-Toe</StyledHeading>
         </LinkCard>
+        <LinkCard to={'todo'}>
+          <StyledImage src='/images/ToDoList.jpg' alt='To Do' />
+          <StyledHeading>To Do List</StyledHeading>
+        </LinkCard>
       </Wrapper>
     </PageTitleFrame>
   );

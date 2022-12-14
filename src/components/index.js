@@ -21,6 +21,7 @@ export { default as ReviewCard } from './molecules/ReviewCard';
 export { default as ShopItemCard } from './molecules/ShopItemCard';
 export { default as ShopListingGalleryCard } from './molecules/ShopListingGalleryCard';
 export { default as ShopMainGalleryCard } from './molecules/ShopMainGalleryCard';
+export { default as ToDoListCard } from './molecules/ToDoListCard';
 
 // Organisms
 export { default as ContactForm } from './organisms/ContactForm';

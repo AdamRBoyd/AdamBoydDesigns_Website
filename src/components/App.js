@@ -7,6 +7,7 @@ import {
   Code,
   CodeDictionary,
   CodeTicTacToe,
+  CodeToDo,
   CodeWeather,
   Contact,
   Gallery,
@@ -39,6 +40,7 @@ function App() {
       <Route path='code/dictionary' element={<CodeDictionary />} />
       <Route path='code/weather' element={<CodeWeather />} />
       <Route path='code/tictactoe' element={<CodeTicTacToe />} />
+      <Route path='code/todo' element={<CodeToDo />} />
       <Route path='gallery' element={<Gallery />} />
       <Route path='gallery/rings' element={<GalleryImages title='Rings' />} />
       <Route

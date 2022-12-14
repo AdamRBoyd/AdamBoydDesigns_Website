@@ -126,7 +126,7 @@ const LeftSideTextBlock = styled.div`
 
 const LeftParagraph = styled.div`
   font-family: ${font('primary')};
-  margin: 1rem;
+  margin: 0.5rem 1rem;
   text-align: left;
 `;
 
@@ -152,7 +152,7 @@ const About = () => {
           rutrum elit, eget tempor ligula. In commodo rutrum lectus, et egestas
           augue. Interdum et malesuada fames ac ante ipsum primis in faucibus.
           Phasellus eu lorem venenatis, dignissim sapien a, sodales odio.
-          <Spacer />
+          <Spacer padding='medium' />
           <InstagramLink
             href='https://www.instagram.com/adamboyddesigns/'
             target='_blank'
@@ -164,7 +164,7 @@ const About = () => {
           </InstagramLink>
         </RightSideTextBlock>
       </ImageAndTextBlock>
-      <Spacer small />
+      <Spacer padding='medium' />
       <HorizontalRule />
       <ImageAndTextBlock>
         <LeftSideTextBlock>
@@ -195,24 +195,24 @@ const About = () => {
           </LeftParagraph>
         </LeftSideTextBlock>
         <ImageBlock>
-          <RightImage alt='Bench' src='/images/Bench.jpg' />
+          <RightImage alt='Bench' src='/images/Bench.jpg' loading='lazy' />
           <ImageLabel>
             Sandwiched between the mustard and the freezer, it may not look like
             much, but it works.
           </ImageLabel>
         </ImageBlock>
       </ImageAndTextBlock>
-      <Spacer />
+      <Spacer padding='large' />
       <HorizontalRule />
-      <Spacer small />
+      <Spacer padding='small' />
       <StyledHeading>Etsy Reviews</StyledHeading>
-      <Spacer small />
+      <Spacer padding='large' />
       {Reviews.map((review, index) => (
         <ReviewCard key={index} {...review} />
       ))}
-      <Spacer />
+      <Spacer padding='medium' />
       <HorizontalRule />
-      <Spacer small />
+      <Spacer padding='small' />
       <StyledHeading>Shop policies</StyledHeading>
       <StyledLabel>Shipping Processing time</StyledLabel>
       <ParagraphWrapper>

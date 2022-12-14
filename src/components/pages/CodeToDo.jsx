@@ -71,22 +71,23 @@ const CodeToDo = () => {
   let local = localStorage.getItem('ToDo');
   const [list, updateList] = useState(local ? JSON.parse(local) : []);
 
+  function storeValues(arr) {
+    updateList(arr);
+    window.localStorage.setItem('ToDo', JSON.stringify(arr));
+  }
+
   const handleItemClick = (e) => {
-    if (e.target.style.textDecoration) {
-      e.target.style.removeProperty('text-decoration');
-      e.target.style.removeProperty('color');
-    } else {
-      e.target.style.setProperty('text-decoration', 'line-through');
-      e.target.style.setProperty('color', '#e0e0e0');
-    }
+    const id = e.target.parentElement.id;
+    let newList = list.slice();
+    newList[id].done = !newList[id].done;
+    storeValues(newList);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let newList = list.slice();
-    newList.push(e.target[0].value);
-    updateList(newList);
-    window.localStorage.setItem('ToDo', JSON.stringify(newList));
+    newList.push({ item: e.target[0].value, done: false });
+    storeValues(newList);
     e.target.reset();
   };
 
@@ -95,8 +96,7 @@ const CodeToDo = () => {
     let newList = list;
     newList.splice(id, 1);
     newList = newList.slice();
-    window.localStorage.setItem('ToDo', JSON.stringify(newList));
-    updateList(newList);
+    storeValues(newList);
   };
 
   return (
@@ -114,8 +114,19 @@ const CodeToDo = () => {
               <StyledHeading>To Do:</StyledHeading>
               {list.map((item, index) => (
                 <ItemWrapper id={index} key={index}>
-                  <ListItem onClick={handleItemClick} key={`Item${index}`}>
-                    {item}
+                  <ListItem
+                    onClick={handleItemClick}
+                    key={`Item${index}`}
+                    style={
+                      item.done
+                        ? {
+                            textDecoration: 'line-through',
+                            color: '#e0e0e0',
+                          }
+                        : {}
+                    }
+                  >
+                    {item.item}
                   </ListItem>
                   <StyledIcon
                     name='trash'

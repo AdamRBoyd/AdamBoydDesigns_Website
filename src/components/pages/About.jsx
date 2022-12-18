@@ -92,8 +92,7 @@ const StyledIcon = styled(Icon)`
   color: ${palette('primary', 0)};
   font-size: 1.5rem;
   justify-self: center;
-  margin-left: 0.75rem;
-  margin-right: 0.5rem;
+  margin: 0 1rem;
   text-align: center;
   text-justify: center;
 `;

@@ -5,6 +5,7 @@ import { font, palette } from 'styled-theme';
 import {
   Heading,
   HorizontalRule,
+  Icon,
   Link,
   PageTitleFrame,
   Paragraph,
@@ -69,6 +70,13 @@ const StyledHeading = styled(Heading)`
   text-transform: uppercase;
 `;
 
+const StyledIcon = styled(Icon)`
+  height: 25px;
+  width: 25px;
+  margin: 0 0.5rem 0;
+  vertical-align: text-top;
+`;
+
 const Code = () => {
   return (
     <PageTitleFrame title='Coding Projects' noBottomRule>
@@ -87,7 +95,9 @@ const Code = () => {
           target='_blank'
         >
           <StyledImage src='/images/LandingPageImage.png' alt='Website Code' />
-          <StyledHeading>Website Code</StyledHeading>
+          <StyledHeading>
+            Website Code <StyledIcon name='Github' icon='github' />
+          </StyledHeading>
         </LinkCard>
         <LinkCard to={'dictionary'}>
           <StyledImage src='/images/Dictionary.jpg' alt='Dictionary' />
@@ -104,6 +114,10 @@ const Code = () => {
         <LinkCard to={'todo'}>
           <StyledImage src='/images/ToDoList.jpg' alt='To Do' />
           <StyledHeading>To Do List</StyledHeading>
+        </LinkCard>
+        <LinkCard to={'gradient'}>
+          <StyledImage src='/images/Gradient.jpg' alt='Gradient Picker' />
+          <StyledHeading>Gradient Picker</StyledHeading>
         </LinkCard>
       </Wrapper>
     </PageTitleFrame>

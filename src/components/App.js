@@ -7,7 +7,9 @@ import {
   Code,
   CodeDictionary,
   CodeGradient,
+  CodePasswordGen,
   CodeTicTacToe,
+  CodeTipCalc,
   CodeToDo,
   CodeWeather,
   Contact,
@@ -40,9 +42,11 @@ function App() {
       <Route path='code' element={<Code />} />
       <Route path='code/dictionary' element={<CodeDictionary />} />
       <Route path='code/gradient' element={<CodeGradient />} />
-      <Route path='code/weather' element={<CodeWeather />} />
+      <Route path='code/passwordgen' element={<CodePasswordGen />} />
       <Route path='code/tictactoe' element={<CodeTicTacToe />} />
+      <Route path='code/tipcalc' element={<CodeTipCalc />} />
       <Route path='code/todo' element={<CodeToDo />} />
+      <Route path='code/weather' element={<CodeWeather />} />
       <Route path='gallery' element={<Gallery />} />
       <Route path='gallery/rings' element={<GalleryImages title='Rings' />} />
       <Route

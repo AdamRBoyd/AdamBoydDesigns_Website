@@ -119,6 +119,14 @@ const Code = () => {
           <StyledImage src='/images/Gradient.jpg' alt='Gradient Picker' />
           <StyledHeading>Gradient Picker</StyledHeading>
         </LinkCard>
+        <LinkCard to={'passwordgen'}>
+          <StyledImage src='/images/passwordGen.png' alt='Password Generator' />
+          <StyledHeading>Password Generator</StyledHeading>
+        </LinkCard>
+        <LinkCard to={'tipcalc'}>
+          <StyledImage src='/images/tipCalc.jpg' alt='Tip Calculator' />
+          <StyledHeading>Tip Calculator</StyledHeading>
+        </LinkCard>
       </Wrapper>
     </PageTitleFrame>
   );

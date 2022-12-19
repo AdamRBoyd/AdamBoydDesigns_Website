@@ -16,3 +16,5 @@ export { default as ShopCategory } from './ShopCategory';
 export { default as ShopListing } from './ShopListing';
 export { default as CodeToDo } from './CodeToDo';
 export { default as CodeGradient } from './CodeGradient';
+export { default as CodeTipCalc } from './CodeTipCalc';
+export { default as CodePasswordGen } from './CodePasswordGen';

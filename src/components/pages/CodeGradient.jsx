@@ -6,8 +6,6 @@ import { palette } from 'styled-theme';
 import { Icon, Input, Label, PageTitleFrame, Spacer } from '../../components';
 
 const Wrapper = styled.div`
-  margin-top: 1rem;
-  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,14 +28,14 @@ const CopyCode = styled.div`
   align-items: center;
   justify-content: center;
   width: 350px;
-  background-color: #f1f5fc;
+  background-color: ${palette('grayscale', 7)};
   border-radius: 5px;
-  border: 1px solid #cfd5d5;
-  margin: 0 0 2rem 1rem;
+  border: 1px solid ${palette('grayscale', 4)};
+  margin: 0 0 1rem 1rem;
 `;
 
 const ColorCode = styled(Input)`
-  color: #044db4;
+  color: ${palette('primary', 0)};
   font-size: 0.9rem;
   font-weight: 500;
   padding: 1rem;
@@ -61,14 +59,14 @@ const SelectionInputs = styled.div`
   align-self: center;
 `;
 
-const DegreeInput = styled(Input)`
-  background-color: transparent;
+const DegreeInput = styled.input`
   width: 20rem;
   margin: 0 1rem;
 `;
 
 const ColorInput = styled(Input)`
   background-color: transparent;
+  border: none;
   width: 4rem;
   padding: 0.2rem;
   margin: 0 0 0 1.2rem;
@@ -87,7 +85,7 @@ const StyledColorCodeLabel = styled(Label)`
 
 const CodeGradient = () => {
   const [color1, setColor1] = useState('#8dd9f5');
-  const [color2, setColor2] = useState('#0003FF');
+  const [color2, setColor2] = useState('#0003ff');
   const [degree, setDegree] = useState(45);
 
   const changeColor = (e) => {
@@ -131,7 +129,7 @@ const CodeGradient = () => {
               id='copyBtn'
               onClick={copyToClipboard}
             >
-              <Icon name='Github' icon='copy-regular' />
+              <Icon name='copy' icon='copy-regular' />
             </CopyButton>
           </CopyCode>
         </StyledColorCodeLabel>

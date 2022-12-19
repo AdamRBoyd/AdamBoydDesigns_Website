@@ -13,7 +13,7 @@ import {
   Spacer,
 } from '../../components';
 
-const StyledForm = styled(Label)`
+const StyledForm = styled.form`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -85,7 +85,6 @@ const StyledLinks = styled(Link)`
 `;
 
 const CodeDictionary = () => {
-  const [wordInput, setWordInput] = useState('');
   const [searchResult, setSearchResult] = useState();
   const [hasTitle, setHasTitle] = useState(true);
 
@@ -109,20 +108,17 @@ const CodeDictionary = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetchApi(wordInput);
-  };
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    setWordInput(e.target.value);
+    fetchApi(e.target[0].value);
   };
 
   return (
     <PageTitleFrame title='Dictionary API Fetch Project' noBottomRule>
-      <StyledForm>
+      <StyledForm onSubmit={handleSubmit}>
         <StyledLabel>Define:</StyledLabel>
-        <StyledInput type='text' name='word' onChange={handleChange} required />
-        <StyledButton onClick={handleSubmit}>Search</StyledButton>
+        <StyledInput type='text' required />
+        <StyledButton type='submit' value='Submit'>
+          Search
+        </StyledButton>
       </StyledForm>
       <HorizontalRule />
       <DefinitionWrapper>

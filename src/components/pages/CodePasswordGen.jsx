@@ -113,7 +113,6 @@ const CodePasswordGen = () => {
 
   const generatePassword = (e) => {
     e.preventDefault();
-    console.log(e);
     let passData = ALPHA;
     if (e.target[2].checked) passData += UPPER;
     if (e.target[3].checked) passData += NUMBERS;

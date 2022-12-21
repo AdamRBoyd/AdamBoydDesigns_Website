@@ -8,6 +8,8 @@ import {
   CodeDictionary,
   CodeGradient,
   CodePasswordGen,
+  CodeRecipeBook,
+  CodeRecipeCard,
   CodeTicTacToe,
   CodeTipCalc,
   CodeToDo,
@@ -43,6 +45,8 @@ function App() {
       <Route path='code/dictionary' element={<CodeDictionary />} />
       <Route path='code/gradient' element={<CodeGradient />} />
       <Route path='code/passwordgen' element={<CodePasswordGen />} />
+      <Route path='code/recipe' element={<CodeRecipeBook />} />
+      <Route path='code/recipe/:card' element={<CodeRecipeCard />} />
       <Route path='code/tictactoe' element={<CodeTicTacToe />} />
       <Route path='code/tipcalc' element={<CodeTipCalc />} />
       <Route path='code/todo' element={<CodeToDo />} />

@@ -84,6 +84,11 @@ const StyledLinks = styled(Link)`
   width: fit-content;
 `;
 
+const APICredit = styled(Link)`
+  font-size: 0.8rem;
+  margin: 0 0 2rem;
+`;
+
 const CodeDictionary = () => {
   const [searchResult, setSearchResult] = useState();
   const [hasTitle, setHasTitle] = useState(true);
@@ -152,6 +157,9 @@ const CodeDictionary = () => {
         )}
       </DefinitionWrapper>
       <Spacer padding='large' />
+      <APICredit href={'https://dictionaryapi.dev/'} target='_blank'>
+        Dictionary API courtesy of Dictionary API
+      </APICredit>
     </PageTitleFrame>
   );
 };

@@ -8,6 +8,7 @@ import {
   Button,
   Heading,
   Label,
+  Link,
   PageTitleFrame,
   Spacer,
 } from '../../components';
@@ -44,7 +45,6 @@ const StyledHeading = styled(Heading)`
 `;
 
 const StyledLocation = styled(Label)`
-  /* font-style: italic; */
   font-size: 0.8rem;
   margin: 0 0.5rem;
   align-self: center;
@@ -118,6 +118,11 @@ const StyledRefresh = styled(Button)`
   &:focus {
     background-color: transparent;
   }
+`;
+
+const APICredit = styled(Link)`
+  font-size: 0.8rem;
+  margin: 0.3rem;
 `;
 
 const CodeWeather = () => {
@@ -231,6 +236,14 @@ const CodeWeather = () => {
       <StyledRefresh onClick={handleClick}>
         {loaded ? 'Refresh' : 'Load Weather'}
       </StyledRefresh>
+      <Spacer padding='large' />
+      <APICredit href={'https://ipapi.co/'} target='_blank'>
+        Location API courtesy of ipapi
+      </APICredit>
+      <APICredit href={'https://openweathermap.org/'} target='_blank'>
+        Weather API courtesy of OpenWeather
+      </APICredit>
+      <Spacer padding='large' />
     </PageTitleFrame>
   );
 };

@@ -127,6 +127,10 @@ const Code = () => {
           <StyledImage src='/images/tipCalc.jpg' alt='Tip Calculator' />
           <StyledHeading>Tip Calculator</StyledHeading>
         </LinkCard>
+        <LinkCard to={'recipe'}>
+          <StyledImage src='/images/recipes.jpg' alt='Recipe Book Search' />
+          <StyledHeading>Recipe Book Search</StyledHeading>
+        </LinkCard>
       </Wrapper>
     </PageTitleFrame>
   );

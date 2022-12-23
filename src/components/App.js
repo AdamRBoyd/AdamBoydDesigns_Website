@@ -13,6 +13,7 @@ import {
   CodeTicTacToe,
   CodeTipCalc,
   CodeToDo,
+  CodeUnitConverter,
   CodeWeather,
   Contact,
   Gallery,
@@ -50,6 +51,7 @@ function App() {
       <Route path='code/tictactoe' element={<CodeTicTacToe />} />
       <Route path='code/tipcalc' element={<CodeTipCalc />} />
       <Route path='code/todo' element={<CodeToDo />} />
+      <Route path='code/units' element={<CodeUnitConverter />} />
       <Route path='code/weather' element={<CodeWeather />} />
       <Route path='gallery' element={<Gallery />} />
       <Route path='gallery/rings' element={<GalleryImages title='Rings' />} />

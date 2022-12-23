@@ -131,6 +131,10 @@ const Code = () => {
           <StyledImage src='/images/recipes.jpg' alt='Recipe Book Search' />
           <StyledHeading>Recipe Book Search</StyledHeading>
         </LinkCard>
+        <LinkCard to={'units'}>
+          <StyledImage src='/images/math.jpg' alt='Unit Converter' />
+          <StyledHeading>Unit Converter</StyledHeading>
+        </LinkCard>
       </Wrapper>
     </PageTitleFrame>
   );

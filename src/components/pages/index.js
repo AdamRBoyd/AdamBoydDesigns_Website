@@ -20,3 +20,4 @@ export { default as CodeTipCalc } from './CodeTipCalc';
 export { default as CodePasswordGen } from './CodePasswordGen';
 export { default as CodeRecipeBook } from './CodeRecipeBook';
 export { default as CodeRecipeCard } from './CodeRecipeCard';
+export { default as CodeUnitConverter } from './CodeUnitConverter';

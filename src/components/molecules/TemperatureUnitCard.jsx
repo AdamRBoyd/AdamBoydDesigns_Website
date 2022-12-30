@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
-import { font, palette } from 'styled-theme';
+import { palette } from 'styled-theme';
 
 import { Input, Label } from '../../components';
 

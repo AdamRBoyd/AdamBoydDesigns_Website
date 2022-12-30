@@ -3,18 +3,10 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
 
-import {
-  PageTitleFrame,
-  Button,
-  HorizontalRule,
-  Input,
-  Label,
-  Link,
-  Spacer,
-} from '../../components';
+import { Input, Label, UnderConstruction } from '../../components';
 
 const AreaUnitCard = () => {
-  return <></>;
+  return <UnderConstruction />;
 };
 
 export default AreaUnitCard;

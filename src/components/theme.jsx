@@ -21,7 +21,7 @@ theme.palette = {
     '#eeeeee', // 6
     '#f5f5f5', // 7
   ],
-  overlayBlack: ['#000000E6'], // rgba(0, 0, 0, 0.9)
+  overlayBlack: ['rgba(0, 0, 0, 0.9)', 'rgba(0, 0, 0, 0.6)'],
 };
 
 theme.reversePalette = reversePalette(theme.palette);

@@ -2,96 +2,107 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { font, palette } from 'styled-theme';
+import { Spacer, Label } from '../../components';
 
 const IMAGE_HEIGHT = '240px';
 const IMAGE_WIDTH = '240px';
 const CARD_WIDTH = '260px';
 const CARD_HEIGHT = '380x';
 
-const Wrapper = styled.div`
+const MainWrapper = styled.div`
   font-family: ${font('primary')};
   color: ${palette('grayscale', 0)};
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  flex-shrink: 1;
   align-items: center;
-  align-self: center;
-  align-content: flex-start;
   justify-content: center;
-`;
-
-const LabelWrapper = styled.div`
-  color: ${palette('primary', 0)};
-  font-family: ${font('primary')};
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.5rem;
-  padding-bottom: 0.5rem;
-  text-align: center;
-  width: 90%;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-`;
-
-const ImageCard = styled.div`
-  align-content: center;
-  align-items: center;
-  align-self: center;
   border-radius: 0.5rem;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  margin: 0.3rem;
   width: ${CARD_WIDTH};
   height: ${CARD_HEIGHT};
+  padding: 1rem 0.3rem;
 
   &:hover {
     box-shadow: 0px 0px 10px ${palette('grayscale', 4)};
   }
 `;
 
-const ImageWrapper = styled.img`
+const LabelWrapper = styled(Label)`
+  color: ${palette('primary', 0)};
+  font-family: ${font('primary')};
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  text-align: center;
+  width: 95%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+`;
+
+const ListingImage = styled.img`
   border-radius: 0.25rem;
   border: 1px solid ${palette('grayscale', 4)};
-  margin: 0.5rem;
-  justify-self: center;
   width: ${IMAGE_WIDTH};
   height: ${IMAGE_HEIGHT};
   object-fit: cover;
 `;
 
 const ImageOverlay = styled.div`
-  display: grid;
-  margin-bottom: -2rem;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  justify-self: center;
+  border-radius: 0.25rem;
+  width: ${IMAGE_WIDTH};
+  height: ${IMAGE_HEIGHT};
+  object-fit: cover;
+
+  &:hover .details {
+    opacity: 1;
+    height: 22%;
+  }
+`;
+
+const Details = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  width: 100%;
+  height: 0%;
+  background: ${palette('overlayBlack', 1)};
+  opacity: 0;
+  transition: 0.5s ease;
 `;
 
 const SoldOutStatusStyling = css`
-  position: relative;
-  top: -3rem;
-  justify-self: center;
+  position: absolute;
+  top: 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 92%;
-  font-size: 1.15rem;
+  width: 100%;
+  font-size: 1rem;
   font-weight: 700;
-  padding: 0.25rem;
-  border-radius: 0.3rem;
+  padding: 0.3rem 0 0.2rem;
+  border-radius: 0.3rem 0.3rem 0 0;
+  opacity: 0.75;
 `;
 
-const SoldOutWrapper = styled(LabelWrapper)`
+const SoldOutWrapper = styled(Label)`
   ${SoldOutStatusStyling}
-  color: ${palette('grayscale', 4)};
+  color: ${palette('grayscale', 7)};
   text-shadow: 0px 0px 5px ${palette('grayscale', 1)};
   background-color: ${palette('danger', 1)};
   border: 1px solid transparent;
-  box-shadow: 0px 0px 10px ${palette('grayscale', 1)};
+  box-shadow: 0px 5px 5px ${palette('grayscale', 1)};
 `;
 
-const NotSoldOutWrapper = styled(LabelWrapper)`
+const NotSoldOutWrapper = styled(Label)`
   ${SoldOutStatusStyling}
   color: transparent;
   background-color: transparent;
@@ -103,19 +114,25 @@ const PriceAndShippingStyles = css`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0.1rem;
-  margin-bottom: 0.5rem;
 `;
 
-const PriceWrapper = styled(LabelWrapper)`
+const PriceWrapper = styled(Label)`
   ${PriceAndShippingStyles}
-  background-color: transparent;
-  border-radius: 0.5rem;
-  border: 1px solid ${palette('grayscale', 6)};
-  font-size: 1.1rem;
+  color: ${palette('primary', 0)};
+  font-family: ${font('primary')};
+  font-size: 1rem;
   width: fit-content;
-  padding: 0.25rem 1.5rem;
-  font-weight: 525;
+`;
+
+const PriceAndTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  border-bottom: 1px solid ${palette('grayscale', 4)};
+  border-top: 1px solid ${palette('grayscale', 4)};
+  padding-top: 0.5rem;
 `;
 
 const SalePriceWrapper = styled.div`
@@ -138,30 +155,18 @@ const VariationsWrapper = styled.div`
 const InStockAndShippingWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 90%;
-  margin: 0.5rem 0 0.5rem 0;
+  border-bottom: 1px solid ${palette('grayscale', 4)};
+  border-top: 1px solid ${palette('grayscale', 4)};
+  font-size: 0.7rem;
 `;
 
-const ShippingWrapper = styled(LabelWrapper)`
+const StockShippingLabel = styled(Label)`
   ${PriceAndShippingStyles}
-  background-color: ${palette('success', 3)};
-  color: ${palette('grayscale', 0)};
-  border-radius: 0.75rem;
-  border: 1px solid ${palette('grayscale', 6)};
+  color: ${palette('grayscale', 4)};
   font-size: 0.7rem;
-  max-width: 45%;
-`;
-
-const InStockWrapper = styled(LabelWrapper)`
-  ${PriceAndShippingStyles}
-  background-color: ${palette('grayscale', 7)};
-  border: 1px solid ${palette('grayscale', 6)};
-  border-radius: 0.75rem;
-  color: ${palette('grayscale', 2)};
-  font-size: 0.7rem;
-  max-width: 45%;
 `;
 
 const ShopListingGalleryCard = ({
@@ -180,16 +185,33 @@ const ShopListingGalleryCard = ({
   return (
     <>
       {state === 'active' || showSold ? (
-        <Wrapper {...props}>
-          <ImageCard>
-            <ImageOverlay>
-              <ImageWrapper src={images[0].imageUrl570xN} alt={title} />
-              {state !== 'active' ? (
-                <SoldOutWrapper>• Sold* •</SoldOutWrapper>
-              ) : (
-                <NotSoldOutWrapper>Available</NotSoldOutWrapper>
-              )}
-            </ImageOverlay>
+        <MainWrapper {...props}>
+          <ImageOverlay>
+            <ListingImage src={images[0].imageUrl570xN} alt={title} />
+            <Details className='details'>
+              <InStockAndShippingWrapper>
+                <StockShippingLabel>
+                  {quantity > 0 && quantity < 20 && state === 'active'
+                    ? `${quantity} In Stock`
+                    : 'Made to Order'}
+                </StockShippingLabel>
+                {price.amount >= 35 ? (
+                  <StockShippingLabel>FREE Shipping</StockShippingLabel>
+                ) : (
+                  <StockShippingLabel>{`Add $${Math.round(
+                    35 - price.amount
+                  )} more`}</StockShippingLabel>
+                )}
+              </InStockAndShippingWrapper>
+            </Details>
+            {state !== 'active' ? (
+              <SoldOutWrapper>• Sold* •</SoldOutWrapper>
+            ) : (
+              <NotSoldOutWrapper>Available</NotSoldOutWrapper>
+            )}
+          </ImageOverlay>
+          <Spacer padding='small' />
+          <PriceAndTitle>
             <LabelWrapper>{title}</LabelWrapper>
             {saleOn ? (
               <PriceWrapper>
@@ -211,22 +233,8 @@ const ShopListingGalleryCard = ({
                 {`$${price.amount}`}
               </PriceWrapper>
             )}
-            <InStockAndShippingWrapper>
-              <InStockWrapper>
-                {quantity > 0 && quantity < 20 && state === 'active'
-                  ? `${quantity} In Stock`
-                  : 'Made to Order'}
-              </InStockWrapper>
-              {price.amount >= 35 ? (
-                <ShippingWrapper>FREE Shipping</ShippingWrapper>
-              ) : (
-                <ShippingWrapper>{`Add $${Math.round(
-                  35 - price.amount
-                )} more`}</ShippingWrapper>
-              )}
-            </InStockAndShippingWrapper>
-          </ImageCard>
-        </Wrapper>
+          </PriceAndTitle>
+        </MainWrapper>
       ) : (
         <></>
       )}{' '}

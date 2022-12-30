@@ -23,10 +23,11 @@ const InfoRow = styled.div`
 `;
 
 const StyledInput = styled(Input)`
-  width: 15rem;
+  width: 13rem;
   background-color: transparent;
   color: ${palette('grayscale', 0)};
   border-radius: 0.4rem;
+  text-overflow: ellipsis;
 `;
 
 const StyledLabel = styled(Label)`

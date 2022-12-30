@@ -32,6 +32,7 @@ const StyledInput = styled(Input)`
 
 const StyledLabel = styled(Label)`
   color: ${palette('primary', 0)};
+  text-transform: capitalize;
 `;
 
 const AreaUnitCard = () => {
@@ -44,6 +45,16 @@ const AreaUnitCard = () => {
     mile: 0,
     acre: 0,
   });
+
+  const measure = [
+    'meter',
+    'kilometer',
+    'inch',
+    'foot',
+    'yard',
+    'mile',
+    'acre',
+  ];
 
   const handleChange = (e) => {
     switch (e.target.id) {
@@ -131,69 +142,19 @@ const AreaUnitCard = () => {
 
   return (
     <MainWrapper>
-      <InfoRow>
-        <StyledLabel>Square Meter:</StyledLabel>
-        <StyledInput
-          type='text'
-          id='meter'
-          onChange={handleChange}
-          value={measurements.meter}
-        />
-      </InfoRow>
-      <InfoRow>
-        <StyledLabel>Square Kilometer:</StyledLabel>
-        <StyledInput
-          type='text'
-          id='kilometer'
-          onChange={handleChange}
-          value={measurements.kilometer}
-        />
-      </InfoRow>
-      <InfoRow>
-        <StyledLabel>Square Inch:</StyledLabel>
-        <StyledInput
-          type='text'
-          id='inch'
-          onChange={handleChange}
-          value={measurements.inch}
-        />
-      </InfoRow>
-      <InfoRow>
-        <StyledLabel>Square Foot:</StyledLabel>
-        <StyledInput
-          type='text'
-          id='foot'
-          onChange={handleChange}
-          value={measurements.foot}
-        />
-      </InfoRow>
-      <InfoRow>
-        <StyledLabel>Square Yard:</StyledLabel>
-        <StyledInput
-          type='text'
-          id='yard'
-          onChange={handleChange}
-          value={measurements.yard}
-        />
-      </InfoRow>
-      <InfoRow>
-        <StyledLabel>Square Mile:</StyledLabel>
-        <StyledInput
-          type='text'
-          id='mile'
-          onChange={handleChange}
-          value={measurements.mile}
-        />
-      </InfoRow>
-      <InfoRow>
-        <StyledLabel>Square Acre:</StyledLabel>
-        <StyledInput
-          type='text'
-          id='acre'
-          onChange={handleChange}
-          value={measurements.acre}
-        />
-      </InfoRow>
+      {measure.map((item, index) => (
+        <InfoRow key={item + index}>
+          <StyledLabel>
+            {item === 'acre' ? item : `Square ${item}:`}
+          </StyledLabel>
+          <StyledInput
+            type='text'
+            id={item}
+            onChange={handleChange}
+            value={measurements[`${item}`]}
+          />
+        </InfoRow>
+      ))}
     </MainWrapper>
   );
 };

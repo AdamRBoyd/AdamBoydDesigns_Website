@@ -49,7 +49,6 @@ const Tab = styled.div`
 const CalcSection = styled.div`
   border: 1px solid ${palette('grayscale', 0)};
   border-radius: 0 0 0.5rem 0.5rem;
-  height: 500px;
   border-top: none;
   background-color: ${palette('primary', 3)};
   padding: 1rem;
@@ -64,6 +63,7 @@ const CalcBox = styled.div`
   height: 100%;
   background-color: ${palette('grayscale', 7)};
   border-radius: 0.5rem;
+  padding: 2rem 0;
 `;
 
 const CodeUnitConverter = () => {

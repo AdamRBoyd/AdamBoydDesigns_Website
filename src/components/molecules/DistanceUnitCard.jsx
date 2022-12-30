@@ -32,6 +32,7 @@ const StyledInput = styled(Input)`
 
 const StyledLabel = styled(Label)`
   color: ${palette('primary', 0)};
+  text-transform: capitalize;
 `;
 
 const DistanceUnitCard = () => {
@@ -44,6 +45,16 @@ const DistanceUnitCard = () => {
     yard: 0,
     mile: 0,
   });
+
+  const measure = [
+    'centimeter',
+    'meter',
+    'kilometer',
+    'inch',
+    'foot',
+    'yard',
+    'mile',
+  ];
 
   const handleChange = (e) => {
     switch (e.target.id) {
@@ -131,69 +142,17 @@ const DistanceUnitCard = () => {
 
   return (
     <MainWrapper>
-      <InfoRow>
-        <StyledLabel>Centimeter:</StyledLabel>
-        <StyledInput
-          type='text'
-          id='centimeter'
-          onChange={handleChange}
-          value={measurements.centimeter}
-        />
-      </InfoRow>
-      <InfoRow>
-        <StyledLabel>Meter:</StyledLabel>
-        <StyledInput
-          type='text'
-          id='meter'
-          onChange={handleChange}
-          value={measurements.meter}
-        />
-      </InfoRow>
-      <InfoRow>
-        <StyledLabel>Kilometer:</StyledLabel>
-        <StyledInput
-          type='text'
-          id='kilometer'
-          onChange={handleChange}
-          value={measurements.kilometer}
-        />
-      </InfoRow>
-      <InfoRow>
-        <StyledLabel>Inch:</StyledLabel>
-        <StyledInput
-          type='text'
-          id='inch'
-          onChange={handleChange}
-          value={measurements.inch}
-        />
-      </InfoRow>
-      <InfoRow>
-        <StyledLabel>Foot:</StyledLabel>
-        <StyledInput
-          type='text'
-          id='foot'
-          onChange={handleChange}
-          value={measurements.foot}
-        />
-      </InfoRow>
-      <InfoRow>
-        <StyledLabel>Yard:</StyledLabel>
-        <StyledInput
-          type='text'
-          id='yard'
-          onChange={handleChange}
-          value={measurements.yard}
-        />
-      </InfoRow>
-      <InfoRow>
-        <StyledLabel>Mile:</StyledLabel>
-        <StyledInput
-          type='text'
-          id='mile'
-          onChange={handleChange}
-          value={measurements.mile}
-        />
-      </InfoRow>
+      {measure.map((item, index) => (
+        <InfoRow key={item + index}>
+          <StyledLabel>{`${item}:`}</StyledLabel>
+          <StyledInput
+            type='text'
+            id={item}
+            onChange={handleChange}
+            value={measurements[`${item}`]}
+          />
+        </InfoRow>
+      ))}
     </MainWrapper>
   );
 };

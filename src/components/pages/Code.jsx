@@ -13,15 +13,15 @@ import {
 } from '../../components';
 
 const IMAGE_HEIGHT = '230px';
-const IMAGE_WIDTH = '350px';
-const CARD_WIDTH = '400px';
+const IMAGE_WIDTH = '300px';
+const CARD_WIDTH = '330px';
 const CARD_HEIGHT = '300px';
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 90%;
+  width: 100%;
   align-content: center;
   align-items: center;
   justify-content: center;
@@ -43,7 +43,7 @@ const LinkCard = styled(Link)`
   align-items: center;
   border-radius: 0.5rem;
   padding: 1rem 0 0.5rem;
-  margin: 1rem 1.5rem;
+  margin: 1rem 0.5rem;
   height: ${CARD_HEIGHT};
   width: ${CARD_WIDTH};
   &:hover {

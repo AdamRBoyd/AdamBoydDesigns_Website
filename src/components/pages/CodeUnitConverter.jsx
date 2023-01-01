@@ -9,7 +9,7 @@ import {
   TemperatureUnitCard,
   AreaUnitCard,
   VolumeUnitCard,
-  WeightUnitCard,
+  MassUnitCard,
   TimeUnitCard,
 } from '../../components';
 
@@ -29,6 +29,10 @@ const Tabs = styled.div`
     border-top-left-radius: 0.5rem;
   }
 
+  > :not(:first-child) {
+    border-left: none;
+  }
+
   > :last-child {
     border-top-right-radius: 0.5rem;
   }
@@ -40,14 +44,14 @@ const Tab = styled.div`
   align-items: center;
   width: 9rem;
   height: 2.5rem;
-  border: 1px solid ${palette('grayscale', 0)};
+  border: 1px solid ${palette('grayscale', 4)};
   text-transform: capitalize;
   font-family: ${font('primary')};
   font-weight: 600;
 `;
 
 const CalcSection = styled.div`
-  border: 1px solid ${palette('grayscale', 0)};
+  border: 1px solid ${palette('grayscale', 4)};
   border-radius: 0 0 0.5rem 0.5rem;
   border-top: none;
   background-color: ${palette('primary', 3)};
@@ -73,7 +77,7 @@ const CodeUnitConverter = () => {
     'temperature',
     'area',
     'volume',
-    'weight',
+    'mass',
     'time',
   ];
 
@@ -109,7 +113,7 @@ const CodeUnitConverter = () => {
             {active === 'temperature' && <TemperatureUnitCard />}
             {active === 'area' && <AreaUnitCard />}
             {active === 'volume' && <VolumeUnitCard />}
-            {active === 'weight' && <WeightUnitCard />}
+            {active === 'mass' && <MassUnitCard />}
             {active === 'time' && <TimeUnitCard />}
           </CalcBox>
         </CalcSection>

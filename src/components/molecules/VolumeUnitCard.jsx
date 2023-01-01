@@ -3,7 +3,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { palette } from 'styled-theme';
 
-import { Input, Label } from '../../components';
+import { Input, Label, UnderConstruction } from '../../components';
 
 const MainWrapper = styled.div`
   display: flex;
@@ -238,12 +238,13 @@ const VolumeUnitCard = () => {
 
   return (
     <MainWrapper>
+      <UnderConstruction />
       {measure.map((item, index) => (
         <InfoRow key={item + index}>
           <StyledLabel>
             {item === 'meter' || item === 'inch' || item === 'foot'
-              ? `Cubic ${item}`
-              : item}
+              ? `Cubic ${item}:`
+              : `${item}:`}
           </StyledLabel>
           <StyledInput
             type='text'

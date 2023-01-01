@@ -27,7 +27,7 @@ export { default as DistanceUnitCard } from './molecules/DistanceUnitCard';
 export { default as TemperatureUnitCard } from './molecules/TemperatureUnitCard';
 export { default as AreaUnitCard } from './molecules/AreaUnitCard';
 export { default as VolumeUnitCard } from './molecules/VolumeUnitCard';
-export { default as WeightUnitCard } from './molecules/WeightUnitCard';
+export { default as MassUnitCard } from './molecules/MassUnitCard';
 export { default as TimeUnitCard } from './molecules/TimeUnitCard';
 
 // Organisms

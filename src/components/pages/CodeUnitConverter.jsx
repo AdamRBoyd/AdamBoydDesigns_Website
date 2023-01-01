@@ -4,13 +4,13 @@ import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
 
 import {
-  PageTitleFrame,
-  DistanceUnitCard,
-  TemperatureUnitCard,
   AreaUnitCard,
-  VolumeUnitCard,
+  DistanceUnitCard,
   MassUnitCard,
+  PageTitleFrame,
+  TemperatureUnitCard,
   TimeUnitCard,
+  VolumeUnitCard,
 } from '../../components';
 
 const MainWrapper = styled.div`
@@ -70,6 +70,14 @@ const CalcBox = styled.div`
   padding: 2rem 0;
 `;
 
+const Note = styled.div`
+  font-family: ${font('primary')};
+  color: ${palette('primary', 0)};
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin: 4rem 0;
+`;
+
 const CodeUnitConverter = () => {
   const [active, setActive] = useState('distance');
   const sections = [
@@ -118,6 +126,10 @@ const CodeUnitConverter = () => {
           </CalcBox>
         </CalcSection>
       </MainWrapper>
+      <Note>
+        All results are approximate and based on formulas from Google Unit
+        Converter
+      </Note>
     </PageTitleFrame>
   );
 };

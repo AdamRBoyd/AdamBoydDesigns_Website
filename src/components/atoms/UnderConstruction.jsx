@@ -1,30 +1,47 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
+import { switchProp } from 'styled-tools';
 
-const MainWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledTempImage = styled.img`
+const StyledUnderConstructionImage = styled.img`
   border-radius: 0.25rem;
   margin-bottom: 0.5rem;
   object-fit: cover;
-  height: 300px;
-  width: 200 px;
+  ${switchProp('signSize', {
+    small: css`
+      width: 150px;
+    `,
+    medium: css`
+      width: 300px;
+    `,
+    large: css`
+      width: 600px;
+    `,
+    xlarge: css`
+      width: 900px;
+    `,
+    xxlarge: css`
+      width: 1200px;
+    `,
+  })};
 `;
 
-const UnderConstruction = () => {
+const UnderConstruction = ({ signSize }) => {
   return (
-    <MainWrapper>
-      <StyledTempImage
-        src='/images/UnderConstructionSign.png'
-        alt='Under Construction'
-      />
-    </MainWrapper>
+    <StyledUnderConstructionImage
+      signSize={signSize}
+      src='/images/UnderConstructionSign.png'
+      alt='Under Construction'
+    />
   );
+};
+
+UnderConstruction.propTypes = {
+  signSize: PropTypes.string,
+};
+
+UnderConstruction.defaultProps = {
+  signSize: 'large',
 };
 
 export default UnderConstruction;

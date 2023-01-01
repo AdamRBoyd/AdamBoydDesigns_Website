@@ -126,36 +126,41 @@ const APICredit = styled(Link)`
 `;
 
 const CodeWeather = () => {
-  const [location, setLocation] = useState();
   const [weather, setWeather] = useState();
   const [loaded, setLoaded] = useState(false);
   const [tempCelsius, setTempCelsius] = useState(false);
 
-  function setFetchFinished(result) {
-    if (result.cod === 200) {
-      setWeather(result);
-      setLoaded(true);
+  function fetchWeather(position) {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        fetch(
+          `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=059dcee9c15c93a942eb1f38b72876be`
+        )
+          .then((response) => response.json())
+          .then((result) => {
+            if (result.cod === 200) {
+              setWeather(result);
+              setLoaded(true);
+            } else {
+              setLoaded(false); // Used for refresh where already set to true
+            }
+          })
+          .catch((error) => {
+            console.error();
+          });
+      });
     } else {
-      setLoaded(false);
+      alert('Geolocation is not supported by this browser.');
     }
   }
 
-  function fetchWeather(result) {
-    setLocation(result);
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${result.latitude}&lon=${result.longitude}&appid=059dcee9c15c93a942eb1f38b72876be`
-    )
-      .then((response) => response.json())
-      .then((result2) => setFetchFinished(result2))
-      .catch(() => {});
-  }
-
-  function fetchLoc() {
-    fetch(`https://ipapi.co/json/`)
-      .then((response) => response.json())
-      .then((result) => fetchWeather(result))
-      .catch(() => {});
-  }
+  // // NOTE: Alternate location fetch method - Must remove .coords from lat/lon
+  // function fetchLoc() {
+  // fetch(`https://ipapi.co/json/`)
+  //   .then((response) => response.json())
+  //   .then((result) => fetchWeather(result))
+  //   .catch(() => {});
+  // }
 
   // Kelvin to Fahrenheit T(K) × 9/5 - 459.67
   function fTemp(temp) {
@@ -168,7 +173,7 @@ const CodeWeather = () => {
   }
 
   const handleClick = () => {
-    fetchLoc();
+    fetchWeather();
   };
 
   const handleTempSwap = () => {
@@ -176,18 +181,27 @@ const CodeWeather = () => {
   };
 
   useEffect(() => {
-    fetchLoc();
+    fetchWeather();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <PageTitleFrame title='Weather App Project' noBottomRule>
+      {!loaded && (
+        <>
+          <Spacer padding='medium' />
+          <Label>OOPS! Something went wrong!</Label>
+          <Label>
+            Please make sure to allow this page to know your location!
+          </Label>
+        </>
+      )}
       {loaded && (
         <WeatherCard>
           <StyledHeader>
             <HeaderLabel>Weather for:</HeaderLabel>
-            <StyledHeading>{`${location?.city}, ${location?.region}`}</StyledHeading>
-            <StyledLocation>{`${location?.latitude} Lat., ${location?.longitude} Lon.`}</StyledLocation>
+            <StyledHeading>{`${weather?.name}`}</StyledHeading>
+            <StyledLocation>{`${weather?.coord?.lat} Lat., ${weather?.coord?.lon} Lon.`}</StyledLocation>
           </StyledHeader>
           <StyledIconLabel>
             <WeatherIcon
@@ -237,9 +251,6 @@ const CodeWeather = () => {
         {loaded ? 'Refresh' : 'Load Weather'}
       </StyledRefresh>
       <Spacer padding='large' />
-      <APICredit href={'https://ipapi.co/'} target='_blank'>
-        Location API courtesy of ipapi
-      </APICredit>
       <APICredit href={'https://openweathermap.org/'} target='_blank'>
         Weather API courtesy of OpenWeather
       </APICredit>

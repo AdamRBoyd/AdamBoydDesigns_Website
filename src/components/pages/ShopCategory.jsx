@@ -53,9 +53,6 @@ const NavWrapper = styled.div`
 
 const StyledButton = styled(Button)`
   width: 14%;
-  height: 1.75rem;
-  cursor: pointer;
-  border-radius: 0.5rem;
   margin: -0.5rem 0 0 0;
 `;
 
@@ -175,11 +172,19 @@ const ShopCategory = () => {
       <PageTitleFrame title={listingsData.label}>
         <NavWrapper>
           {showSold ? (
-            <StyledButton onClick={handleCheckChange}>
+            <StyledButton
+              onClick={handleCheckChange}
+              variant='primary'
+              buttonHeight={1.75}
+            >
               Hide Sold Out
             </StyledButton>
           ) : (
-            <StyledButton onClick={handleCheckChange} transparent>
+            <StyledButton
+              onClick={handleCheckChange}
+              variant='ghost'
+              buttonHeight={1.75}
+            >
               Show Sold Out
             </StyledButton>
           )}

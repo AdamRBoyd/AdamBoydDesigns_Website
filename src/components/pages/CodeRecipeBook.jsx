@@ -108,7 +108,7 @@ const CodeRecipeBook = () => {
     <PageTitleFrame title='Recipe Book Search' noBottomRule>
       <StyledForm onSubmit={handleSubmit}>
         <StyledInput type='text' required />
-        <StyledButton type='submit' value='Submit'>
+        <StyledButton type='submit' value='Submit' variant='primary'>
           Search Recipes
         </StyledButton>
       </StyledForm>

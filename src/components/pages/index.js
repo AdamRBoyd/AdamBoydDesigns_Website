@@ -21,3 +21,4 @@ export { default as CodePasswordGen } from './CodePasswordGen';
 export { default as CodeRecipeBook } from './CodeRecipeBook';
 export { default as CodeRecipeCard } from './CodeRecipeCard';
 export { default as CodeUnitConverter } from './CodeUnitConverter';
+export { default as Test } from './Test';

@@ -43,7 +43,6 @@ const StyledValue = styled(Input)`
 
 const StyledButton = styled(Button)`
   width: 100%;
-  border-radius: 0.5rem;
 `;
 
 const CodeTipCalc = () => {
@@ -73,7 +72,7 @@ const CodeTipCalc = () => {
             <StyledValue type='number' id='tipAmount' />
           </FormRow>
           <FormRow>
-            <StyledButton type='submit' value='Submit'>
+            <StyledButton type='submit' value='Submit' variant='primary'>
               Calculate
             </StyledButton>
           </FormRow>

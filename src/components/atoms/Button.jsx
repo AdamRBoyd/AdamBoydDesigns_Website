@@ -1,22 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import Link from '../atoms/Link';
 import { font, palette } from 'styled-theme';
 import { ifProp } from 'styled-tools';
 
-const fontSize = ({ height }) => `${height / 40}rem`;
-
-const backgroundColor = ({ transparent, disabled }) =>
-  transparent ? 'transparent' : palette(disabled ? 2 : 1);
-
-const foregroundColor = ({ transparent, disabled }) =>
-  transparent ? palette(disabled ? 2 : 1) : palette('grayscale', 0, true);
-
-const hoverBackgroundColor = ({ disabled, transparent }) =>
-  !disabled && !transparent && palette(0);
-const hoverForegroundColor = ({ disabled, transparent }) =>
-  !disabled && transparent && palette(0);
+const fontSize = ({ fontSize }) => `${fontSize}rem`;
+const buttonHeight = ({ buttonHeight }) => `${buttonHeight}em`;
 
 const styles = css`
   display: inline-flex;
@@ -24,74 +13,148 @@ const styles = css`
   align-items: center;
   white-space: nowrap;
   font-size: ${fontSize};
-  border: 0.0625em solid ${ifProp('transparent', 'currentcolor', 'transparent')};
-  height: 2.5em;
+  height: ${buttonHeight};
   justify-content: center;
   text-decoration: none;
   cursor: ${ifProp('disabled', 'default', 'pointer')};
   appearance: none;
   padding: 0 1em;
-  border-radius: 0.125em;
+  border-radius: 0.5em;
   box-sizing: border-box;
   pointer-events: ${ifProp('disabled', 'none', 'auto')};
-  transition: background-color 250ms ease-out, color 250ms ease-out,
-    border-color 250ms ease-out;
-  background-color: ${backgroundColor};
-  color: ${foregroundColor};
+`;
+
+const PrimaryButton = styled.button`
+  ${styles}
+  border: 0.0625em solid ${palette('primary', 1)};
+  background-color: ${palette('primary', 1)};
+  color: ${palette('white', 0)};
 
   &:hover,
   &:focus,
   &:active {
-    background-color: ${hoverBackgroundColor};
-    color: ${hoverForegroundColor};
+    background-color: ${palette('primary', 0)};
   }
 
-  &:focus {
-    outline: none;
+  &[disabled] {
+    border: 0.01rem solid ${palette('grayscale', 4)};
+    background-color: ${palette('grayscale', 4)};
   }
 `;
 
-const StyledLink = styled(
-  ({ disabled, transparent, reverse, palette, height, theme, ...props }) => (
-    <Link {...props} />
-  )
-)`
+const SecondaryButton = styled.button`
   ${styles}
+  border: transparent;
+  background-color: transparent;
+  color: ${palette('primary', 0)};
+
+  &:hover,
+  &:focus,
+  &:active {
+    border: 0.1rem solid ${palette('primary', 1)};
+  }
+
+  &[disabled] {
+    color: ${palette('grayscale', 4)};
+  }
 `;
 
-const Anchor = styled.a`
+const TertiaryButton = styled.button`
   ${styles}
-`;
-const StyledButton = styled.button`
-  ${styles}
+  border: transparent;
+  background-color: transparent;
+  color: ${palette('grayscale', 2)};
+
+  &:hover,
+  &:focus,
+  &:active {
+    border: 0.1rem solid ${palette('grayscale', 2)};
+  }
+
+  &[disabled] {
+    color: ${palette('grayscale', 4)};
+  }
 `;
 
-const Button = ({ type, ...props }) => {
-  const { to, href } = props;
-  if (to) {
-    return <StyledLink {...props} />;
+const GhostButton = styled.button`
+  ${styles}
+  border: 0.1rem solid ${palette('primary', 1)};
+  background-color: transparent;
+  color: ${palette('primary', 1)};
+
+  &:hover,
+  &:focus,
+  &:active {
+    border: 0.1rem solid ${palette('primary', 2)};
+    color: ${palette('primary', 2)};
   }
-  if (href) {
-    return <Anchor {...props} />;
+
+  &[disabled] {
+    color: ${palette('grayscale', 4)};
+    border: 0.01rem solid ${palette('grayscale', 4)};
   }
-  return <StyledButton {...props} type={type} />;
+`;
+
+const Button = ({ variant, fontSize, buttonHeight, disabled, ...props }) => {
+  switch (variant) {
+    case 'primary':
+      return (
+        <PrimaryButton
+          {...props}
+          fontSize={fontSize}
+          buttonHeight={buttonHeight}
+          disabled={disabled}
+        />
+      );
+    case 'secondary':
+      return (
+        <SecondaryButton
+          {...props}
+          fontSize={fontSize}
+          buttonHeight={buttonHeight}
+          disabled={disabled}
+        />
+      );
+    case 'tertiary':
+      return (
+        <TertiaryButton
+          {...props}
+          fontSize={fontSize}
+          buttonHeight={buttonHeight}
+          disabled={disabled}
+        />
+      );
+    case 'ghost':
+      return (
+        <GhostButton
+          {...props}
+          fontSize={fontSize}
+          buttonHeight={buttonHeight}
+          disabled={disabled}
+        />
+      );
+    default:
+      return (
+        <PrimaryButton
+          {...props}
+          fontSize={fontSize}
+          buttonHeight={buttonHeight}
+          disabled={disabled}
+        />
+      );
+  }
 };
 
 Button.propTypes = {
   disabled: PropTypes.bool,
-  palette: PropTypes.string,
-  transparent: PropTypes.bool,
-  reverse: PropTypes.bool,
   height: PropTypes.number,
-  type: PropTypes.string,
-  to: PropTypes.string,
-  href: PropTypes.string,
+  variant: PropTypes.string,
 };
 
 Button.defaultProps = {
-  palette: 'primary',
-  type: 'button',
-  height: 40,
+  type: 'primary',
+  fontSize: 1,
+  buttonHeight: 2.5,
 };
 
 export default Button;

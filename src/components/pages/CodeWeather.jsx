@@ -105,20 +105,9 @@ const StyledSwapButton = styled(Button)`
   max-width: 70%;
   align-self: center;
   margin: 1.5rem 0 0.5rem;
-  border-radius: 0.5rem;
 `;
 
-const StyledRefresh = styled(Button)`
-  height: 1.5rem;
-  color: ${palette('primary', 0)};
-  background-color: transparent;
-  border: 1px solid ${palette('grayscale', 4)};
-  border-radius: 0.5rem;
-
-  &:focus {
-    background-color: transparent;
-  }
-`;
+const StyledRefresh = styled(Button)``;
 
 const APICredit = styled(Link)`
   font-size: 0.8rem;
@@ -130,11 +119,13 @@ const CodeWeather = () => {
   const [loaded, setLoaded] = useState(false);
   const [tempCelsius, setTempCelsius] = useState(false);
 
-  function fetchWeather(position) {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
+  // NOTE: Less accurate location fetch method
+  function fetchWeather() {
+    fetch(`https://ipapi.co/json/`)
+      .then((response) => response.json())
+      .then((position) => {
         fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=059dcee9c15c93a942eb1f38b72876be`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=059dcee9c15c93a942eb1f38b72876be`
         )
           .then((response) => response.json())
           .then((result) => {
@@ -148,18 +139,33 @@ const CodeWeather = () => {
           .catch((error) => {
             console.error();
           });
-      });
-    } else {
-      alert('Geolocation is not supported by this browser.');
-    }
+      })
+      .catch(() => {});
   }
 
-  // // NOTE: Alternate location fetch method - Must remove .coords from lat/lon
-  // function fetchLoc() {
-  // fetch(`https://ipapi.co/json/`)
-  //   .then((response) => response.json())
-  //   .then((result) => fetchWeather(result))
-  //   .catch(() => {});
+  // NOTE: Requires HTTPS and Certificate
+  // function fetchWeather() {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(function (position) {
+  //       fetch(
+  //         `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=059dcee9c15c93a942eb1f38b72876be`
+  //       )
+  //         .then((response) => response.json())
+  //         .then((result) => {
+  //           if (result.cod === 200) {
+  //             setWeather(result);
+  //             setLoaded(true);
+  //           } else {
+  //             setLoaded(false); // Used for refresh where already set to true
+  //           }
+  //         })
+  //         .catch((error) => {
+  //           console.error();
+  //         });
+  //     });
+  //   } else {
+  //     alert('Geolocation is not supported by this browser.');
+  //   }
   // }
 
   // Kelvin to Fahrenheit T(K) × 9/5 - 459.67
@@ -241,16 +247,20 @@ const CodeWeather = () => {
             <StyledInfoLabel>{`Pressure: ${weather?.main?.pressure}º`}</StyledInfoLabel>
             <StyledInfoLabel>{`Wind Speed: ${weather?.wind?.speed}km/h`}</StyledInfoLabel>
           </InfoWrapper>
-          <StyledSwapButton onClick={handleTempSwap}>
+          <StyledSwapButton onClick={handleTempSwap} variant='primary'>
             {tempCelsius ? 'Show in Fahrenheit' : 'Show in Celsius'}
           </StyledSwapButton>
         </WeatherCard>
       )}
       <Spacer padding='large' />
-      <StyledRefresh onClick={handleClick}>
+      <StyledRefresh onClick={handleClick} variant='ghost' buttonHeight={1.5}>
         {loaded ? 'Refresh' : 'Load Weather'}
       </StyledRefresh>
       <Spacer padding='large' />
+      <APICredit href={'https://ipapi.co/'} target='_blank'>
+        Location API courtesy of ipapi (If your location isn't right, I blame
+        them.)
+      </APICredit>
       <APICredit href={'https://openweathermap.org/'} target='_blank'>
         Weather API courtesy of OpenWeather
       </APICredit>

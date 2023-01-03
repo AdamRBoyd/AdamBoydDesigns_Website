@@ -144,16 +144,6 @@ const SalePrice = styled.div`
 const StyledButton = styled(Button)`
   margin: 1rem 0;
   width: 100%;
-  &:enabled {
-    background-color: ${palette('primary', 0)};
-    color: ${palette('grayscale', 7)};
-  }
-
-  &:disabled {
-    background-color: ${palette('grayscale', 4)};
-    color: ${palette('grayscale', 2)};
-    cursor: not-allowed;
-  }
 `;
 
 const ShopItemCard = ({
@@ -244,6 +234,8 @@ const ShopItemCard = ({
         <StyledButton
           onClick={() => window.open(url, '_blank')}
           disabled={state === 'active' ? false : true}
+          variant='primary'
+          buttonHeight={3}
         >
           {state === 'active' ? 'Buy on Etsy' : 'Sold Out'}
         </StyledButton>

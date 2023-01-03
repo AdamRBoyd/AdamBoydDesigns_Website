@@ -166,7 +166,7 @@ const CodePasswordGen = () => {
             <StyledCheckbox type='checkbox' id='symbol' />
           </FormRow>
           <Spacer padding='large' />
-          <StyledButton type='submit' value='Submit'>
+          <StyledButton type='submit' value='Submit' variant='primary'>
             Generate Password
           </StyledButton>
         </StyledForm>

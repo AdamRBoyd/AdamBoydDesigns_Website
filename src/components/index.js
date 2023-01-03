@@ -15,7 +15,6 @@ export { default as UnderConstruction } from './atoms/UnderConstruction';
 
 // Molecules
 export { default as DictionaryMeaningCard } from './molecules/DictionaryMeaningCard';
-export { default as IconButton } from './molecules/IconButton';
 export { default as Modal } from './molecules/Modal';
 export { default as PrimaryNavigation } from './molecules/PrimaryNavigation';
 export { default as ReviewCard } from './molecules/ReviewCard';

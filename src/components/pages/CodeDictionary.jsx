@@ -30,9 +30,7 @@ const StyledInput = styled(Input)`
 
 const StyledLabel = styled(Label)``;
 
-const StyledButton = styled(Button)`
-  border-radius: 0.5rem;
-`;
+const StyledButton = styled(Button)``;
 
 const StyledError = styled(Label)`
   color: ${palette('danger', 3)};
@@ -121,7 +119,7 @@ const CodeDictionary = () => {
       <StyledForm onSubmit={handleSubmit}>
         <StyledLabel>Define:</StyledLabel>
         <StyledInput type='text' required />
-        <StyledButton type='submit' value='Submit'>
+        <StyledButton type='submit' value='Submit' variant='primary'>
           Search
         </StyledButton>
       </StyledForm>

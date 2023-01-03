@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import ReactModal from 'react-modal';
 import { font, palette } from 'styled-theme';
 
-import { IconButton, Heading } from '../../components';
+import { Heading } from '../../components';
 
 const overlayStyles = css`
   position: fixed;
@@ -122,14 +122,6 @@ const Modal = ({
             <StyledHeading level={2} reverse={reverse}>
               {title}
             </StyledHeading>
-            {closeable && (
-              <IconButton
-                icon='close'
-                onClick={onClose}
-                palette='white'
-                reverse
-              />
-            )}
           </Header>
         )}
         <Content>{children}</Content>

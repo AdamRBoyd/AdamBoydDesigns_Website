@@ -23,6 +23,7 @@ import {
   Shop,
   ShopCategory,
   ShopListing,
+  Test,
 } from './pages';
 
 function ScrollToTop() {
@@ -75,6 +76,7 @@ function App() {
       <Route path='shop/sets' element={<ShopCategory />} />
       <Route path='shop/nose' element={<ShopCategory />} />
       <Route path='shop/:category/:listing' element={<ShopListing />} />
+      <Route path='test' element={<Test />} />
       <Route path='*' element={<NotFoundPage />} />
     </Routes>
   );

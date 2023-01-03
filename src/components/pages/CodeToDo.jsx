@@ -27,9 +27,7 @@ const StyledInput = styled(Input)`
   border-radius: 0.5rem;
 `;
 
-const StyledButton = styled(Button)`
-  border-radius: 0.5rem;
-`;
+const StyledButton = styled(Button)``;
 
 const ListWrapper = styled.ul`
   display: flex;
@@ -104,7 +102,12 @@ const CodeToDo = () => {
       <MainWrapper>
         <StyledForm onSubmit={handleSubmit} id='addForm'>
           <StyledInput type='text' />
-          <StyledButton type='submit' form='addForm' value='Submit'>
+          <StyledButton
+            type='submit'
+            form='addForm'
+            value='Submit'
+            variant='primary'
+          >
             Add New
           </StyledButton>
         </StyledForm>

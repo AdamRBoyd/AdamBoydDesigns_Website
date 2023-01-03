@@ -65,16 +65,7 @@ const WinnerIndicator = styled(Paragraph)`
 `;
 
 const ResetButton = styled(Button)`
-  height: 1.5rem;
-  color: ${palette('primary', 0)};
-  background-color: transparent;
-  border: 1px solid ${palette('grayscale', 4)};
-  border-radius: 0.5rem;
   margin: 2rem;
-
-  &:focus {
-    background-color: transparent;
-  }
 `;
 
 let cellTable = [
@@ -194,7 +185,9 @@ const CodeTicTacToe = () => {
       {!playing && <GameIndicator>GAME OVER!!</GameIndicator>}
       {!playing && <WinnerIndicator>{`${winner}`}</WinnerIndicator>}
       <Spacer padding='large' />
-      <ResetButton onClick={handleReset}>Reset</ResetButton>
+      <ResetButton onClick={handleReset} variant='ghost' buttonHeight={1.5}>
+        Reset
+      </ResetButton>
       <Spacer padding='large' />
     </PageTitleFrame>
   );

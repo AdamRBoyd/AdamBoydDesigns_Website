@@ -1,15 +1,18 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-// import { useForm } from 'react-hook-form';
 import { font, palette } from 'styled-theme';
-// import { resetState } from 'react-modal/lib/helpers/ariaAppHider';
-// import { resetWarningCache } from 'prop-types/checkPropTypes';
-import { ToastContainer, toast, Zoom } from 'react-toastify';
-// import emailjs from 'emailjs-com';
+// import emailjs from '@emailjs/browser';
 // import apiKeys from '../apiKeys';
 
-import { Button, Input, PageTitleFrame, Paragraph } from '../../components';
-import 'react-toastify/dist/ReactToastify.css';
+import {
+  Button,
+  Input,
+  Heading,
+  Modal,
+  PageTitleFrame,
+  Paragraph,
+  Spacer,
+} from '../../components';
 
 const Wrapper = styled.div`
   display: flex;
@@ -69,15 +72,19 @@ const ParagraphWrapper = styled.div`
   text-align: center;
 `;
 
-const StyledToast = styled(ToastContainer)`
-  position: absolute;
-  top: ${window.innerHeight / 2}px;
+const ModalInner = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
+
+const SuccessImage = styled.img``;
 
 const Contact = () => {
   const [disabled, setDisabled] = useState(true);
   const [submitted, setSubmitted] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const form = useRef();
+  // const { serviceId, templateId, userName } = apiKeys.contact;
 
   const handleFormValidation = (e) => {
     if (
@@ -92,42 +99,31 @@ const Contact = () => {
     }
   };
 
-  const toastifySuccess = () => {
-    toast.success('Email Sent!', {
-      position: 'bottom-center',
-      autoClose: 2000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: false,
-      className: 'submit-feedback success',
-      toastId: 'notifyToast',
-      theme: 'light',
-    });
-  };
-
   const sendEmail = (e) => {
     e.preventDefault();
     setSubmitted(true);
-    toastifySuccess();
-    // alert('Email Sent Successfully');
+    openModal();
 
     // NOTE: Uncomment when ready to send emails
-    //   emailjs
-    //     .sendForm(
-    //       `"${apiKeys.contact.serviceId}"`, // Service Id
-    //       `"${apiKeys.contact.templateId}"`, // Template Id
-    //       form.current,
-    //       `"${apiKeys.contact.userName}"` // Username
-    //     )
-    //     .then(
-    //       (result) => {
-    //         console.log(result.text);
-    //       },
-    //       (error) => {
-    //         console.log(error.text);
-    //       }
-    //     );
+    // emailjs.sendForm(serviceId, templateId, form.current, userName).then(
+    //   (result) => {
+    //     console.log(result.text);
+    //   },
+    //   (error) => {
+    //     console.log(error.text);
+    //   }
+    // );
+  };
+
+  // handle close modal
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  // handle open modal
+  const openModal = (image) => {
+    setIsOpen(true);
+    setTimeout(() => closeModal(), 5000);
   };
 
   return (
@@ -135,7 +131,7 @@ const Contact = () => {
       <Wrapper>
         {submitted ? (
           <ParagraphWrapper>
-            <Paragraph>Thank You!</Paragraph>
+            <Heading>Thank You!</Heading>
             <Paragraph>I will get back to you as soon as possible!</Paragraph>
           </ParagraphWrapper>
         ) : (
@@ -182,8 +178,19 @@ const Contact = () => {
             </StyledButton>
           </StyledForm>
         )}
-        <StyledToast transition={Zoom} />
       </Wrapper>
+      <Modal isOpen={isOpen} onClose={closeModal}>
+        <ModalInner>
+          <Spacer padding='medium' />
+          <SuccessImage src='/images/Success.png' />
+          <Heading>Email Sent!</Heading>
+          <Spacer padding='medium' />
+          <Button onClick={closeModal} variant='primary' buttonHeight={2}>
+            Close
+          </Button>
+          <Spacer padding='medium' />
+        </ModalInner>
+      </Modal>
     </PageTitleFrame>
   );
 };

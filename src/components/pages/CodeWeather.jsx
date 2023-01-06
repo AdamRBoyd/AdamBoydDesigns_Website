@@ -120,6 +120,7 @@ const CodeWeather = () => {
   const [weather, setWeather] = useState();
   const [loaded, setLoaded] = useState(false);
   const [tempCelsius, setTempCelsius] = useState(false);
+  const appId = apiKeys.codeWeather.appid;
 
   // NOTE: Less accurate location fetch method
   function fetchWeather() {
@@ -127,7 +128,7 @@ const CodeWeather = () => {
       .then((response) => response.json())
       .then((position) => {
         fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=${apiKeys.codeWeather.appid}`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=${appId}`
         )
           .then((response) => response.json())
           .then((result) => {
@@ -150,7 +151,7 @@ const CodeWeather = () => {
   //   if (navigator.geolocation) {
   //     navigator.geolocation.getCurrentPosition(function (position) {
   //       fetch(
-  //         `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKeys.codeWeather.appid}`
+  //         `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${appId}`
   //       )
   //         .then((response) => response.json())
   //         .then((result) => {

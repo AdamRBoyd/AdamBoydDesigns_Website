@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { palette } from 'styled-theme';
 import { useEffect } from 'react';
 
+import apiKeys from '../apiKeys';
+
 import {
   Button,
   Heading,
@@ -125,7 +127,7 @@ const CodeWeather = () => {
       .then((response) => response.json())
       .then((position) => {
         fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=059dcee9c15c93a942eb1f38b72876be`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=${apiKeys.codeWeather.appid}`
         )
           .then((response) => response.json())
           .then((result) => {
@@ -148,7 +150,7 @@ const CodeWeather = () => {
   //   if (navigator.geolocation) {
   //     navigator.geolocation.getCurrentPosition(function (position) {
   //       fetch(
-  //         `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=059dcee9c15c93a942eb1f38b72876be`
+  //         `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKeys.codeWeather.appid}`
   //       )
   //         .then((response) => response.json())
   //         .then((result) => {

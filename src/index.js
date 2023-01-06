@@ -8,7 +8,7 @@ import PageTemplate from '../src/components/pages/PageTemplate';
 import theme from './components/theme';
 import './index.css';
 
-document.body.style.overflowY = 'scroll';
+// document.body.style.overflowY = 'scroll';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

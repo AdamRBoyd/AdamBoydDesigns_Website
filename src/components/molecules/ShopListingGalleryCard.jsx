@@ -33,7 +33,6 @@ const LabelWrapper = styled(Label)`
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.5rem;
-  text-align: center;
   width: 95%;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -46,6 +45,10 @@ const ListingImage = styled.img`
   width: ${IMAGE_WIDTH};
   height: ${IMAGE_HEIGHT};
   object-fit: cover;
+
+  &:hover {
+    transform: scale(1.25);
+  }
 `;
 
 const ImageOverlay = styled.div`
@@ -121,18 +124,17 @@ const PriceWrapper = styled(Label)`
   color: ${palette('primary', 0)};
   font-family: ${font('primary')};
   font-size: 1rem;
-  width: fit-content;
 `;
 
 const PriceAndTitle = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 90%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 85%;
   border-bottom: 1px solid ${palette('grayscale', 4)};
   border-top: 1px solid ${palette('grayscale', 4)};
-  padding-top: 0.5rem;
+  padding: 0.5rem 0 0 0.7rem; ;
 `;
 
 const SalePriceWrapper = styled.div`
@@ -215,21 +217,16 @@ const ShopListingGalleryCard = ({
             <LabelWrapper>{title}</LabelWrapper>
             {saleOn ? (
               <PriceWrapper>
-                <VariationsWrapper>
-                  {hasVariations ? 'From' : ''}
-                </VariationsWrapper>
+                {hasVariations && <VariationsWrapper>From</VariationsWrapper>}
                 {`$${price.amount - price.amount * (salePercentage / 100)}`}
                 <SalePriceWrapper>{`$${price.amount}`}</SalePriceWrapper>
                 <SalePercentWrapper>
                   {`(${salePercentage}% off)`}
                 </SalePercentWrapper>
-                {'   '}
               </PriceWrapper>
             ) : (
               <PriceWrapper>
-                <VariationsWrapper>
-                  {hasVariations ? 'From' : ''}
-                </VariationsWrapper>
+                {hasVariations && <VariationsWrapper>From</VariationsWrapper>}
                 {`$${price.amount}`}
               </PriceWrapper>
             )}

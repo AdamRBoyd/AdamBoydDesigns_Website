@@ -30,7 +30,6 @@ export { default as MassUnitCard } from './molecules/MassUnitCard';
 export { default as TimeUnitCard } from './molecules/TimeUnitCard';
 
 // Organisms
-export { default as ContactForm } from './organisms/ContactForm';
 export { default as Footer } from './organisms/Footer';
 export { default as Header } from './organisms/Header';
 export { default as LandingPage } from './organisms/LandingPage';

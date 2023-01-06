@@ -23,7 +23,7 @@ const StyledHeader = styled.header`
   z-index: 999;
 `;
 
-const Content = styled.section`
+const Content = styled.main`
   width: 100%;
   box-sizing: border-box;
   align-self: center;

@@ -13,17 +13,20 @@ const styles = css`
   margin: 0;
   box-sizing: border-box;
   font-size: ${fontSize};
-  padding: ${ifProp(
-    { type: 'textarea' },
-    '0.4444444444em',
-    '0 0.4444444444em'
-  )};
   height: ${ifProp({ type: 'textarea' }, 'auto', '2.2222222222em')};
   color: ${palette('primary', 0)};
-  background-color: ${palette('primary', 0, true)};
-  border: 1px solid
-    ${ifProp('invalid', palette('danger', 2), palette('primary', 3))};
+  background-color: transparent;
+  border: 1px solid ${palette('primary', 3)};
   border-radius: 2px;
+
+  ::placeholder {
+    color: ${palette('grayscale', 3)};
+  }
+
+  &:not(:placeholder-shown):not(:focus):invalid {
+    background-color: ${palette('danger', 6)};
+    outline: 2px solid ${palette('danger', 4)};
+  }
 
   &[type='checkbox'] {
     color: ${palette('primary', 0)};
@@ -43,6 +46,48 @@ const styles = css`
     height: auto;
     margin: 0 0.2rem 0 0;
   }
+
+  &[type='email'],
+  &[type='tel'],
+  &[type='number'],
+  &[type='password'],
+  &[type='search'],
+  &[type='text'] {
+    text-indent: 0.2rem;
+  }
+  &[type='textarea'] {
+    padding: 1rem;
+  }
+
+  &[type='email']:hover,
+  &[type='tel']:hover,
+  &[type='number']:hover,
+  &[type='password']:hover,
+  &[type='text']:hover,
+  &[type='textarea']:hover {
+    border-color: ${palette('grayscale', 2)};
+  }
+
+  &[type='email']:focus,
+  &[type='tel']:focus,
+  &[type='number']:focus,
+  &[type='password']:focus,
+  &[type='text']:focus,
+  &[type='textarea']:focus {
+    outline-color: transparent;
+    outline-offset: 0;
+    outline-style: solid;
+    border-color: ${palette('primary', 1)};
+  }
+
+  &[type='email']:active,
+  &[type='tel']:active,
+  &[type='number']:active,
+  &[type='password']:active,
+  &[type='text']:active,
+  &[type='textarea']:active {
+    border-color: ${palette('primary', 1)};
+  }
 `;
 
 const StyledTextarea = styled.textarea`
@@ -55,15 +100,14 @@ const StyledInput = styled.input`
   ${styles}
 `;
 
-const Input = ({ ...props }) => {
-  const { type } = props;
+const Input = ({ type, ...props }) => {
   if (type === 'textarea') {
-    return <StyledTextarea {...props} />;
+    return <StyledTextarea {...props} type={type} />;
   }
   if (type === 'select') {
-    return <StyledSelect {...props} />;
+    return <StyledSelect {...props} type={type} />;
   }
-  return <StyledInput {...props} />;
+  return <StyledInput {...props} type={type} />;
 };
 
 Input.propTypes = {

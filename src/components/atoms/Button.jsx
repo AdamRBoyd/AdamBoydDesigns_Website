@@ -8,6 +8,8 @@ const fontSize = ({ fontSize }) => `${fontSize}rem`;
 const buttonHeight = ({ buttonHeight }) => `${buttonHeight}em`;
 
 const styles = css`
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
   display: inline-flex;
   font-family: ${font('primary')};
   align-items: center;

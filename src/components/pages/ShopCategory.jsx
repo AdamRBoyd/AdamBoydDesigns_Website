@@ -56,16 +56,7 @@ const StyledButton = styled(Button)`
   margin: -0.5rem 0 0 0;
 `;
 
-const StyledDropdown = styled(Dropdown)`
-  cursor: pointer;
-  border: 1px solid ${palette('grayscale', 4)};
-  color: ${palette('primary', 0)};
-  font-size: 1rem;
-
-  &:focus {
-    outline: none;
-  }
-`;
+const StyledDropdown = styled(Dropdown)``;
 
 const FreeShippingFlag = styled.div`
   position: relative;
@@ -89,6 +80,7 @@ const FreeShippingFlag = styled.div`
 const ShopCategory = () => {
   // Get current page from url
   const currentPage = window.location.pathname.split('/')[2];
+  const [showSold, setShowSold] = useState(true);
 
   const listings = (currentCategory) => {
     switch (currentCategory) {
@@ -110,10 +102,10 @@ const ShopCategory = () => {
   const listingsData = listings(currentPage);
   const [sortedListings, setSortedListings] = useState(listingsData);
 
-  const setSortListings = (sortBy) => {
+  const handleSortChange = (e) => {
     let listings = [];
 
-    switch (sortBy) {
+    switch (e.target.value) {
       case 'priceASC':
         listings = listingsData.category.sort(
           (a, b) => a.price.amount - b.price.amount
@@ -154,16 +146,7 @@ const ShopCategory = () => {
     });
   };
 
-  const [value, setValue] = useState(SORT_OPTIONS[0].value);
-
-  const [showSold, setShowSold] = useState(true);
-
-  const handleSortChange = (e) => {
-    setValue(e.target.value);
-    setSortListings(e.target.value);
-  };
-
-  const handleCheckChange = () => {
+  const handleShowHideSold = () => {
     setShowSold(!showSold);
   };
 
@@ -173,7 +156,7 @@ const ShopCategory = () => {
         <NavWrapper>
           {showSold ? (
             <StyledButton
-              onClick={handleCheckChange}
+              onClick={handleShowHideSold}
               variant='primary'
               buttonHeight={1.75}
             >
@@ -181,7 +164,7 @@ const ShopCategory = () => {
             </StyledButton>
           ) : (
             <StyledButton
-              onClick={handleCheckChange}
+              onClick={handleShowHideSold}
               variant='ghost'
               buttonHeight={1.75}
             >
@@ -192,7 +175,7 @@ const ShopCategory = () => {
             onChange={handleSortChange}
             options={SORT_OPTIONS}
             label='Sorting: '
-            value={value}
+            initialValue={SORT_OPTIONS[0].label}
           />
         </NavWrapper>
         <Spacer padding='small' />

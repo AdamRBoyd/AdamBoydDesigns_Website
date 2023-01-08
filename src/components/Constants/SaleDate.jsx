@@ -1,7 +1,7 @@
-import { Settings } from '../json';
+import { SALE_SETTINGS } from './SaleSettings';
 
 const { saleTitle, advertStart, saleStart, saleEnd, salePercentage } =
-  Settings.sale;
+  SALE_SETTINGS;
 
 const today = new Date();
 const advertiseStart = new Date(advertStart);

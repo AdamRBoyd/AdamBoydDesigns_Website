@@ -12,6 +12,7 @@ export { default as Paragraph } from './atoms/Paragraph';
 export { default as Spacer } from './atoms/Spacer';
 export { default as SpinnerIcon } from './atoms/SpinnerIcon';
 export { default as UnderConstruction } from './atoms/UnderConstruction';
+export { default as OldDropdown } from './atoms/OldDropdown';
 
 // Molecules
 export { default as DictionaryMeaningCard } from './molecules/DictionaryMeaningCard';

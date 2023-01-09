@@ -109,6 +109,10 @@ const Dropdown = ({ options, label, onChange, initialValue, ...props }) => {
     setIsOpen(false);
   };
 
+  const handleClick = () => {
+    isOpen ? setClose() : setOpen();
+  };
+
   const setSelected = (e) => {
     setClose();
     if (e.target.id !== 'empty') {
@@ -118,8 +122,8 @@ const Dropdown = ({ options, label, onChange, initialValue, ...props }) => {
     }
   };
 
-  const handleDocumentClick = (event) => {
-    if (wrapperRef?.current?.contains(event?.target)) {
+  const handleDocumentClick = (e) => {
+    if (wrapperRef?.current?.contains(e?.target)) {
       // inside click
       return;
     }
@@ -134,7 +138,7 @@ const Dropdown = ({ options, label, onChange, initialValue, ...props }) => {
   return (
     <GroupWrapper ref={wrapperRef} {...props}>
       <StyledLabel>{label}</StyledLabel>
-      <DropdownToggle onClick={isOpen ? setClose : setOpen}>
+      <DropdownToggle onClick={handleClick}>
         {placeholderLabel}
         {isOpen ? <OpenArrow /> : <Arrow />}
       </DropdownToggle>

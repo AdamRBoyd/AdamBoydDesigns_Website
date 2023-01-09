@@ -16,13 +16,13 @@ const styles = css`
   white-space: nowrap;
   font-size: ${fontSize};
   height: ${buttonHeight};
+  min-width: fit-content;
   justify-content: center;
   text-decoration: none;
   cursor: ${ifProp('disabled', 'default', 'pointer')};
   appearance: none;
   padding: 0 1em;
   border-radius: 0.5em;
-  box-sizing: border-box;
   pointer-events: ${ifProp('disabled', 'none', 'auto')};
 `;
 

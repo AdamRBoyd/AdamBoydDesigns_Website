@@ -13,11 +13,11 @@ const Spacer = ({ padding, ...props }) => {
 };
 
 Spacer.propTypes = {
-  padding: PropTypes.string,
+  padding: PropTypes.number,
 };
 
 Spacer.defaultProps = {
-  padding: 'small',
+  padding: 0.5,
 };
 
 export default Spacer;

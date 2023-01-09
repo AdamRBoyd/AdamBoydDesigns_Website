@@ -150,7 +150,7 @@ const About = () => {
           rutrum elit, eget tempor ligula. In commodo rutrum lectus, et egestas
           augue. Interdum et malesuada fames ac ante ipsum primis in faucibus.
           Phasellus eu lorem venenatis, dignissim sapien a, sodales odio.
-          <Spacer padding={1} />
+          <Spacer padding={2} />
           <InstagramLink
             href='https://www.instagram.com/adamboyddesigns/'
             target='_blank'

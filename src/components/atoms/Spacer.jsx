@@ -1,26 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { switchProp } from 'styled-tools';
+import styled from 'styled-components';
+
+const padHeight = ({ padding }) => `${padding / 2}rem`;
 
 const StyledSpacer = styled.div`
-  ${switchProp('padding', {
-    small: css`
-      padding: 0.25rem;
-    `,
-    medium: css`
-      padding: 0.5rem;
-    `,
-    large: css`
-      padding: 1rem;
-    `,
-    xlarge: css`
-      padding: 1.5rem;
-    `,
-    xxlarge: css`
-      padding: 3rem;
-    `,
-  })};
+  padding: ${padHeight};
 `;
 
 const Spacer = ({ padding, ...props }) => {

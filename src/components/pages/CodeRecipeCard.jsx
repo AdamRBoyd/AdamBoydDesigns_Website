@@ -116,7 +116,7 @@ const CodeRecipeCard = () => {
     <PageTitleFrame title={`${recipe?.strMeal}`} noBottomRule>
       <MainWrapper>
         <StyledImage src={recipe?.strMealThumb} alt='Recipe' />
-        <Spacer padding='large' />
+        <Spacer padding={2} />
         {recipe?.strIngredient1 &&
           ingredientIndex.map((ingredient, index) =>
             recipe?.[ingredient.ingredient] !== '' &&
@@ -133,20 +133,20 @@ const CodeRecipeCard = () => {
               ''
             )
           )}
-        <Spacer padding='medium' />
+        <Spacer padding={1} />
         <Instructions>
           {recipe?.strInstructions.split('\n').map((line, index) => (
             <InstructionLine key={index}>{line}</InstructionLine>
           ))}
         </Instructions>
-        <Spacer padding='medium' />
+        <Spacer padding={1} />
         <Tags>{`Tags: ${recipe?.strTags},${recipe?.strArea},${recipe?.strCategory}`}</Tags>
-        <Spacer padding='large' />
+        <Spacer padding={2} />
         <Youtube href={recipe?.strYoutube} target='_blank'>
           Watch on Youtube
           <YoutubeIcon name='Youtube' icon='youtube' />
         </Youtube>
-        <Spacer padding='medium' />
+        <Spacer padding={1} />
         <Source href={recipe?.strSource} target='_blank'>
           Source
         </Source>

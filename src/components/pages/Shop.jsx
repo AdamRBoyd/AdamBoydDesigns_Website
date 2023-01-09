@@ -21,7 +21,7 @@ const GalleryWrapper = styled.div`
 const Shop = () => {
   return (
     <PageTitleFrame title='Shop' noBottomRule>
-      <Spacer padding='small' />
+      <Spacer padding={0.5} />
       <GalleryWrapper>
         <Link to='/shop/earrings'>
           <ShopMainGalleryCard listings={Earrings} label='Earrings' />

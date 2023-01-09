@@ -131,7 +131,7 @@ const CodeTicTacToe = () => {
 
   return (
     <PageTitleFrame title='Tic Tac Toe' noBottomRule>
-      <Spacer padding='large' />
+      <Spacer padding={2} />
       <Container>
         <TurnIndicator>{`Turn: ${turn ? 'X' : 'O'}`}</TurnIndicator>
         <Block>
@@ -184,11 +184,11 @@ const CodeTicTacToe = () => {
       </Container>
       {!playing && <GameIndicator>GAME OVER!!</GameIndicator>}
       {!playing && <WinnerIndicator>{`${winner}`}</WinnerIndicator>}
-      <Spacer padding='large' />
+      <Spacer padding={2} />
       <ResetButton onClick={handleReset} variant='ghost' buttonHeight={1.5}>
         Reset
       </ResetButton>
-      <Spacer padding='large' />
+      <Spacer padding={2} />
     </PageTitleFrame>
   );
 };

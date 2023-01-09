@@ -140,7 +140,7 @@ const GalleryImages = ({ title }) => {
           ))}
         </Description>
       </Modal>
-      <Spacer padding='small' />
+      <Spacer padding={0.5} />
     </>
   );
 };

@@ -7,9 +7,7 @@ import { Link, PageTitleFrame, Paragraph, Spacer } from '../../components';
 const ParagraphWrapper = styled(Paragraph)`
   display: flex;
   justify-content: center;
-  font-family: ${font('primary')};
   color: ${palette('grayscale', 2)};
-  font-weight: 530;
 `;
 
 const GalleryWrapper = styled.div`
@@ -109,7 +107,7 @@ const Gallery = () => {
           </CardWrapper>
         </GalleryWrapper>
       </PageTitleFrame>
-      <Spacer padding='xxlarge' />
+      <Spacer padding={6} />
     </>
   );
 };

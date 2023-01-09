@@ -51,7 +51,7 @@ const ShopListing = () => {
           {...listing}
         />
       </PageTitleFrame>
-      <Spacer padding='xxlarge' />
+      <Spacer padding={6} />
     </>
   );
 };

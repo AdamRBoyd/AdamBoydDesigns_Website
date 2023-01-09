@@ -52,9 +52,9 @@ const PageTitleFrame = ({
       {subtitle && <SubtitleWrapper>{subtitle}</SubtitleWrapper>}
       <HorizontalRule />
       {children}
-      <Spacer padding='small' />
+      <Spacer padding={0.5} />
       {!noBottomRule && <HorizontalRule />}
-      <Spacer padding='small' />
+      <Spacer padding={0.5} />
     </Wrapper>
   );
 };

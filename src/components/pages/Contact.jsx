@@ -181,14 +181,14 @@ const Contact = () => {
       </Wrapper>
       <Modal isOpen={isOpen} onClose={closeModal}>
         <ModalInner>
-          <Spacer padding='medium' />
+          <Spacer padding={1} />
           <SuccessImage src='/images/Success.png' />
           <Heading>Email Sent!</Heading>
-          <Spacer padding='medium' />
+          <Spacer padding={1} />
           <Button onClick={closeModal} variant='primary' buttonHeight={2}>
             Close
           </Button>
-          <Spacer padding='medium' />
+          <Spacer padding={1} />
         </ModalInner>
       </Modal>
     </PageTitleFrame>

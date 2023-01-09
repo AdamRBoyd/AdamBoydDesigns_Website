@@ -77,7 +77,6 @@ const RightImage = styled.img`
 const ImageLabel = styled(Label)`
   align-self: center;
   color: ${palette('primary', 0)};
-  font-family: ${font('primary')};
   font-size: 0.75rem;
   font-weight: 500;
   text-align: center;
@@ -151,7 +150,7 @@ const About = () => {
           rutrum elit, eget tempor ligula. In commodo rutrum lectus, et egestas
           augue. Interdum et malesuada fames ac ante ipsum primis in faucibus.
           Phasellus eu lorem venenatis, dignissim sapien a, sodales odio.
-          <Spacer padding='medium' />
+          <Spacer padding={1} />
           <InstagramLink
             href='https://www.instagram.com/adamboyddesigns/'
             target='_blank'
@@ -163,7 +162,7 @@ const About = () => {
           </InstagramLink>
         </RightSideTextBlock>
       </ImageAndTextBlock>
-      <Spacer padding='medium' />
+      <Spacer padding={1} />
       <HorizontalRule />
       <ImageAndTextBlock>
         <LeftSideTextBlock>
@@ -201,17 +200,17 @@ const About = () => {
           </ImageLabel>
         </ImageBlock>
       </ImageAndTextBlock>
-      <Spacer padding='large' />
+      <Spacer padding={2} />
       <HorizontalRule />
-      <Spacer padding='small' />
+      <Spacer padding={0.5} />
       <StyledHeading>Etsy Reviews</StyledHeading>
-      <Spacer padding='large' />
+      <Spacer padding={2} />
       {Reviews.map((review, index) => (
         <ReviewCard key={index} {...review} />
       ))}
-      <Spacer padding='medium' />
+      <Spacer padding={1} />
       <HorizontalRule />
-      <Spacer padding='small' />
+      <Spacer padding={0.5} />
       <StyledHeading>Shop policies</StyledHeading>
       <StyledLabel>Shipping Processing time</StyledLabel>
       <ParagraphWrapper>
@@ -274,7 +273,7 @@ const About = () => {
         work and stand behind it. If you are not satisfied with your jewelry
         piece, you can return it for a full refund (minus the shipping charge).
       </ParagraphWrapper>
-      <Spacer padding='xxlarge' />
+      <Spacer padding={6} />
     </StyledPageTitleFrame>
   );
 };

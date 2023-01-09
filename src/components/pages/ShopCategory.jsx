@@ -178,10 +178,10 @@ const ShopCategory = () => {
             initialValue={SORT_OPTIONS[0].label}
           />
         </NavWrapper>
-        <Spacer padding='small' />
+        <Spacer padding={0.5} />
         <HorizontalRule />
         <FreeShippingFlag>Free Shipping on orders over $35</FreeShippingFlag>
-        <Spacer padding='small' />
+        <Spacer padding={0.5} />
         <GalleryWrapper>
           {sortedListings.category.map((listing, index) => (
             <Link
@@ -198,13 +198,13 @@ const ShopCategory = () => {
             </Link>
           ))}
         </GalleryWrapper>
-        <Spacer padding='small' />
+        <Spacer padding={0.5} />
         <HorizontalRule />
-        <Spacer padding='small' />
+        <Spacer padding={0.5} />
         <Footnote>* Sold listings may be available for custom order</Footnote>
         <Footnote>Contact me for more Information </Footnote>
       </PageTitleFrame>
-      <Spacer padding='xxlarge' />
+      <Spacer padding={6} />
     </>
   );
 };

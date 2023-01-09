@@ -29,7 +29,6 @@ const DescriptionWrapper = styled.div`
 `;
 
 const ParagraphWrapper = styled(Paragraph)`
-  font-size: 1rem;
   margin: 0.2rem;
 `;
 
@@ -194,12 +193,12 @@ const ShopItemCard = ({
 
         {saleOn && (
           <>
-            <Spacer padding='large' />
+            <Spacer padding={2} />
             <SaleWrapper>{`${saleTitle} - ${salePercentage}% off`}</SaleWrapper>
           </>
         )}
 
-        <Spacer padding='large' />
+        <Spacer padding={2} />
         <PriceWrapper>
           <VariationWrapper>
             {hasVariations ? 'Price: From' : 'Price:'}
@@ -223,14 +222,14 @@ const ShopItemCard = ({
             {hasVariations ? 'Depending on variation' : ''}
           </VariationWrapper>
         </PriceWrapper>
-        <Spacer padding='large' />
+        <Spacer padding={2} />
         <QuantityWrapper>
           {quantity > 0 && quantity < 20
             ? `${quantity} In Stock`
             : 'Made to Order'}
         </QuantityWrapper>
 
-        <Spacer padding='medium' />
+        <Spacer padding={1} />
         <StyledButton
           onClick={() => window.open(url, '_blank')}
           disabled={state === 'active' ? false : true}

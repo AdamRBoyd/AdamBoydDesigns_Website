@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { font, palette } from 'styled-theme';
+import { palette } from 'styled-theme';
 
 import {
   Heading,
@@ -28,10 +28,7 @@ const Wrapper = styled.div`
 `;
 
 const ParagraphWrapper = styled(Paragraph)`
-  font-family: ${font('primary')};
   color: ${palette('grayscale', 2)};
-  font-size: 1.25rem;
-  font-weight: 530;
   text-align: center;
   width: 85%;
   margin: 0.5rem 0 1rem 0;
@@ -78,16 +75,16 @@ const StyledIcon = styled(Icon)`
 const Code = () => {
   return (
     <PageTitleFrame title='Coding Projects' noBottomRule>
-      <Spacer padding='small' />
+      <Spacer padding={0.5} />
       <ParagraphWrapper>
         Welcome to the programming and computer science side of my website. I
         know, its a bit weird to have a code section on a jewelry website, but
         as a programmer, this page also serves as part of my portfolio. Enjoy!
       </ParagraphWrapper>
       <HorizontalRule />
-      <Spacer padding='small' />
+      <Spacer padding={0.5} />
       <Wrapper>
-        <Spacer padding='small' />
+        <Spacer padding={0.5} />
         <LinkCard
           href={'https://github.com/phoenix239/adamboyddesigns'}
           target='_blank'

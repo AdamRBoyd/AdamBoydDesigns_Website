@@ -198,7 +198,7 @@ const CodeWeather = () => {
     <PageTitleFrame title='Weather App Project' noBottomRule>
       {!loaded && (
         <>
-          <Spacer padding='medium' />
+          <Spacer padding={1} />
           <Label>OOPS! Something went wrong!</Label>
           <Label>
             Please make sure to allow this page to know your location!
@@ -255,11 +255,11 @@ const CodeWeather = () => {
           </StyledSwapButton>
         </WeatherCard>
       )}
-      <Spacer padding='large' />
+      <Spacer padding={2} />
       <StyledRefresh onClick={handleClick} variant='ghost' buttonHeight={1.5}>
         {loaded ? 'Refresh' : 'Load Weather'}
       </StyledRefresh>
-      <Spacer padding='large' />
+      <Spacer padding={2} />
       <APICredit href={'https://ipapi.co/'} target='_blank'>
         Location API courtesy of ipapi (If your location isn't right, I blame
         them.)
@@ -267,7 +267,7 @@ const CodeWeather = () => {
       <APICredit href={'https://openweathermap.org/'} target='_blank'>
         Weather API courtesy of OpenWeather
       </APICredit>
-      <Spacer padding='large' />
+      <Spacer padding={2} />
     </PageTitleFrame>
   );
 };

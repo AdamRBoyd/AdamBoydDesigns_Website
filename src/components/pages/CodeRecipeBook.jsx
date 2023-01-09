@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
-import { font, palette } from 'styled-theme';
+import { palette } from 'styled-theme';
 
 import {
   PageTitleFrame,
@@ -72,9 +72,6 @@ const StyledImage = styled.img`
 
 const LabelWrapper = styled(Label)`
   color: ${palette('primary', 0)};
-  font-family: ${font('primary')};
-  font-size: 1rem;
-  font-weight: 500;
   line-height: 1.5rem;
   padding-bottom: 0.5rem;
   text-align: center;
@@ -135,7 +132,7 @@ const CodeRecipeBook = () => {
       <APICredit href={'https://www.themealdb.com/'} target='_blank'>
         API and Recipes courtesy of TheMealDB
       </APICredit>
-      <Spacer padding='xlarge' />
+      <Spacer padding={3} />
     </PageTitleFrame>
   );
 };

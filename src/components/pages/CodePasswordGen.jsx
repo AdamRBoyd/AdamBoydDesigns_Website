@@ -138,7 +138,7 @@ const CodePasswordGen = () => {
             <Icon name='copy' icon='copy-regular' />
           </CopyButton>
         </CopyCode>
-        <Spacer padding='large' />
+        <Spacer padding={2} />
         <StyledForm onSubmit={generatePassword}>
           <FormRow>
             <StyledLabel>Length:</StyledLabel>
@@ -152,7 +152,7 @@ const CodePasswordGen = () => {
             />
             <StyledValue type='text' value={passLength} readOnly />
           </FormRow>
-          <Spacer padding='medium' />
+          <Spacer padding={1} />
           <FormRow>
             <StyledLabel>Include Upper Case:</StyledLabel>
             <StyledCheckbox type='checkbox' id='upper' />
@@ -165,7 +165,7 @@ const CodePasswordGen = () => {
             <StyledLabel>Include Symbols:</StyledLabel>
             <StyledCheckbox type='checkbox' id='symbol' />
           </FormRow>
-          <Spacer padding='large' />
+          <Spacer padding={2} />
           <StyledButton type='submit' value='Submit' variant='primary'>
             Generate Password
           </StyledButton>

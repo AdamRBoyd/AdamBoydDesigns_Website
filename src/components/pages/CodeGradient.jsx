@@ -133,7 +133,7 @@ const CodeGradient = () => {
             </CopyButton>
           </CopyCode>
         </StyledColorCodeLabel>
-        <Spacer padding='medium' />
+        <Spacer padding={1} />
         <SelectionInputs>
           <StyledLabel>
             Colors:
@@ -152,7 +152,7 @@ const CodeGradient = () => {
               onChange={changeColor}
             />
           </StyledLabel>
-          <Spacer padding='large' />
+          <Spacer padding={2} />
           <StyledLabel>
             Degree:
             <DegreeInput

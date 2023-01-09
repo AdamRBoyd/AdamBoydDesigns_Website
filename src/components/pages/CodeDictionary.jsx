@@ -142,7 +142,7 @@ const CodeDictionary = () => {
                 key={index}
               />
             ))}
-            <Spacer padding='medium' />
+            <Spacer padding={1} />
             <LinkCard>
               <Label>Source:</Label>
               {searchResult.sourceUrls.map((url, index) => (
@@ -154,7 +154,7 @@ const CodeDictionary = () => {
           </>
         )}
       </DefinitionWrapper>
-      <Spacer padding='large' />
+      <Spacer padding={2} />
       <APICredit href={'https://dictionaryapi.dev/'} target='_blank'>
         Dictionary API courtesy of Dictionary API
       </APICredit>

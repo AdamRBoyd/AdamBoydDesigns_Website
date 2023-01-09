@@ -89,7 +89,6 @@ const SoldOutStatusStyling = css`
   justify-content: center;
   align-items: center;
   width: 100%;
-  font-size: 1rem;
   font-weight: 700;
   padding: 0.3rem 0 0.2rem;
   border-radius: 0.3rem 0.3rem 0 0;
@@ -100,6 +99,7 @@ const SoldOutWrapper = styled(Label)`
   ${SoldOutStatusStyling}
   color: ${palette('grayscale', 7)};
   text-shadow: 0px 0px 5px ${palette('grayscale', 1)};
+  text-transform: uppercase;
   background-color: ${palette('danger', 1)};
   border: 1px solid transparent;
   box-shadow: 0px 5px 5px ${palette('grayscale', 1)};
@@ -212,7 +212,7 @@ const ShopListingGalleryCard = ({
               <NotSoldOutWrapper>Available</NotSoldOutWrapper>
             )}
           </ImageOverlay>
-          <Spacer padding='small' />
+          <Spacer padding={0.5} />
           <PriceAndTitle>
             <LabelWrapper>{title}</LabelWrapper>
             {saleOn ? (

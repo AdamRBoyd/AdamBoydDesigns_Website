@@ -16,9 +16,7 @@ const Wrapper = styled.div`
 
 const HeadingWrapper = styled(Heading)`
   align-self: center;
-  font-family: ${font('primary')};
   color: ${palette('primary', 0)};
-  font-weight: 500;
   font-size: 1.85rem;
   display: flex;
   flex-wrap: wrap;

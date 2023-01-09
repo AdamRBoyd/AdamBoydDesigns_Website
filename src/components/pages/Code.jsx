@@ -64,9 +64,7 @@ const StyledImage = styled.img`
 const StyledHeading = styled(Heading)`
   text-align: center;
   color: ${palette('primary', 0)};
-  font-family: ${font('primary')};
   font-size: 1.5rem;
-  font-weight: 500;
   text-transform: uppercase;
 `;
 

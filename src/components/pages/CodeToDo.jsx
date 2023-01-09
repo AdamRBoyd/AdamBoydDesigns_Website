@@ -59,7 +59,6 @@ const ItemWrapper = styled.div`
 
 const StyledHeading = styled(Heading)`
   border-bottom: 2px solid ${palette('grayscale', 4)};
-  font-family: ${font('primary')};
   font-size: 2.5rem;
 `;
 

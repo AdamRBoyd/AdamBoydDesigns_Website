@@ -7,9 +7,7 @@ import { Heading, PageTitleFrame, Paragraph, Spacer } from '../../components';
 const StyledHeading = styled(Heading)`
   text-align: center;
   color: ${palette('primary', 0)};
-  font-family: ${font('primary')};
   font-size: 2.5rem;
-  font-weight: 500;
   text-transform: uppercase;
 `;
 

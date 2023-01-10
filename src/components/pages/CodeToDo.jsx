@@ -22,9 +22,27 @@ const StyledForm = styled.form`
   margin: 1rem 0;
 `;
 
+const InputGroup = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid ${palette('primary', 3)};
+  border-radius: 0.5rem;
+`;
+
 const StyledInput = styled(Input)`
   background-color: transparent;
-  border-radius: 0.5rem;
+  border: none;
+  margin-left: 0.8rem;
+`;
+
+const CloseIcon = styled(Icon)`
+  position: relative;
+  right: 7px;
+  top: -1px;
+  margin: 0 0.2rem 0 1rem;
+  cursor: pointer;
 `;
 
 const StyledButton = styled(Button)``;
@@ -96,11 +114,23 @@ const CodeToDo = () => {
     storeValues(newList);
   };
 
+  const handleReset = () => {
+    document.getElementById('addToDo').value = '';
+  };
+
   return (
     <PageTitleFrame title='To Do List' noBottomRule>
       <MainWrapper>
         <StyledForm onSubmit={handleSubmit} id='addForm'>
-          <StyledInput type='text' />
+          <InputGroup>
+            <StyledInput
+              type='text'
+              id='addToDo'
+              required
+              placeholder='Add Item'
+            />
+            <CloseIcon name='close' icon='close' onClick={handleReset} />
+          </InputGroup>
           <StyledButton
             type='submit'
             form='addForm'

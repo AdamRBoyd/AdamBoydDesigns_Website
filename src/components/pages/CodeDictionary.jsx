@@ -7,6 +7,7 @@ import {
   DictionaryMeaningCard,
   Button,
   HorizontalRule,
+  Icon,
   Input,
   Label,
   Link,
@@ -23,12 +24,29 @@ const StyledForm = styled.form`
   margin: 1rem 0;
 `;
 
-const StyledInput = styled(Input)`
-  background-color: transparent;
+const InputGroup = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid ${palette('primary', 3)};
   border-radius: 0.5rem;
 `;
 
-const StyledLabel = styled(Label)``;
+const StyledInput = styled(Input)`
+  background-color: transparent;
+  border-color: transparent;
+  border: none;
+  margin-left: 0.8rem;
+`;
+
+const CloseIcon = styled(Icon)`
+  position: relative;
+  right: 7px;
+  top: -1px;
+  margin: 0 0 0 1rem;
+  cursor: pointer;
+`;
 
 const StyledButton = styled(Button)``;
 
@@ -91,34 +109,42 @@ const CodeDictionary = () => {
   const [searchResult, setSearchResult] = useState();
   const [hasTitle, setHasTitle] = useState(true);
 
-  function data(result, word) {
-    if (result.title) {
-      setHasTitle(true);
-    } else {
-      setSearchResult(result[0]);
-      setHasTitle(false);
-    }
-  }
-
-  function fetchApi(word) {
-    let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const word = e.target[0].value;
+    const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
 
     fetch(url)
       .then((response) => response.json())
-      .then((result) => data(result, word))
-      .catch(() => {});
-  }
+      .then((result) => {
+        if (result.title) {
+          setHasTitle(true);
+        } else {
+          setSearchResult(result[0]);
+          setHasTitle(false);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetchApi(e.target[0].value);
+  const handleReset = () => {
+    document.getElementById('searchBox').value = '';
   };
 
   return (
     <PageTitleFrame title='Dictionary API Fetch Project' noBottomRule>
       <StyledForm onSubmit={handleSubmit}>
-        <StyledLabel>Define:</StyledLabel>
-        <StyledInput type='text' required />
+        <InputGroup>
+          <StyledInput
+            type='text'
+            id='searchBox'
+            required
+            placeholder='Search Here'
+          />
+          <CloseIcon name='close' icon='close' onClick={handleReset} />
+        </InputGroup>
         <StyledButton type='submit' value='Submit' variant='primary'>
           Search
         </StyledButton>

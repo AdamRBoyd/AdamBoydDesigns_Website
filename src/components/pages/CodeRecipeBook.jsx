@@ -6,7 +6,9 @@ import { palette } from 'styled-theme';
 import {
   PageTitleFrame,
   Button,
+  Heading,
   HorizontalRule,
+  Icon,
   Input,
   Label,
   Link,
@@ -19,13 +21,28 @@ const CARD_WIDTH = '250px';
 
 const MainWrapper = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+`;
+
+const ResultWrapper = styled.div`
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
-  width: 90%;
   padding: 1rem 0;
+`;
+
+const StyledHeading = styled(Heading)`
+  text-transform: capitalize;
+  margin-bottom: 1.5rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  box-shadow: 0px 0px 10px 0px ${palette('grayscale', 4)};
 `;
 
 const RecipeWrapper = styled(Link)`
@@ -55,8 +72,27 @@ const StyledForm = styled.form`
   padding: 1rem;
 `;
 
+const InputGroup = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid ${palette('primary', 3)};
+  border-radius: 0.5rem;
+`;
+
 const StyledInput = styled(Input)`
   background-color: transparent;
+  border: none;
+  margin-left: 0.8rem;
+`;
+
+const CloseIcon = styled(Icon)`
+  position: relative;
+  right: 7px;
+  top: -1px;
+  margin: 0 0.2rem 0 1rem;
+  cursor: pointer;
 `;
 
 const StyledButton = styled(Button)``;
@@ -99,12 +135,25 @@ const CodeRecipeBook = () => {
       .then((response) => response.json())
       .then((result) => setRecipeList(result.meals))
       .catch(() => {});
+    e.target.reset();
+  };
+
+  const handleReset = () => {
+    document.getElementById('searchBox').value = '';
   };
 
   return (
     <PageTitleFrame title='Recipe Book Search' noBottomRule>
       <StyledForm onSubmit={handleSubmit}>
-        <StyledInput type='text' required />
+        <InputGroup>
+          <StyledInput
+            type='text'
+            id='searchBox'
+            placeholder='Search Here'
+            required
+          />
+          <CloseIcon name='close' icon='close' onClick={handleReset} />
+        </InputGroup>
         <StyledButton type='submit' value='Submit' variant='primary'>
           Search Recipes
         </StyledButton>
@@ -112,13 +161,22 @@ const CodeRecipeBook = () => {
       <HorizontalRule />
       <MainWrapper>
         {recipeList ? (
-          recipeList?.map((recipe, index) => (
-            <RecipeWrapper key={index} id={recipe.idMeal} to={recipe.idMeal}>
-              <StyledImage src={recipe.strMealThumb} />
-              <LabelWrapper>{recipe.strMeal}</LabelWrapper>
-              {`Recipe ID: ${recipe.idMeal}`}
-            </RecipeWrapper>
-          ))
+          <>
+            <StyledHeading>{`Search Results for: ${search}`}</StyledHeading>
+            <ResultWrapper>
+              {recipeList?.map((recipe, index) => (
+                <RecipeWrapper
+                  key={index}
+                  id={recipe.idMeal}
+                  to={recipe.idMeal}
+                >
+                  <StyledImage src={recipe.strMealThumb} />
+                  <LabelWrapper>{recipe.strMeal}</LabelWrapper>
+                  {`Recipe ID: ${recipe.idMeal}`}
+                </RecipeWrapper>
+              ))}
+            </ResultWrapper>
+          </>
         ) : (
           <ErrorSearch>
             {search === undefined ? (

@@ -110,8 +110,6 @@ const CodeRecipeCard = () => {
     createIngredientIndex();
   }, []);
 
-  // console.log(recipe);
-
   return (
     <PageTitleFrame title={`${recipe?.strMeal}`} noBottomRule>
       <MainWrapper>
@@ -142,14 +140,20 @@ const CodeRecipeCard = () => {
         <Spacer padding={1} />
         <Tags>{`Tags: ${recipe?.strTags},${recipe?.strArea},${recipe?.strCategory}`}</Tags>
         <Spacer padding={2} />
-        <Youtube href={recipe?.strYoutube} target='_blank'>
-          Watch on Youtube
-          <YoutubeIcon name='Youtube' icon='youtube' />
-        </Youtube>
-        <Spacer padding={1} />
-        <Source href={recipe?.strSource} target='_blank'>
-          Source
-        </Source>
+        {recipe?.strYoutube && (
+          <>
+            <Youtube href={recipe?.strYoutube} target='_blank'>
+              Watch on Youtube
+              <YoutubeIcon name='Youtube' icon='youtube' />
+            </Youtube>
+            <Spacer padding={1} />
+          </>
+        )}
+        {recipe?.strSource && (
+          <Source href={recipe?.strSource} target='_blank'>
+            Source
+          </Source>
+        )}
       </MainWrapper>
     </PageTitleFrame>
   );

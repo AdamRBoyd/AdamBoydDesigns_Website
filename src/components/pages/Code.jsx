@@ -130,6 +130,10 @@ const Code = () => {
           <StyledImage src='/images/math.jpg' alt='Unit Converter' />
           <StyledHeading>Unit Converter</StyledHeading>
         </LinkCard>
+        <LinkCard to={'calculator'}>
+          <StyledImage src='/images/calculator.jpg' alt='Calculator' />
+          <StyledHeading>Calculator</StyledHeading>
+        </LinkCard>
       </Wrapper>
     </PageTitleFrame>
   );

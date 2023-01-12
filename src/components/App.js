@@ -20,6 +20,7 @@ const CodeUnitConverter = lazy(() =>
   import('../components/pages/CodeUnitConverter')
 );
 const CodeWeather = lazy(() => import('../components/pages/CodeWeather'));
+const CodeCalculator = lazy(() => import('../components/pages/CodeCalculator'));
 const Contact = lazy(() => import('../components/pages/Contact'));
 const Gallery = lazy(() => import('../components/pages/Gallery'));
 const GalleryImages = lazy(() => import('../components/pages/GalleryImages'));
@@ -154,6 +155,14 @@ function App() {
         element={
           <Suspense fallback={<LoadingPage />}>
             <CodeWeather />
+          </Suspense>
+        }
+      />
+      <Route
+        path='code/calculator'
+        element={
+          <Suspense fallback={<LoadingPage />}>
+            <CodeCalculator />
           </Suspense>
         }
       />

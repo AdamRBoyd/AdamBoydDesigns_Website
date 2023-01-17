@@ -62,6 +62,7 @@ const SelectionInputs = styled.div`
 const DegreeInput = styled.input`
   width: 20rem;
   margin: 0 1rem;
+  accent-color: ${palette('primary', 0)};
 `;
 
 const ColorInput = styled(Input)`

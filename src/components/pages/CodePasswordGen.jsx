@@ -39,7 +39,7 @@ const CopyCode = styled.div`
   margin: 0 0 1rem 0;
 `;
 
-const ColorCode = styled(Input)`
+const PasswordField = styled(Input)`
   color: ${palette('primary', 0)};
   font-size: 1rem;
   font-weight: 500;
@@ -84,6 +84,7 @@ const FormRow = styled.div`
 const StyledRange = styled.input`
   width: 10rem;
   margin: 0 1rem;
+  accent-color: ${palette('primary', 0)};
 `;
 
 const StyledValue = styled(Input)`
@@ -95,7 +96,9 @@ const StyledValue = styled(Input)`
   border-radius: 0.5rem;
 `;
 
-const StyledCheckbox = styled(Input)``;
+const StyledCheckbox = styled(Input)`
+  accent-color: ${palette('primary', 0)};
+`;
 
 const StyledButton = styled(Button)``;
 
@@ -129,7 +132,12 @@ const CodePasswordGen = () => {
       <Wrapper>
         <StyledPasswordLabel>Password:</StyledPasswordLabel>
         <CopyCode className='copyCode'>
-          <ColorCode type='text' id='color-code' value={password} readOnly />
+          <PasswordField
+            type='text'
+            id='color-code'
+            value={password}
+            readOnly
+          />
           <CopyButton
             title='Click to Copy'
             id='copyBtn'

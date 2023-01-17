@@ -6,6 +6,7 @@ import { font, palette } from 'styled-theme';
 import { Button, Modal, Paragraph, Spacer } from '../../components';
 
 const IMAGE_HEIGHT = '400px';
+const IMAGE_WIDTH = '400px';
 
 const Wrapper = styled.div`
   display: flex;
@@ -49,10 +50,12 @@ const ImageCard = styled.div`
 
 const LargeImage = styled.img`
   border-radius: 0.25rem;
-  border: 10px solid ${palette('grayscale', 4)};
+  border: 5px solid ${palette('grayscale', 4)};
   margin: 1rem;
   margin-top: 1.5rem;
+  width: ${IMAGE_WIDTH};
   height: ${IMAGE_HEIGHT};
+  object-fit: cover;
   justify-self: flex-start;
 `;
 
@@ -78,6 +81,10 @@ const SmallImage = styled.img`
   height: 50px;
   width: 50px;
   justify-self: flex-start;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 `;
 
 const ModalImageWrapper = styled.img`
@@ -181,6 +188,7 @@ const ShopItemCard = ({
             <SmallImage
               key={index}
               src={image.imageUrl75x75}
+              onMouseOver={() => setImageUrl(image)}
               onClick={() => setImageUrl(image)}
             />
           ))}

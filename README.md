@@ -12,7 +12,7 @@ Aside from the main website I have included a selection of projects I have worke
 
 <br><br>
 
-<h2 style="color:darkRed"><strong>If you would like to clone and run this repo:</strong></h2>
+<h2 style="color:#8a0000"><strong>If you would like to clone and run this repo:</strong></h2>
 
 There is a required apikey repository in `components` (same location as App.js) named `apiKeys.json`, this file is formatted as such:
 

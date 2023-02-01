@@ -89,20 +89,28 @@ const SoldOutStatusStyling = css`
   justify-content: center;
   align-items: center;
   width: 100%;
-  font-weight: 700;
   padding: 0.3rem 0 0.2rem;
   border-radius: 0.3rem 0.3rem 0 0;
   opacity: 0.75;
 `;
 
-const SoldOutWrapper = styled(Label)`
+const SoldOutWrapper = styled.div`
   ${SoldOutStatusStyling}
-  color: ${palette('grayscale', 7)};
-  text-shadow: 0px 0px 5px ${palette('grayscale', 1)};
-  text-transform: uppercase;
   background-color: ${palette('danger', 1)};
   border: 1px solid transparent;
   box-shadow: 0px 5px 5px ${palette('grayscale', 1)};
+`;
+
+const SoldOutLabel = styled(Label)`
+  font-weight: 700;
+  color: ${palette('grayscale', 7)};
+  text-shadow: 0px 0px 5px ${palette('grayscale', 1)};
+  text-transform: uppercase;
+  margin: 0 0.2rem;
+`;
+
+const SoldOutNote = styled(SoldOutLabel)`
+  font-size: 0.55rem;
 `;
 
 const NotSoldOutWrapper = styled(Label)`
@@ -207,7 +215,11 @@ const ShopListingGalleryCard = ({
               </InStockAndShippingWrapper>
             </Details>
             {state !== 'active' ? (
-              <SoldOutWrapper>• Sold* •</SoldOutWrapper>
+              <SoldOutWrapper>
+                <SoldOutLabel>{'• Sold '}</SoldOutLabel>
+                <SoldOutNote>{'(See Note Below)'}</SoldOutNote>
+                <SoldOutLabel>{' • '}</SoldOutLabel>
+              </SoldOutWrapper>
             ) : (
               <NotSoldOutWrapper>Available</NotSoldOutWrapper>
             )}

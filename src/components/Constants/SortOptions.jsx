@@ -1,6 +1,6 @@
 export const SORT_OPTIONS = [
   {
-    label: 'Featured',
+    label: 'Category',
     value: 'STD',
   },
   {

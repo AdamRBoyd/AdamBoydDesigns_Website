@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
 
-import { Button, Modal, Paragraph, Spacer } from '../../components';
+import { Button, Link, Modal, Paragraph, Spacer } from '../../components';
 
 const IMAGE_HEIGHT = '400px';
 const IMAGE_WIDTH = '400px';
@@ -152,6 +152,18 @@ const StyledButton = styled(Button)`
   width: 100%;
 `;
 
+const SoldOutInfo = styled.div`
+  font-family: ${font('primary')};
+  color: ${palette('danger', 0)};
+  font-weight: 300;
+  line-height: 1.5rem;
+  font-size: 0.75rem;
+  font-style: italic;
+  text-transform: uppercase;
+  text-align: center;
+  width: 90%;
+`;
+
 const ShopListingCard = ({
   images,
   description,
@@ -246,6 +258,18 @@ const ShopListingCard = ({
         >
           {state === 'active' ? 'Buy on Etsy' : 'Sold Out'}
         </StyledButton>
+        <Spacer padding={1} />
+        {state !== 'active' && (
+          <>
+            <SoldOutInfo>
+              Note: Sold listings may be available for custom order
+            </SoldOutInfo>
+            <SoldOutInfo>
+              <Link to='/contact'> Contact me </Link>
+              for more Information
+            </SoldOutInfo>
+          </>
+        )}
       </DescriptionWrapper>
       <Modal isOpen={isOpen} onClose={closeModal}>
         <ModalImageWrapper

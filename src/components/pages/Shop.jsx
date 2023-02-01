@@ -210,8 +210,13 @@ const Shop = () => {
         <Spacer padding={0.5} />
         <HorizontalRule />
         <Spacer padding={0.5} />
-        <Footnote>* Sold listings may be available for custom order</Footnote>
-        <Footnote>Contact me for more Information </Footnote>
+        <Footnote>
+          Note: Sold listings may be available for custom order
+        </Footnote>
+        <Footnote>
+          <Link to='/contact'> Contact me </Link>
+          for more Information
+        </Footnote>
       </PageTitleFrame>
       <Spacer padding={6} />
     </>

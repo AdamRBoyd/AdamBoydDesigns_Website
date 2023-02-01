@@ -13,7 +13,7 @@ const GroupWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 215px;
+  width: 225px;
   color: ${palette('primary', 0)};
   font-family: ${font('primary')};
   font-size: 0.95rem;

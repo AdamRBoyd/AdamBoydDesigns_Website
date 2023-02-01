@@ -1,6 +1,6 @@
 // import ReactDOM from 'react-dom/client';
 import React, { useEffect, Suspense, lazy } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
 
 import './App.css';
 
@@ -27,8 +27,8 @@ const GalleryImages = lazy(() => import('../components/pages/GalleryImages'));
 const HomePage = lazy(() => import('../components/pages/HomePage'));
 const LoadingPage = lazy(() => import('../components/pages/LoadingPage'));
 const NotFoundPage = lazy(() => import('../components/pages/NotFoundPage'));
+// const Shop = lazy(() => import('../components/pages/Shop'));
 const Shop = lazy(() => import('../components/pages/Shop'));
-const ShopCategory = lazy(() => import('../components/pages/ShopCategory'));
 const ShopListing = lazy(() => import('../components/pages/ShopListing'));
 const Test = lazy(() => import('../components/pages/Test'));
 
@@ -214,8 +214,9 @@ function App() {
           </Suspense>
         }
       />
+      <Route path='shop' element={<Navigate to='all' />} />
       <Route
-        path='shop'
+        path='shop/all'
         element={
           <Suspense fallback={<LoadingPage />}>
             <Shop />
@@ -226,7 +227,7 @@ function App() {
         path='shop/earrings'
         element={
           <Suspense fallback={<LoadingPage />}>
-            <ShopCategory />
+            <Shop />
           </Suspense>
         }
       />
@@ -234,7 +235,7 @@ function App() {
         path='shop/rings'
         element={
           <Suspense fallback={<LoadingPage />}>
-            <ShopCategory />
+            <Shop />
           </Suspense>
         }
       />
@@ -242,7 +243,7 @@ function App() {
         path='shop/pendants'
         element={
           <Suspense fallback={<LoadingPage />}>
-            <ShopCategory />
+            <Shop />
           </Suspense>
         }
       />
@@ -250,7 +251,7 @@ function App() {
         path='shop/sets'
         element={
           <Suspense fallback={<LoadingPage />}>
-            <ShopCategory />
+            <Shop />
           </Suspense>
         }
       />
@@ -258,7 +259,7 @@ function App() {
         path='shop/nose'
         element={
           <Suspense fallback={<LoadingPage />}>
-            <ShopCategory />
+            <Shop />
           </Suspense>
         }
       />

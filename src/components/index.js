@@ -19,9 +19,8 @@ export { default as DictionaryMeaningCard } from './molecules/DictionaryMeaningC
 export { default as Modal } from './molecules/Modal';
 export { default as PrimaryNavigation } from './molecules/PrimaryNavigation';
 export { default as ReviewCard } from './molecules/ReviewCard';
-export { default as ShopItemCard } from './molecules/ShopItemCard';
+export { default as ShopListingCard } from './molecules/ShopListingCard';
 export { default as ShopListingGalleryCard } from './molecules/ShopListingGalleryCard';
-export { default as ShopMainGalleryCard } from './molecules/ShopMainGalleryCard';
 export { default as ToDoListCard } from './molecules/ToDoListCard';
 export { default as DistanceUnitCard } from './molecules/DistanceUnitCard';
 export { default as TemperatureUnitCard } from './molecules/TemperatureUnitCard';
@@ -33,5 +32,4 @@ export { default as TimeUnitCard } from './molecules/TimeUnitCard';
 // Organisms
 export { default as Footer } from './organisms/Footer';
 export { default as Header } from './organisms/Header';
-export { default as LandingPage } from './organisms/LandingPage';
 export { default as PageTitleFrame } from './organisms/PageTitleFrame';

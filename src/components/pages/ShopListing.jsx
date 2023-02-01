@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Earrings, Nose, Pendants, Rings, Sets } from '../json';
 import { saleOn, salePercentage, saleTitle } from '../Constants/SaleDate';
-import { PageTitleFrame, ShopItemCard, Spacer } from '../../components';
+import { PageTitleFrame, ShopListingCard, Spacer } from '../../components';
 
 const getListing = (currentCategory, currentListing) => {
   let category = [];
@@ -44,7 +44,7 @@ const ShopListing = () => {
         title={listing?.title || 'Nope!'}
         subtitle={listing?.subtitle}
       >
-        <ShopItemCard
+        <ShopListingCard
           saleOn={saleOn}
           salePercentage={salePercentage}
           saleTitle={saleTitle}

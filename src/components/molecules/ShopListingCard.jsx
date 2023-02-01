@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
 
-import { Button, Modal, Paragraph, Spacer } from '../../components';
+import { Button, Modal, Paragraph, Spacer } from '..';
 
 const IMAGE_HEIGHT = '400px';
 const IMAGE_WIDTH = '400px';
@@ -152,7 +152,7 @@ const StyledButton = styled(Button)`
   width: 100%;
 `;
 
-const ShopItemCard = ({
+const ShopListingCard = ({
   images,
   description,
   price,
@@ -258,7 +258,7 @@ const ShopItemCard = ({
   );
 };
 
-ShopItemCard.propTypes = {
+ShopListingCard.propTypes = {
   images: PropTypes.array,
   description: PropTypes.array,
   price: PropTypes.object,
@@ -271,4 +271,4 @@ ShopItemCard.propTypes = {
   quantity: PropTypes.number,
 };
 
-export default ShopItemCard;
+export default ShopListingCard;

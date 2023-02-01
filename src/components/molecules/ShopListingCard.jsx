@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
 
-import { Button, Modal, Paragraph, Spacer } from '..';
+import { Button, Modal, Paragraph, Spacer } from '../../components';
 
 const IMAGE_HEIGHT = '400px';
 const IMAGE_WIDTH = '400px';

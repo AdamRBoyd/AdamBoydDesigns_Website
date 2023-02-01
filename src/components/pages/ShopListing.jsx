@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { Earrings, Nose, Pendants, Rings, Sets } from '../json';
+import { AllListings, Earrings, Nose, Pendants, Rings, Sets } from '../json';
 import { saleOn, salePercentage, saleTitle } from '../Constants/SaleDate';
 import { PageTitleFrame, ShopListingCard, Spacer } from '../../components';
 
@@ -22,6 +22,9 @@ const getListing = (currentCategory, currentListing) => {
       break;
     case 'sets':
       category = Sets;
+      break;
+    case 'all':
+      category = AllListings;
       break;
     default:
       break;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { palette } from 'styled-theme';
 import { useEffect } from 'react';
 
@@ -8,108 +8,86 @@ import apiKeys from '../apiKeys';
 
 import {
   Button,
-  Heading,
+  Input,
   Label,
   Link,
   PageTitleFrame,
   Spacer,
+  WeatherCard,
 } from '../../components';
 
-const WeatherCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  border-radius: 0.5rem;
-  padding: 0 1rem 1rem;
-  width: 30%;
-  box-shadow: 0px 0px 10px 0px ${palette('grayscale', 4)};
-  margin: 2rem 0 1rem;
-`;
-
-const StyledHeader = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  border-bottom: 1px solid ${palette('grayscale', 4)};
-  background-color: ${palette('primary', 3)};
-  width: 100%;
-  align-self: center;
-  border-radius: 0.5rem 0.5rem 0 0;
-  box-shadow: 0px 0px 5px 0px ${palette('grayscale', 4)};
-`;
-
-const HeaderLabel = styled(Label)`
-  align-self: center;
-`;
-
-const StyledHeading = styled(Heading)`
-  margin: 0 0.5rem 0.5rem;
-  align-self: center;
-`;
-
-const StyledLocation = styled(Label)`
-  font-size: 0.8rem;
-  margin: 0 0.5rem;
-  align-self: center;
-`;
-
-const StyledIconLabel = styled(Label)`
+const MainWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  width: 70%;
+  justify-content: center;
   align-items: center;
-  align-self: center;
-  text-transform: capitalize;
-  margin: 1rem 0 0.5rem -1rem; ;
+  gap: 1rem;
+  margin: 2rem 0;
 `;
 
-const TempWrapper = styled.div`
+const ControlWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  align-self: center;
-  padding: 0 0 2rem;
-  border-bottom: 1px solid ${palette('grayscale', 5)};
+  justify-content: center;
+  border-radius: 0.5rem;
+  padding: 0.7rem 0;
+  width: 30%;
+  min-width: 220px;
+  box-shadow: 0px 0px 10px 0px ${palette('grayscale', 4)};
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 90%;
-`;
-
-const StyledTemp = styled.div`
-  font-size: 3rem;
-  margin-bottom: 1rem;
-`;
-
-const StyledFeels = styled(Label)`
-  margin: 0 0 0.5rem;
-  font-size: 0.8rem;
-`;
-
-const StyledMaxMin = styled(Label)`
-  font-size: 0.8rem;
-`;
-
-const WeatherIcon = styled.img`
-  max-width: 50px;
-`;
-
-const InfoWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  align-items: center;
   padding: 1.5rem 0;
-  border-bottom: 1px solid ${palette('grayscale', 5)};
-  width: 90%;
+  gap: 0.7rem;
 `;
 
-const StyledInfoLabel = styled(Label)`
-  font-size: 0.8rem;
+const ControlStyles = css`
+  width: 80%;
 `;
 
 const StyledSwapButton = styled(Button)`
-  max-width: 70%;
-  align-self: center;
-  margin: 1.5rem 0 0.5rem;
+  ${ControlStyles}
 `;
 
-const StyledRefresh = styled(Button)``;
+const StyledLoadByLocation = styled(Button)`
+  ${ControlStyles}
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid ${palette('grayscale', 4)};
+  padding: 1.5rem 0 1.5rem;
+  width: 90%;
+`;
+
+const StyledInput = styled(Input)`
+  ${ControlStyles}
+  border-radius: 0.5rem;
+`;
+
+const StyledFormButton = styled(Button)`
+  ${ControlStyles}
+`;
+
+const ErrorWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+`;
 
 const APICredit = styled(Link)`
   font-size: 0.8rem;
@@ -122,27 +100,31 @@ const CodeWeather = () => {
   const [tempCelsius, setTempCelsius] = useState(false);
   const appId = apiKeys.codeWeather.appid;
 
+  function fetchWeatherByPosition(latitude, longitude) {
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${appId}`
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.cod === 200) {
+          setWeather(result);
+          setLoaded(true);
+        } else {
+          setLoaded(false); // Used for refresh where already set to true
+        }
+      })
+      .catch((error) => {
+        console.error();
+      });
+  }
+
   // NOTE: Less accurate location fetch method
   function fetchWeather() {
     fetch(`https://ipapi.co/json/`)
       .then((response) => response.json())
-      .then((position) => {
-        fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=${appId}`
-        )
-          .then((response) => response.json())
-          .then((result) => {
-            if (result.cod === 200) {
-              setWeather(result);
-              setLoaded(true);
-            } else {
-              setLoaded(false); // Used for refresh where already set to true
-            }
-          })
-          .catch((error) => {
-            console.error();
-          });
-      })
+      .then((position) =>
+        fetchWeatherByPosition(position.latitude, position.longitude)
+      )
       .catch(() => {});
   }
 
@@ -150,36 +132,15 @@ const CodeWeather = () => {
   // function fetchWeather() {
   //   if (navigator.geolocation) {
   //     navigator.geolocation.getCurrentPosition(function (position) {
-  //       fetch(
-  //         `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${appId}`
-  //       )
-  //         .then((response) => response.json())
-  //         .then((result) => {
-  //           if (result.cod === 200) {
-  //             setWeather(result);
-  //             setLoaded(true);
-  //           } else {
-  //             setLoaded(false); // Used for refresh where already set to true
-  //           }
-  //         })
-  //         .catch((error) => {
-  //           console.error();
-  //         });
+  //       fetchWeatherByPosition(
+  //         position.coords.latitude,
+  //         position.coords.longitude
+  //       );
   //     });
   //   } else {
   //     alert('Geolocation is not supported by this browser.');
   //   }
   // }
-
-  // Kelvin to Fahrenheit T(K) × 9/5 - 459.67
-  function fTemp(temp) {
-    return Math.floor((temp * 9) / 5 - 459.67);
-  }
-
-  // Kelvin to Celsius T(K) - 273.15
-  function cTemp(temp) {
-    return Math.floor(temp - 273.15);
-  }
 
   const handleClick = () => {
     fetchWeather();
@@ -189,6 +150,36 @@ const CodeWeather = () => {
     setTempCelsius(!tempCelsius);
   };
 
+  const handleCitySearch = (e) => {
+    e.preventDefault();
+    const city = e.target[0].value;
+    const state = e.target[1].value;
+    const country = e.target[2].value;
+    fetch(
+      `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},${country}&limit=100&appid=${appId}`
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        fetchWeatherByPosition(result[0].lat, result[0].lon);
+      })
+      .catch((error) => {
+        console.error();
+      });
+  };
+
+  const handleZipSearch = (e) => {
+    e.preventDefault();
+    const zip = e.target[0].value;
+    fetch(`http://api.openweathermap.org/geo/1.0/zip?zip=${zip}&appid=${appId}`)
+      .then((response) => response.json())
+      .then((result) => {
+        fetchWeatherByPosition(result.lat, result.lon);
+      })
+      .catch((error) => {
+        console.error();
+      });
+  };
+
   useEffect(() => {
     fetchWeather();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -196,70 +187,54 @@ const CodeWeather = () => {
 
   return (
     <PageTitleFrame title='Weather App Project' noBottomRule>
-      {!loaded && (
-        <>
-          <Spacer padding={1} />
-          <Label>OOPS! Something went wrong!</Label>
-          <Label>
-            Please make sure to allow this page to know your location!
-          </Label>
-        </>
-      )}
-      {loaded && (
-        <WeatherCard>
-          <StyledHeader>
-            <HeaderLabel>Weather for:</HeaderLabel>
-            <StyledHeading>{`${weather?.name}`}</StyledHeading>
-            <StyledLocation>{`${weather?.coord?.lat} Lat., ${weather?.coord?.lon} Lon.`}</StyledLocation>
-          </StyledHeader>
-          <StyledIconLabel>
-            <WeatherIcon
-              src={`http://openweathermap.org/img/w/${
-                weather?.weather?.at(0)?.icon
-              }.png`}
+      <MainWrapper>
+        {!loaded && (
+          <ErrorWrapper>
+            <Label>OOPS! Something went wrong!</Label>
+            <Label>Please enter a valid location</Label>
+          </ErrorWrapper>
+        )}
+        {loaded && (
+          <WeatherCard
+            weather={weather}
+            tempCelsius={tempCelsius}
+            loaded={loaded}
+          />
+        )}
+        <ControlWrapper>
+          <StyledForm onSubmit={handleCitySearch}>
+            <StyledInput type='text' id='city' placeholder='City' required />
+            <StyledInput
+              type='text'
+              id='state'
+              placeholder='State Code'
+              maxLength='2'
+              required
             />
-            {`${weather?.weather?.at(0)?.description}`}
-          </StyledIconLabel>
-          <TempWrapper>
-            <StyledTemp>
-              {tempCelsius ? (
-                <>{`${cTemp(weather?.main?.temp)}ºC`}</>
-              ) : (
-                <>{`${fTemp(weather?.main?.temp)}ºF`}</>
-              )}
-            </StyledTemp>
-            <StyledFeels>
-              {tempCelsius ? (
-                <>{`Feels Like: ${cTemp(weather?.main?.feels_like)}ºC`}</>
-              ) : (
-                <>{`Feels Like: ${fTemp(weather?.main?.feels_like)}ºF`}</>
-              )}
-            </StyledFeels>
-            {tempCelsius ? (
-              <StyledMaxMin>{`Min: ${cTemp(
-                weather?.main?.temp_min
-              )}ºC, Max: ${cTemp(weather?.main?.temp_max)}ºC`}</StyledMaxMin>
-            ) : (
-              <StyledMaxMin>{`Min: ${fTemp(
-                weather?.main?.temp_min
-              )}ºF, Max: ${fTemp(weather?.main?.temp_max)}ºF`}</StyledMaxMin>
-            )}
-          </TempWrapper>
-          <InfoWrapper>
-            <StyledInfoLabel>{`Humidity: ${weather?.main?.humidity}%`}</StyledInfoLabel>
-            <StyledInfoLabel>{`Pressure: ${weather?.main?.pressure}º`}</StyledInfoLabel>
-            <StyledInfoLabel>{`Wind Speed: ${weather?.wind?.speed}km/h`}</StyledInfoLabel>
-          </InfoWrapper>
-          <StyledSwapButton onClick={handleTempSwap} variant='primary'>
-            {tempCelsius ? 'Show in Fahrenheit' : 'Show in Celsius'}
-          </StyledSwapButton>
-        </WeatherCard>
-      )}
-      <Spacer padding={2} />
-      <StyledRefresh onClick={handleClick} variant='ghost' buttonHeight={1.5}>
-        {loaded ? 'Refresh' : 'Load Weather'}
-      </StyledRefresh>
-      <Spacer padding={2} />
+            <StyledInput
+              type='text'
+              id='country'
+              placeholder='Country Code'
+              maxLength='2'
+              required
+            />
+            <StyledFormButton variant='primary'>Search</StyledFormButton>
+          </StyledForm>
+          <StyledForm onSubmit={handleZipSearch}>
+            <StyledInput type='text' placeholder='Zip Code' />
+            <StyledFormButton variant='primary'>Search</StyledFormButton>
+          </StyledForm>
+          <ButtonWrapper>
+            <StyledLoadByLocation onClick={handleClick} variant='primary'>
+              Load By Location
+            </StyledLoadByLocation>
+            <StyledSwapButton onClick={handleTempSwap} variant='ghost'>
+              {tempCelsius ? 'Show in Fahrenheit' : 'Show in Celsius'}
+            </StyledSwapButton>
+          </ButtonWrapper>
+        </ControlWrapper>
+      </MainWrapper>
+      <Spacer padding={1} />
       <APICredit href={'https://ipapi.co/'} target='_blank'>
         Location API courtesy of ipapi (If your location isn't right, I blame
         them.)

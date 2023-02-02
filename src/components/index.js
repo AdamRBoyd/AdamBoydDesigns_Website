@@ -28,6 +28,7 @@ export { default as AreaUnitCard } from './molecules/AreaUnitCard';
 export { default as VolumeUnitCard } from './molecules/VolumeUnitCard';
 export { default as MassUnitCard } from './molecules/MassUnitCard';
 export { default as TimeUnitCard } from './molecules/TimeUnitCard';
+export { default as WeatherCard } from './molecules/WeatherCard';
 
 // Organisms
 export { default as Footer } from './organisms/Footer';

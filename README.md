@@ -4,7 +4,7 @@ While working with Etsy and the fees that they impose, I decided I wanted a busi
 
 ## Inventory information management
 
-To get the information from Etsy, I have written a Node.js program that taps into the Etsy API, pulls down all the listings as one large json formatted block. I then trim and separate that block into the information I need and the separate files used. If you would like to see my grabber code, please contact me. I do not keep it public as there is a private API key embedded in the code, and any shared code will have that removed prior to sharing.
+To get the information from Etsy, I have written a [Node.js program that taps into the Etsy API](https://github.com/phoenix239/EtsyGrabber), pulls down all the listings as one large json formatted block. I then trim and separate that block into the information I need and the separate files used.
 
 ## Other Content
 

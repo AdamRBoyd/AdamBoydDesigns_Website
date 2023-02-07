@@ -134,6 +134,10 @@ const Code = () => {
           <StyledImage src='/images/calculator.jpg' alt='Calculator' />
           <StyledHeading>Calculator</StyledHeading>
         </LinkCard>
+        <LinkCard to={'workout'}>
+          <StyledImage src='/images/workout.jpg' alt='Workout' />
+          <StyledHeading>Workout Log</StyledHeading>
+        </LinkCard>
       </Wrapper>
     </PageTitleFrame>
   );

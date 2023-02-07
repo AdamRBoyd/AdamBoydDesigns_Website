@@ -28,6 +28,14 @@ const styles = css`
     outline: 2px solid ${palette('danger', 4)};
   }
 
+  &[type='date'],
+  &[type='select'] {
+    &:not(:placeholder-shown):not(:focus):invalid {
+      background-color: transparent;
+      outline: none;
+    }
+  }
+
   &[type='checkbox'] {
     color: ${palette('primary', 0)};
     flood-color: ${palette('primary', 0)};
@@ -47,6 +55,7 @@ const styles = css`
     margin: 0 0.2rem 0 0;
   }
 
+  &[type='date'],
   &[type='email'],
   &[type='tel'],
   &[type='number'],
@@ -59,6 +68,7 @@ const styles = css`
     padding: 1rem;
   }
 
+  &[type='date'],
   &[type='email']:hover,
   &[type='tel']:hover,
   &[type='number']:hover,
@@ -68,6 +78,7 @@ const styles = css`
     border-color: ${palette('grayscale', 2)};
   }
 
+  &[type='date'],
   &[type='email']:focus,
   &[type='tel']:focus,
   &[type='number']:focus,
@@ -80,6 +91,7 @@ const styles = css`
     border-color: ${palette('primary', 1)};
   }
 
+  &[type='date'],
   &[type='email']:active,
   &[type='tel']:active,
   &[type='number']:active,
@@ -100,18 +112,19 @@ const StyledInput = styled.input`
   ${styles}
 `;
 
-const Input = ({ type, ...props }) => {
+const Input = ({ type, noInvalidStyle, ...props }) => {
   if (type === 'textarea') {
-    return <StyledTextarea {...props} type={type} />;
+    return <StyledTextarea {...props} type={type} noInvalidStyle />;
   }
   if (type === 'select') {
-    return <StyledSelect {...props} type={type} />;
+    return <StyledSelect {...props} type={type} noInvalidStyle />;
   }
-  return <StyledInput {...props} type={type} />;
+  return <StyledInput {...props} type={type} noInvalidStyle />;
 };
 
 Input.propTypes = {
   type: PropTypes.string,
+  noInvalidStyle: PropTypes.bool,
   reverse: PropTypes.bool,
   height: PropTypes.number,
   invalid: PropTypes.bool,

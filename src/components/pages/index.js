@@ -21,4 +21,5 @@ export { default as CodeRecipeBook } from './CodeRecipeBook';
 export { default as CodeRecipeCard } from './CodeRecipeCard';
 export { default as CodeUnitConverter } from './CodeUnitConverter';
 export { default as CodeCalculator } from './CodeCalculator';
+export { default as CodeWorkout } from './CodeWorkout';
 export { default as Test } from './Test';

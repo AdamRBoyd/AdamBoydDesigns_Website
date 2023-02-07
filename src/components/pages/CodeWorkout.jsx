@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
 
-import { Button, Heading, Input, PageTitleFrame } from '../../components';
+import { Button, Heading, Input, Icon, PageTitleFrame } from '../../components';
 
 const MainWrapper = styled.div`
   display: flex;
@@ -35,7 +35,9 @@ const StyledInput = styled(Input)`
 
 const StyledButton = styled(Button)``;
 
-const StyledListButton = styled(Button)``;
+const StyledIcon = styled(Icon)`
+  cursor: pointer;
+`;
 
 const ListContainer = styled.div`
   display: flex;
@@ -61,11 +63,11 @@ const ListWrapper = styled.ul`
 
 const ListItem = styled.li`
   display: grid;
-  grid-template-columns: 5fr 1fr 1fr;
+  grid-template-columns: 7fr 1fr 1fr;
   grid-template-rows: 1fr;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  justify-content: center;
+  padding: 0.5rem 0 0.5rem 2rem;
   border-bottom: 1px solid ${palette('grayscale', 4)};
   width: 100%;
   font-size: 1.2rem;
@@ -174,20 +176,8 @@ const CodeWorkout = () => {
             {workouts.map((workout, i) => (
               <ListItem key={i}>
                 {workout.date} - {workout.type} - {workout.duration} minutes
-                <StyledListButton
-                  buttonHeight={1.8}
-                  fontSize={0.8}
-                  onClick={() => handleEdit(i)}
-                >
-                  Edit
-                </StyledListButton>
-                <StyledListButton
-                  buttonHeight={1.8}
-                  fontSize={0.8}
-                  onClick={() => handleDelete(i)}
-                >
-                  Delete
-                </StyledListButton>
+                <StyledIcon icon='edit' onClick={() => handleEdit(i)} />
+                <StyledIcon icon='trashIcon' onClick={() => handleDelete(i)} />
               </ListItem>
             ))}
           </ListWrapper>

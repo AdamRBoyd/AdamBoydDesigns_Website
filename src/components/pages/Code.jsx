@@ -5,7 +5,6 @@ import { palette } from 'styled-theme';
 import {
   Heading,
   HorizontalRule,
-  Icon,
   Link,
   PageTitleFrame,
   Paragraph,
@@ -59,17 +58,13 @@ const StyledImage = styled.img`
 `;
 
 const StyledHeading = styled(Heading)`
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   color: ${palette('primary', 0)};
   font-size: 1.5rem;
   text-transform: uppercase;
-`;
-
-const StyledIcon = styled(Icon)`
-  height: 25px;
-  width: 25px;
-  margin: 0 0.5rem 0;
-  vertical-align: text-top;
 `;
 
 const Code = () => {
@@ -90,9 +85,7 @@ const Code = () => {
           target='_blank'
         >
           <StyledImage src='/images/LandingPageImage.png' alt='Website Code' />
-          <StyledHeading>
-            Website Code <StyledIcon name='Github' icon='github' />
-          </StyledHeading>
+          <StyledHeading>Site Code - Github </StyledHeading>
         </LinkCard>
         <LinkCard to={'dictionary'}>
           <StyledImage src='/images/Dictionary.jpg' alt='Dictionary' />

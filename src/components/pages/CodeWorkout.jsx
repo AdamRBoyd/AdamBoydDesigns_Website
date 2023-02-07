@@ -117,17 +117,17 @@ const CodeWorkout = () => {
     setDuration('');
   };
 
-  const handleEdit = (i) => {
+  const handleEdit = (index) => {
     setEditing(true);
-    setIndex(i);
-    setDate(workouts[i].date);
-    setType(workouts[i].type);
-    setDuration(workouts[i].duration);
+    setIndex(index);
+    setDate(workouts[index].date);
+    setType(workouts[index].type);
+    setDuration(workouts[index].duration);
   };
 
-  const handleDelete = (i) => {
+  const handleDelete = (index) => {
     const newWorkouts = [...workouts];
-    newWorkouts.splice(i, 1);
+    newWorkouts.splice(index, 1);
     setWorkouts(newWorkouts);
   };
 
@@ -173,11 +173,19 @@ const CodeWorkout = () => {
         <ListContainer>
           <ListHeading>Workouts:</ListHeading>
           <ListWrapper>
-            {workouts.map((workout, i) => (
-              <ListItem key={i}>
+            {workouts.map((workout, index) => (
+              <ListItem key={index}>
                 {workout.date} - {workout.type} - {workout.duration} minutes
-                <StyledIcon icon='edit' onClick={() => handleEdit(i)} />
-                <StyledIcon icon='trashIcon' onClick={() => handleDelete(i)} />
+                <StyledIcon
+                  icon='Edit'
+                  size={25}
+                  onClick={() => handleEdit(index)}
+                />
+                <StyledIcon
+                  icon='Trash'
+                  size={25}
+                  onClick={() => handleDelete(index)}
+                />
               </ListItem>
             ))}
           </ListWrapper>

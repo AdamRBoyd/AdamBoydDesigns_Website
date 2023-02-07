@@ -34,13 +34,10 @@ const Socials = styled.div`
   color: ${palette('grayscale', 5, true)};
   font-size: 0.8rem;
   font-family: ${font('primary')};
+  margin-left: 0.5rem;
 `;
 
-const StyledIcon = styled(Icon)`
-  height: 1.1rem;
-  width: 1.1rem;
-  margin-right: 0.3rem;
-`;
+const StyledIcon = styled(Icon)``;
 
 const Footer = (props) => {
   return (
@@ -49,7 +46,7 @@ const Footer = (props) => {
         href='https://www.instagram.com/adamboyddesigns/'
         target='_blank'
       >
-        <StyledIcon name='Instagram' icon='instagram' />
+        <StyledIcon name='Instagram' icon='instagram' size={20} />
         <Socials>Follow me!!</Socials>
       </StyledLink>
       <Credits>&copy; 2022 Adam Boyd Designs</Credits>

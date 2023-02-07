@@ -68,15 +68,13 @@ const ReviewWrapper = styled.div`
 `;
 
 const StyledIcon = styled(Icon)`
-  margin-right: 0;
-  font-size: 1rem;
   color: ${palette('primary', 0)};
 `;
 
 const getStars = (rating) => {
   const stars = [];
   for (let i = 0; i < rating; i++) {
-    stars.push(<StyledIcon icon='star' key={i} />);
+    stars.push(<StyledIcon icon='star' key={i} size={17} />);
   }
   return stars;
 };

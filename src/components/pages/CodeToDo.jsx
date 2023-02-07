@@ -1,15 +1,24 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
 
-import { Button, Heading, Icon, Input, PageTitleFrame } from '../../components';
+import {
+  Button,
+  Heading,
+  Icon,
+  Input,
+  PageTitleFrame,
+  Spacer,
+} from '../../components';
 
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: fit-content;
   align-items: center;
+  width: 50%;
 `;
 
 const StyledForm = styled.form`
@@ -35,13 +44,13 @@ const StyledInput = styled(Input)`
   background-color: transparent;
   border: none;
   margin-left: 0.8rem;
+  width: 25rem;
 `;
 
 const CloseIcon = styled(Icon)`
   position: relative;
-  right: 7px;
+  right: 9px;
   top: -1px;
-  margin: 0 0.2rem 0 1rem;
   cursor: pointer;
 `;
 
@@ -63,15 +72,15 @@ const ListWrapper = styled.ul`
 const ListItem = styled.li`
   display: flex;
   flex-direction: row;
-  padding: 0.2rem;
+  padding: 0.2rem 1.25rem;
   font-family: ${font('primary')};
   font-size: 1.5rem;
 `;
 
 const ItemWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 11fr 1fr 1fr;
+  align-items: center;
   border-bottom: 1px dashed ${palette('grayscale', 4)};
 `;
 
@@ -80,42 +89,62 @@ const StyledHeading = styled(Heading)`
   font-size: 2.5rem;
 `;
 
-const StyledIcon = styled(Icon)``;
+const StyledIcon = styled(Icon)`
+  cursor: pointer;
+`;
+
+const Note = styled.div`
+  color: ${palette('grayscale', 2)};
+  font-size: 0.8rem;
+  font-family: ${font('primary')};
+  font-style: italic;
+`;
 
 const CodeToDo = () => {
   let local = localStorage.getItem('ToDo');
   const [list, updateList] = useState(local ? JSON.parse(local) : []);
+  const [item, setItem] = useState('');
+  const [editing, setEditing] = useState(false);
+  const [index, setIndex] = useState(null);
 
-  function storeValues(arr) {
-    updateList(arr);
-    window.localStorage.setItem('ToDo', JSON.stringify(arr));
-  }
+  useEffect(() => {
+    localStorage.setItem('ToDo', JSON.stringify(list));
+  }, [list]);
 
   const handleItemClick = (e) => {
     const id = e.target.parentElement.id;
     let newList = list.slice();
     newList[id].done = !newList[id].done;
-    storeValues(newList);
+    updateList(newList);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let newList = list.slice();
-    newList.push({ item: e.target[0].value, done: false });
-    storeValues(newList);
-    e.target.reset();
+    if (!editing) {
+      updateList([...list, { item: item, done: false }]);
+    } else {
+      const newList = [...list];
+      newList[index].item = item;
+      updateList(newList);
+      setEditing(false);
+    }
+    setItem('');
   };
 
-  const handleDelete = (e) => {
-    const id = Number(e.target.parentElement.id);
-    let newList = list;
-    newList.splice(id, 1);
-    newList = newList.slice();
-    storeValues(newList);
+  const handleEdit = (index) => {
+    setEditing(true);
+    setIndex(index);
+    setItem(list[index].item);
+  };
+
+  const handleDelete = (index) => {
+    const newList = [...list];
+    newList.splice(index, 1);
+    updateList(newList);
   };
 
   const handleReset = () => {
-    document.getElementById('addToDo').value = '';
+    setItem('');
   };
 
   return (
@@ -127,9 +156,16 @@ const CodeToDo = () => {
               type='text'
               id='addToDo'
               required
+              value={item}
               placeholder='Add Item'
+              onChange={(e) => setItem(e.target.value)}
             />
-            <CloseIcon name='close' icon='close' onClick={handleReset} />
+            <CloseIcon
+              name='close'
+              icon='close'
+              size={13}
+              onClick={handleReset}
+            />
           </InputGroup>
           <StyledButton
             type='submit'
@@ -137,7 +173,7 @@ const CodeToDo = () => {
             value='Submit'
             variant='primary'
           >
-            Add New
+            {editing ? 'Update' : 'Add'} Item
           </StyledButton>
         </StyledForm>
         {list && (
@@ -148,7 +184,6 @@ const CodeToDo = () => {
                 <ItemWrapper id={index} key={index}>
                   <ListItem
                     onClick={handleItemClick}
-                    key={`Item${index}`}
                     style={
                       item.done
                         ? {
@@ -161,11 +196,14 @@ const CodeToDo = () => {
                     {item.item}
                   </ListItem>
                   <StyledIcon
-                    name='trash'
-                    icon='trashIcon'
+                    icon='Edit'
                     id={index}
-                    key={`Delete${index}`}
-                    onClick={handleDelete}
+                    onClick={() => handleEdit(index)}
+                  />
+                  <StyledIcon
+                    icon='Trash'
+                    id={index}
+                    onClick={() => handleDelete(index)}
                   />
                 </ItemWrapper>
               ))}
@@ -173,6 +211,8 @@ const CodeToDo = () => {
           </>
         )}
       </MainWrapper>
+      <Spacer padding={2} />
+      <Note>Note: Click on a list item to mark it as done.</Note>
     </PageTitleFrame>
   );
 };

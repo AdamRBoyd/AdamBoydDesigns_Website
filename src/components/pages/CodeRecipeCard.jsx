@@ -72,6 +72,7 @@ const Youtube = styled(Link)`
   display: flex;
   flex-direction: row;
   font-size: 1.5rem;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -144,7 +145,7 @@ const CodeRecipeCard = () => {
           <>
             <Youtube href={recipe?.strYoutube} target='_blank'>
               Watch on Youtube
-              <YoutubeIcon name='Youtube' icon='youtube' />
+              <YoutubeIcon name='Youtube' icon='youtube' size={35} />
             </Youtube>
             <Spacer padding={1} />
           </>

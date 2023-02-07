@@ -16,11 +16,10 @@ import {
 } from '../../components';
 
 const CenteredFlexRow = css`
-  align-content: center;
-  align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
 `;
 
 const CenteredFlexColumn = css`
@@ -85,15 +84,12 @@ const ImageLabel = styled(Label)`
 
 const InstagramBlock = styled.div`
   ${CenteredFlexRow}
+  gap: 0.7rem;
 `;
 
 const StyledIcon = styled(Icon)`
   color: ${palette('primary', 0)};
   font-size: 1.5rem;
-  justify-self: center;
-  margin: 0 1rem;
-  text-align: center;
-  text-justify: center;
 `;
 
 const InstagramLink = styled(Link)`
@@ -157,7 +153,7 @@ const About = () => {
           >
             <InstagramBlock>
               Follow me on Instagram!
-              <StyledIcon name='instagram' icon='instagram' />
+              <StyledIcon name='instagram' icon='instagram' size={25} />
             </InstagramBlock>
           </InstagramLink>
         </RightSideTextBlock>

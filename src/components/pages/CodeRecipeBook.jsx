@@ -90,7 +90,7 @@ const StyledInput = styled(Input)`
 
 const CloseIcon = styled(Icon)`
   position: relative;
-  right: 7px;
+  right: 9px;
   top: -1px;
   margin: 0 0.2rem 0 1rem;
   cursor: pointer;
@@ -166,7 +166,12 @@ const CodeRecipeBook = () => {
             placeholder='Search Here'
             required
           />
-          <CloseIcon name='close' icon='close' onClick={handleReset} />
+          <CloseIcon
+            name='close'
+            icon='close'
+            size={13}
+            onClick={handleReset}
+          />
         </InputGroup>
         <StyledButton type='submit' value='Submit' variant='primary'>
           Search Recipes

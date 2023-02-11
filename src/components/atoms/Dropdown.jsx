@@ -8,25 +8,31 @@ import { useEffect } from 'react';
 const MENU_WIDTH = '150px';
 
 const GroupWrapper = styled.div`
-  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 225px;
+  width: fit-content;
   color: ${palette('primary', 0)};
   font-family: ${font('primary')};
   font-size: 0.95rem;
   cursor: pointer;
+  gap: 0.5rem;
+`;
+
+const DropDownWrapper = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 `;
 
 const DropDownStyles = css`
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  right: 0;
   background-color: ${palette('grayscale', 7)};
   border: 1px solid ${palette('grayscale', 4)};
   border-radius: 0.5rem;
@@ -35,14 +41,28 @@ const DropDownStyles = css`
 
 const DropdownToggle = styled.div`
   ${DropDownStyles}
-  top: -1.15rem;
+  display: grid;
+  grid-template-columns: 1fr 6fr 0.5fr 0.5fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 'padL label arrow padR';
+  flex-direction: row;
+  justify-content: space-around;
   height: 1.75rem;
   overflow: hidden;
 `;
 
+const Placeholder = styled.div`
+  grid-area: label;
+  text-align: center;
+`;
+
 const DropdownMenu = styled.div`
   ${DropDownStyles}
-  top: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  top: 2rem;
   z-index: 10;
 `;
 
@@ -51,7 +71,6 @@ const HiddenDropdownMenu = styled(DropdownMenu)`
 `;
 
 const StyledLabel = styled.label`
-  position: absolute;
   top: -0.85rem;
   left: 0;
 `;
@@ -79,14 +98,12 @@ const StyledOption = styled.div`
 `;
 
 const Arrow = styled.div`
+  grid-area: arrow;
   border-color: ${palette('grayscale', 2)} transparent transparent;
   border-style: solid;
   border-width: 5px 5px 0;
   content: ' ';
   display: block;
-  position: absolute;
-  right: 10px;
-  top: 12px;
 `;
 
 const OpenArrow = styled(Arrow)`
@@ -137,32 +154,34 @@ const Dropdown = ({ options, label, onChange, initialValue, ...props }) => {
 
   return (
     <GroupWrapper ref={wrapperRef} {...props}>
-      <StyledLabel>{label}</StyledLabel>
-      <DropdownToggle onClick={handleClick}>
-        {placeholderLabel}
-        {isOpen ? <OpenArrow /> : <Arrow />}
-      </DropdownToggle>
-      {isOpen && (
-        <DropdownMenu onChange={onChange} {...props}>
-          {options ? (
-            options.map((option) => (
-              <StyledOption
-                key={option.value}
-                id={option.value}
-                value={option.value}
-                onClick={setSelected}
-              >
-                {option.label}
+      {label && <StyledLabel>{label}</StyledLabel>}
+      <DropDownWrapper>
+        <DropdownToggle onClick={handleClick}>
+          <Placeholder>{placeholderLabel}</Placeholder>
+          {isOpen ? <OpenArrow /> : <Arrow />}
+        </DropdownToggle>
+        {isOpen && (
+          <DropdownMenu onChange={onChange} {...props}>
+            {options ? (
+              options.map((option) => (
+                <StyledOption
+                  key={option.value}
+                  id={option.value}
+                  value={option.value}
+                  onClick={setSelected}
+                >
+                  {option.label}
+                </StyledOption>
+              ))
+            ) : (
+              <StyledOption id={'empty'} value={'empty'} onClick={setSelected}>
+                No Options
               </StyledOption>
-            ))
-          ) : (
-            <StyledOption id={'empty'} value={'empty'} onClick={setSelected}>
-              No Options
-            </StyledOption>
-          )}
-        </DropdownMenu>
-      )}
-      {!isOpen && <HiddenDropdownMenu />}
+            )}
+          </DropdownMenu>
+        )}
+        {!isOpen && <HiddenDropdownMenu />}
+      </DropDownWrapper>
     </GroupWrapper>
   );
 };

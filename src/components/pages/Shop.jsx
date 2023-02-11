@@ -38,27 +38,40 @@ const Footnote = styled.div`
   width: 90%;
 `;
 
-const NavWrapper = styled.div`
+const NavContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-content: center;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 85%;
-  text-align: center;
-  margin: 0rem 0 -0.5rem;
-  padding: 0.5rem 2rem 0;
-  height: 3rem;
+  padding: 1rem 0;
   border-radius: 0.5rem;
   background-color: ${palette('grayscale', 6)};
 `;
 
-const StyledButton = styled(Button)`
-  width: 14%;
-  margin: -0.5rem 0 0 0;
+const InnerNavigation = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 'left center right';
+  width: 90%;
 `;
 
-const StyledDropdown = styled(Dropdown)``;
+const StyledButton = styled(Button)`
+  grid-area: left;
+  justify-self: left;
+  width: 14%;
+`;
+
+const CategoryDropdown = styled(Dropdown)`
+  grid-area: center;
+  justify-self: center;
+`;
+
+const SortDropdown = styled(Dropdown)`
+  grid-area: right;
+  justify-self: right;
+`;
 
 const FreeShippingFlag = styled.div`
   position: relative;
@@ -156,38 +169,39 @@ const Shop = () => {
   return (
     <>
       <PageTitleFrame title={'Shop'}>
-        <NavWrapper>
-          {showSold ? (
-            <StyledButton
-              onClick={handleShowHideSold}
-              variant='primary'
-              buttonHeight={1.75}
-            >
-              Hide Sold Out
-            </StyledButton>
-          ) : (
-            <StyledButton
-              onClick={handleShowHideSold}
-              variant='ghost'
-              buttonHeight={1.75}
-            >
-              Show Sold Out
-            </StyledButton>
-          )}
-          <StyledDropdown
-            onChange={handleFilterChange}
-            options={SHOP_CATEGORIES}
-            label='Category: '
-            initialValue={listingsData.label}
-          />
-          <StyledDropdown
-            onChange={handleSortChange}
-            options={SORT_OPTIONS}
-            label='Sorting: '
-            initialValue={SORT_OPTIONS[0].label}
-          />
-        </NavWrapper>
-        <Spacer padding={0.5} />
+        <NavContainer>
+          <InnerNavigation>
+            {showSold ? (
+              <StyledButton
+                onClick={handleShowHideSold}
+                variant='primary'
+                buttonHeight={1.75}
+              >
+                Hide Sold Out
+              </StyledButton>
+            ) : (
+              <StyledButton
+                onClick={handleShowHideSold}
+                variant='ghost'
+                buttonHeight={1.75}
+              >
+                Show Sold Out
+              </StyledButton>
+            )}
+            <CategoryDropdown
+              onChange={handleFilterChange}
+              options={SHOP_CATEGORIES}
+              label='Category: '
+              initialValue={listingsData.label}
+            />
+            <SortDropdown
+              onChange={handleSortChange}
+              options={SORT_OPTIONS}
+              label='Sorting: '
+              initialValue={SORT_OPTIONS[0].label}
+            />
+          </InnerNavigation>
+        </NavContainer>
         <HorizontalRule />
         <FreeShippingFlag>Free Shipping on orders over $35</FreeShippingFlag>
         <Spacer padding={0.5} />

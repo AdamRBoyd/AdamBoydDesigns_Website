@@ -22,6 +22,7 @@ const CodeUnitConverter = lazy(() =>
 const CodeWeather = lazy(() => import('../components/pages/CodeWeather'));
 const CodeWorkout = lazy(() => import('../components/pages/CodeWorkout'));
 const CodeCalculator = lazy(() => import('../components/pages/CodeCalculator'));
+const CodeTaskLog = lazy(() => import('../components/pages/CodeTaskLog'));
 const Contact = lazy(() => import('../components/pages/Contact'));
 const Gallery = lazy(() => import('../components/pages/Gallery'));
 const GalleryImages = lazy(() => import('../components/pages/GalleryImages'));
@@ -172,6 +173,14 @@ function App() {
         element={
           <Suspense fallback={<LoadingPage />}>
             <CodeCalculator />
+          </Suspense>
+        }
+      />
+      <Route
+        path='code/tasklog'
+        element={
+          <Suspense fallback={<LoadingPage />}>
+            <CodeTaskLog />
           </Suspense>
         }
       />

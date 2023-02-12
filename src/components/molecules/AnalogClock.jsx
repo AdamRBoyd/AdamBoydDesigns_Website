@@ -4,8 +4,8 @@ import { font, palette } from 'styled-theme';
 import PropTypes from 'prop-types';
 
 const AnalogClockContainer = styled.div`
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   position: relative;
   box-shadow: 0px 0px 20px 0px ${palette('grayscale', 4)};
@@ -27,7 +27,7 @@ const Number = styled.div`
   width: 44%;
   height: 44%;
   position: absolute;
-  bottom: 50.1%;
+  bottom: 50.2%;
   left: 27.8%;
   transform: translate(-50%, -50%) rotate(-90deg);
   text-align: center;
@@ -51,8 +51,8 @@ const Tick = styled.div`
   width: 2px;
   height: 75%;
   position: absolute;
-  bottom: 50.1%;
-  left: 49.8%;
+  bottom: 50.5%;
+  left: 49.5%;
   text-align: center;
   transform-origin: center bottom;
 
@@ -75,8 +75,8 @@ const Hand = styled.div`
   width: 2px;
   background-color: ${palette('grayscale', 0)};
   position: absolute;
-  bottom: 50.1%;
-  left: 49.8%;
+  bottom: 50.5%;
+  left: 49.5%;
   transform-origin: center bottom;
 
   &:after {
@@ -140,7 +140,7 @@ const AnalogClock = ({ currentTime }) => {
 };
 
 AnalogClock.propTypes = {
-  currentTime: PropTypes.instanceOf(Date).isRequired,
+  currentTime: PropTypes.instanceOf(Date),
 };
 
 export default AnalogClock;

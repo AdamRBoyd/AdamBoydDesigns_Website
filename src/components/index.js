@@ -30,8 +30,10 @@ export { default as MassUnitCard } from './molecules/MassUnitCard';
 export { default as TimeUnitCard } from './molecules/TimeUnitCard';
 export { default as WeatherCard } from './molecules/WeatherCard';
 export { default as AnalogClock } from './molecules/AnalogClock';
+export { default as DigitalClock } from './molecules/DigitalClock';
 
 // Organisms
 export { default as Footer } from './organisms/Footer';
 export { default as Header } from './organisms/Header';
 export { default as PageTitleFrame } from './organisms/PageTitleFrame';
+export { default as Clocks } from './organisms/Clocks';

@@ -6,6 +6,7 @@ import { ifProp } from 'styled-tools';
 
 const fontSize = ({ fontSize }) => `${fontSize}rem`;
 const buttonHeight = ({ buttonHeight }) => `${buttonHeight}em`;
+const buttonWidth = ({ buttonWidth }) => `${buttonWidth}em`;
 
 const styles = css`
   -moz-osx-font-smoothing: grayscale;
@@ -16,12 +17,12 @@ const styles = css`
   white-space: nowrap;
   font-size: ${fontSize};
   height: ${buttonHeight};
+  width: ${buttonWidth};
   min-width: fit-content;
   justify-content: center;
   text-decoration: none;
   cursor: ${ifProp('disabled', 'default', 'pointer')};
   appearance: none;
-  padding: 0 1em;
   border-radius: 0.5em;
   pointer-events: ${ifProp('disabled', 'none', 'auto')};
 `;

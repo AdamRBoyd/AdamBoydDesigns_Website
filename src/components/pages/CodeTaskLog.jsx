@@ -146,6 +146,18 @@ const StyledUndoButton = styled(Button)`
   width: 50%;
 `;
 
+const Footnote = styled.div`
+  font-family: ${font('primary')};
+  color: ${palette('grayscale', 2)};
+  font-weight: 300;
+  line-height: 1.5rem;
+  font-size: 0.75rem;
+  font-style: italic;
+  text-transform: uppercase;
+  text-align: center;
+  width: 90%;
+`;
+
 // SECTION: Code
 const CodeTaskLog = () => {
   const [taskDate, setTaskDate] = useState(new Date().toLocaleDateString());
@@ -408,6 +420,13 @@ const CodeTaskLog = () => {
           </ListWrapper>
         </ListContainer>
       </MainWrapper>
+      <Spacer padding={2} />
+      <Footnote>
+        NOTE: The Time Log is stored in your browser's local storage, only you
+        can see it.
+      </Footnote>
+      <Footnote>Clearing your browser history will clear the list.</Footnote>
+      <Spacer padding={3} />
     </PageTitleFrame>
   );
 };

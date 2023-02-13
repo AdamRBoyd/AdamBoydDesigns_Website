@@ -87,13 +87,17 @@ const Code = () => {
           <StyledImage src='/images/LandingPageImage.png' alt='Website Code' />
           <StyledHeading>Site Code - Github </StyledHeading>
         </LinkCard>
-        <LinkCard to={'dictionary'}>
-          <StyledImage src='/images/Dictionary.jpg' alt='Dictionary' />
-          <StyledHeading>Dictionary</StyledHeading>
-        </LinkCard>
         <LinkCard to={'weather'}>
           <StyledImage src='/images/Weather.jpg' alt='Weather' />
           <StyledHeading>Weather App</StyledHeading>
+        </LinkCard>
+        <LinkCard to={'tasklog'}>
+          <StyledImage src='/images/tasklog.jpg' alt='Task Log' />
+          <StyledHeading>Task Log</StyledHeading>
+        </LinkCard>
+        <LinkCard to={'dictionary'}>
+          <StyledImage src='/images/Dictionary.jpg' alt='Dictionary' />
+          <StyledHeading>Dictionary</StyledHeading>
         </LinkCard>
         <LinkCard to={'tictactoe'}>
           <StyledImage src='/images/Tic_tac_toe.png' alt='TicTacToe' />
@@ -103,17 +107,13 @@ const Code = () => {
           <StyledImage src='/images/ToDoList.jpg' alt='To Do' />
           <StyledHeading>To Do List</StyledHeading>
         </LinkCard>
+        <LinkCard to={'workout'}>
+          <StyledImage src='/images/workout.jpg' alt='Workout' />
+          <StyledHeading>Workout Log</StyledHeading>
+        </LinkCard>
         <LinkCard to={'gradient'}>
           <StyledImage src='/images/Gradient.jpg' alt='Gradient Picker' />
           <StyledHeading>Gradient Picker</StyledHeading>
-        </LinkCard>
-        <LinkCard to={'passwordgen'}>
-          <StyledImage src='/images/passwordGen.png' alt='Password Generator' />
-          <StyledHeading>Password Generator</StyledHeading>
-        </LinkCard>
-        <LinkCard to={'tipcalc'}>
-          <StyledImage src='/images/tipCalc.jpg' alt='Tip Calculator' />
-          <StyledHeading>Tip Calculator</StyledHeading>
         </LinkCard>
         <LinkCard to={'recipe'}>
           <StyledImage src='/images/recipes.jpg' alt='Recipe Book Search' />
@@ -127,13 +127,13 @@ const Code = () => {
           <StyledImage src='/images/calculator.jpg' alt='Calculator' />
           <StyledHeading>Calculator</StyledHeading>
         </LinkCard>
-        <LinkCard to={'workout'}>
-          <StyledImage src='/images/workout.jpg' alt='Workout' />
-          <StyledHeading>Workout Log</StyledHeading>
+        <LinkCard to={'passwordgen'}>
+          <StyledImage src='/images/passwordGen.png' alt='Password Generator' />
+          <StyledHeading>Password Generator</StyledHeading>
         </LinkCard>
-        <LinkCard to={'tasklog'}>
-          <StyledImage src='/images/tasklog.jpg' alt='Task Log' />
-          <StyledHeading>Task Log</StyledHeading>
+        <LinkCard to={'tipcalc'}>
+          <StyledImage src='/images/tipCalc.jpg' alt='Tip Calculator' />
+          <StyledHeading>Tip Calculator</StyledHeading>
         </LinkCard>
       </Wrapper>
     </PageTitleFrame>

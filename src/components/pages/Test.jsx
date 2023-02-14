@@ -46,6 +46,7 @@ const StyledButton = styled(Button)`
   width: 100%;
 `;
 
+// SECTION: Test Code
 const Test = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [startTime, setStartTime] = useState(new Date());

@@ -124,6 +124,12 @@ const LeftParagraph = styled.div`
   text-align: left;
 `;
 
+const RightParagraph = styled.div`
+  font-family: ${font('primary')};
+  margin: 0.5rem 1rem;
+  text-align: left;
+`;
+
 const StyledList = styled(List)`
   padding-left: 4rem;
 `;
@@ -135,17 +141,53 @@ const About = () => {
         <ProfileImage src='/images/ProfilePic.png' />
         <RightSideTextBlock>
           <StyledHeading>A Bit About Me</StyledHeading>
-          This is placeholder text... Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Sed imperdiet quam vitae urna dictum faucibus.
-          Quisque tristique arcu aliquet tellus vehicula, egestas commodo sapien
-          imperdiet. Suspendisse eget ultrices leo. Fusce laoreet risus vel leo
-          pretium, sit amet laoreet metus imperdiet. Duis leo quam, lobortis eu
-          convallis id, ultricies sed justo. Pellentesque habitant morbi
-          tristique senectus et netus et malesuada fames ac turpis egestas.
-          Nulla nec nisi eget velit laoreet pellentesque ac sed nunc. Fusce ut
-          rutrum elit, eget tempor ligula. In commodo rutrum lectus, et egestas
-          augue. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-          Phasellus eu lorem venenatis, dignissim sapien a, sodales odio.
+          <RightParagraph>
+            Welcome to my portfolio website! I am a jewelry designer and
+            silversmith with a passion for creating unique and meaningful pieces
+            of jewelry.
+          </RightParagraph>
+          <RightParagraph>
+            I am the founder of{' '}
+            <Link href={'https://AdamBoydDesigns.etsy.com'} target='_blank'>
+              {' AdamBoydDesigns on Etsy'}
+            </Link>
+            , where I sell my handcrafted silver and copper jewelry. I enjoy
+            using my creativity and attention to detail to design and create
+            beautiful and functional pieces of jewelry. From simple and elegant
+            designs to more intricate and personalized pieces, I strive to
+            create something that speaks to each individual wearer.
+          </RightParagraph>
+          <RightParagraph>
+            In addition to my work in jewelry design, I also have a background
+            in computers, fabrication, and graphic design. I recently graduated
+            from California State University, East Bay with a Bachelor of
+            Science in Computer Science and have experience in developing
+            websites using HTML, CSS, JavaScript, React and Nodejs. Additionally
+            I have experience with several programming languages including C++,
+            Java, Python, and more.
+          </RightParagraph>
+          <RightParagraph>
+            In the "Code" section of my website, you will find a link to my
+            <Link
+              href={'https://github.com/phoenix239/adamboyddesigns'}
+              target='_blank'
+            >
+              {' GitHub '}
+            </Link>
+            profile, as well as many mini projects that I have developed using
+            various programming languages and tools. I enjoy exploring new
+            technologies and creating applications that are both functional and
+            visually appealing.
+          </RightParagraph>
+          <RightParagraph>
+            Whether I am creating jewelry or programming, I bring the same level
+            of passion and attention to detail to everything I do. I am always
+            looking for new opportunities to grow and learn in both fields, and
+            I am excited to share my work with others. Thank you for visiting my
+            portfolio website, and please feel free to
+            <Link to='/contact'>{' contact me'}</Link> if you have any questions
+            or if you are interested in working together.
+          </RightParagraph>
           <Spacer padding={2} />
           <InstagramLink
             href='https://www.instagram.com/adamboyddesigns/'

@@ -1,6 +1,4 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { palette } from 'styled-theme';
 
@@ -126,35 +124,44 @@ const APICredit = styled(Link)`
 
 const CodeRecipeBook = () => {
   let localSearch = localStorage.getItem('recipeSearch');
-  let localRecipeList = localStorage.getItem('recipeList');
   const [recipeList, setRecipeList] = useState();
-  const [searchTerm, setSearchTerm] = useState();
+  const [recipeTitle, setRecipeTitle] = useState('');
+  const [searchTerm, setSearchTerm] = useState(localSearch || '');
+  const [searchChanged, setSearchChanged] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const search = e.target[0].value;
-    setSearchTerm(search);
-    let url = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
-    fetch(`${url}${search}`)
-      .then((response) => response.json())
-      .then((result) => {
-        setRecipeList(result.meals);
-        window.localStorage.setItem('recipeList', JSON.stringify(result.meals));
-        window.localStorage.setItem('recipeSearch', result.meals ? search : '');
-      })
-      .catch(() => {});
+    fetchRecipes();
   };
 
+  const fetchRecipes = () => {
+    let url = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+    fetch(`${url}${searchTerm}`)
+      .then((response) => response.json())
+      .then((result) => {
+        setRecipeTitle(searchTerm);
+        setRecipeList(result.meals);
+        setSearchChanged(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // If a local search term exists, fetch the recipes on page load
   useEffect(() => {
-    if (localRecipeList) {
-      setRecipeList(JSON.parse(localRecipeList));
+    if (searchTerm !== '') {
+      fetchRecipes();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleReset = () => {
-    document.getElementById('searchBox').value = '';
-  };
+  // If the search term has changed, set the localStorage
+  // and set the searchChanged state to true
+  useEffect(() => {
+    localStorage.setItem('recipeSearch', searchTerm);
+    setSearchChanged(true);
+  }, [searchTerm]);
 
   return (
     <PageTitleFrame title='Recipe Book Search' noBottomRule>
@@ -164,13 +171,19 @@ const CodeRecipeBook = () => {
             type='text'
             id='searchBox'
             placeholder='Search Here'
+            value={searchTerm}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
             required
           />
           <CloseIcon
             name='close'
             icon='close'
             size={13}
-            onClick={handleReset}
+            onClick={() => {
+              setSearchTerm('');
+            }}
           />
         </InputGroup>
         <StyledButton type='submit' value='Submit' variant='primary'>
@@ -181,7 +194,7 @@ const CodeRecipeBook = () => {
       <MainWrapper>
         {recipeList ? (
           <>
-            <StyledHeading>{`Search Results for: ${localSearch}`}</StyledHeading>
+            <StyledHeading>{`Search Results for: ${recipeTitle}`}</StyledHeading>
             <ResultWrapper>
               {recipeList?.map((recipe, index) => (
                 <RecipeWrapper
@@ -198,7 +211,7 @@ const CodeRecipeBook = () => {
           </>
         ) : (
           <ErrorSearch>
-            {searchTerm === undefined ? (
+            {searchTerm === '' || searchChanged ? (
               <Label>Please Enter a Recipe to Search</Label>
             ) : (
               <Label>{`Sorry, a recipe for '${searchTerm}' was not found...`}</Label>

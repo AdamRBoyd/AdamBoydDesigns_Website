@@ -72,7 +72,6 @@ const Tick = styled.div`
 `;
 
 const Hand = styled.div`
-  width: 2px;
   background-color: ${palette('grayscale', 0)};
   position: absolute;
   bottom: 50.5%;
@@ -94,15 +93,18 @@ const Hand = styled.div`
 
 const SecondHand = styled(Hand)`
   height: 45%;
+  width: 1px;
   background-color: ${palette('danger', 4)};
 `;
 
 const MinuteHand = styled(Hand)`
   height: 42%;
+  width: 3px;
 `;
 
 const HourHand = styled(Hand)`
   height: 30%;
+  width: 4px;
 `;
 
 const AnalogClock = ({ currentTime }) => {

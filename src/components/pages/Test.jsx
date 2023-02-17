@@ -12,7 +12,7 @@ import {
 
 // Just testing out resetting origin after a username change
 
-// Testing out if commit/push issue fixed
+// Testing out if commit/push issue fixed after changing username
 
 const StyledClock = styled.div`
   display: flex;

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
 import { palette } from 'styled-theme';
 
 import { Images } from '../json';
@@ -41,7 +42,6 @@ const ImageWrapper = styled.img`
 const ModalImageWrapper = styled.img`
   border-radius: 0.25rem;
   width: 100%;
-  // height screen size minus 2rem
   max-height: calc(70vh);
   object-fit: cover;
 `;
@@ -63,26 +63,10 @@ const DescriptionLine = styled.p`
   margin: 0.1rem;
 `;
 
-// Get Section from title
-const section = (props) => {
-  switch (props) {
-    case 'Rings':
-      return Images.rings;
-    case 'Pendants':
-      return Images.pendants;
-    case 'Earrings':
-      return Images.earrings;
-    case 'Other':
-      return Images.other;
-    case 'Fabrication':
-      return Images.fabrication;
-    default:
-      break;
-  }
-};
-
-const GalleryImages = ({ title }) => {
-  const imagesInfo = section(title);
+const GalleryImages = () => {
+  const { state } = useLocation();
+  const { title, section } = state;
+  const imagesInfo = Images[section];
 
   const [isOpen, setIsOpen] = useState(false);
   const [modalImage, setImage] = useState();

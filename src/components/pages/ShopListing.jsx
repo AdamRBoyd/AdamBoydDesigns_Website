@@ -1,45 +1,12 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 
-import { AllListings, Earrings, Nose, Pendants, Rings, Sets } from '../json';
 import { saleOn, salePercentage, saleTitle } from '../Constants/SaleDate';
 import { PageTitleFrame, ShopListingCard, Spacer } from '../../components';
 
-const getListing = (currentCategory, currentListing) => {
-  let category = [];
-  switch (currentCategory) {
-    case 'earrings':
-      category = Earrings;
-      break;
-    case 'nose':
-      category = Nose;
-      break;
-    case 'pendants':
-      category = Pendants;
-      break;
-    case 'rings':
-      category = Rings;
-      break;
-    case 'sets':
-      category = Sets;
-      break;
-    case 'all':
-      category = AllListings;
-      break;
-    default:
-      break;
-  }
-  const listing = category.find(
-    (item) => item.listingId.toString() === currentListing.toString()
-  );
-  return listing;
-};
-
 const ShopListing = () => {
-  const currentCategory = window.location.pathname.split('/')[2];
-  const currentListing = window.location.pathname.split('/')[3];
-
-  const [listing] = useState(getListing(currentCategory, currentListing));
+  const { state } = useLocation();
+  const { listing } = state;
 
   return (
     <>

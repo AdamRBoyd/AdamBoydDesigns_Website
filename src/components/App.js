@@ -1,5 +1,4 @@
-// import ReactDOM from 'react-dom/client';
-import React, { useEffect, Suspense, lazy } from 'react';
+import { useEffect, Suspense, lazy } from 'react';
 import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
 
 import './App.css';
@@ -29,7 +28,6 @@ const GalleryImages = lazy(() => import('../components/pages/GalleryImages'));
 const HomePage = lazy(() => import('../components/pages/HomePage'));
 const LoadingPage = lazy(() => import('../components/pages/LoadingPage'));
 const NotFoundPage = lazy(() => import('../components/pages/NotFoundPage'));
-// const Shop = lazy(() => import('../components/pages/Shop'));
 const Shop = lazy(() => import('../components/pages/Shop'));
 const ShopListing = lazy(() => import('../components/pages/ShopListing'));
 const Test = lazy(() => import('../components/pages/Test'));
@@ -193,88 +191,16 @@ function App() {
         }
       />
       <Route
-        path='gallery/rings'
+        path='gallery/:category'
         element={
           <Suspense fallback={<LoadingPage />}>
-            <GalleryImages title='Rings' />
-          </Suspense>
-        }
-      />
-      <Route
-        path='gallery/earrings'
-        element={
-          <Suspense fallback={<LoadingPage />}>
-            <GalleryImages title='Earrings' />
-          </Suspense>
-        }
-      />
-      <Route
-        path='gallery/pendants'
-        element={
-          <Suspense fallback={<LoadingPage />}>
-            <GalleryImages title='Pendants' />
-          </Suspense>
-        }
-      />
-      <Route
-        path='gallery/other'
-        element={
-          <Suspense fallback={<LoadingPage />}>
-            <GalleryImages title='Other' />
-          </Suspense>
-        }
-      />
-      <Route
-        path='gallery/fabrication'
-        element={
-          <Suspense fallback={<LoadingPage />}>
-            <GalleryImages title='Fabrication' />
+            <GalleryImages />
           </Suspense>
         }
       />
       <Route path='shop' element={<Navigate to='all' />} />
       <Route
-        path='shop/all'
-        element={
-          <Suspense fallback={<LoadingPage />}>
-            <Shop />
-          </Suspense>
-        }
-      />
-      <Route
-        path='shop/earrings'
-        element={
-          <Suspense fallback={<LoadingPage />}>
-            <Shop />
-          </Suspense>
-        }
-      />
-      <Route
-        path='shop/rings'
-        element={
-          <Suspense fallback={<LoadingPage />}>
-            <Shop />
-          </Suspense>
-        }
-      />
-      <Route
-        path='shop/pendants'
-        element={
-          <Suspense fallback={<LoadingPage />}>
-            <Shop />
-          </Suspense>
-        }
-      />
-      <Route
-        path='shop/sets'
-        element={
-          <Suspense fallback={<LoadingPage />}>
-            <Shop />
-          </Suspense>
-        }
-      />
-      <Route
-        path='shop/nose'
+        path='shop/:category'
         element={
           <Suspense fallback={<LoadingPage />}>
             <Shop />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { palette } from 'styled-theme';
 
@@ -44,7 +44,7 @@ const StyledHeading = styled(Heading)`
   box-shadow: 0px 0px 10px 0px ${palette('grayscale', 4)};
 `;
 
-const RecipeWrapper = styled(Link)`
+const RecipeLinkWrapper = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -135,8 +135,7 @@ const CodeRecipeBook = () => {
   };
 
   const fetchRecipes = () => {
-    let url = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
-    fetch(`${url}${searchTerm}`)
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`)
       .then((response) => response.json())
       .then((result) => {
         setRecipeTitle(searchTerm);
@@ -197,15 +196,16 @@ const CodeRecipeBook = () => {
             <StyledHeading>{`Search Results for: ${recipeTitle}`}</StyledHeading>
             <ResultWrapper>
               {recipeList?.map((recipe, index) => (
-                <RecipeWrapper
+                <RecipeLinkWrapper
                   key={index}
                   id={recipe.idMeal}
                   to={recipe.idMeal}
+                  state={{ recipe }}
                 >
                   <StyledImage src={recipe.strMealThumb} />
                   <LabelWrapper>{recipe.strMeal}</LabelWrapper>
                   {`Recipe ID: ${recipe.idMeal}`}
-                </RecipeWrapper>
+                </RecipeLinkWrapper>
               ))}
             </ResultWrapper>
           </>

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { AllListings, Earrings, Nose, Pendants, Rings, Sets } from '../json';
 import { SORT_OPTIONS } from '../Constants/SortOptions';
@@ -61,6 +61,7 @@ const StyledButton = styled(Button)`
   grid-area: left;
   justify-self: left;
   width: 14%;
+  padding: 0 0.5rem;
 `;
 
 const CategoryDropdown = styled(Dropdown)`
@@ -93,11 +94,12 @@ const FreeShippingFlag = styled.div`
 `;
 
 const Shop = () => {
-  // Get current page from url
-  const currentPage = window.location.pathname.split('/')[2];
+  const { state } = useLocation();
+  const [currentPage] = useState(state?.category || 'all');
   const [showSold, setShowSold] = useState(true);
   const navigate = useNavigate();
 
+  // Load the listings data from the JSON files based on the current category
   const listings = (currentCategory) => {
     switch (currentCategory) {
       case 'earrings':
@@ -111,15 +113,15 @@ const Shop = () => {
       case 'sets':
         return { label: 'Sets', category: Sets };
       case 'all':
-        return { label: 'All', category: AllListings };
       default:
-        return { label: 'UH OH!', category: null };
+        return { label: 'All', category: AllListings };
     }
   };
 
   const [listingsData, setListingsData] = useState(listings(currentPage));
   const [currentSort, setCurrentSort] = useState(SORT_OPTIONS[0].value);
 
+  // Sort the listings based on the current sort parameter
   const sortListings = (sortParam, list) => {
     setCurrentSort(sortParam);
 
@@ -159,11 +161,7 @@ const Shop = () => {
       label: listingsData?.label,
       category: sortListings(currentSort, list),
     });
-    navigate(`/shop/${category}`);
-  };
-
-  const handleShowHideSold = () => {
-    setShowSold(!showSold);
+    navigate(`/shop/${category}`, { state: { category } });
   };
 
   return (
@@ -173,7 +171,7 @@ const Shop = () => {
           <InnerNavigation>
             {showSold ? (
               <StyledButton
-                onClick={handleShowHideSold}
+                onClick={() => setShowSold(false)}
                 variant='primary'
                 buttonHeight={1.75}
               >
@@ -181,7 +179,7 @@ const Shop = () => {
               </StyledButton>
             ) : (
               <StyledButton
-                onClick={handleShowHideSold}
+                onClick={() => setShowSold(true)}
                 variant='ghost'
                 buttonHeight={1.75}
               >
@@ -209,6 +207,7 @@ const Shop = () => {
           {listingsData.category.map((listing, index) => (
             <Link
               to={`/shop/${currentPage}/${listing.listingId}`}
+              state={{ listing }}
               title={listing.title}
               key={listing.listingId}
             >

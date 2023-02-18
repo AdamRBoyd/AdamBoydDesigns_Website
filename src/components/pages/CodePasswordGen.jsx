@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { palette } from 'styled-theme';
@@ -110,10 +109,6 @@ const CodePasswordGen = () => {
     navigator.clipboard.writeText(password);
   };
 
-  const handleChange = (e) => {
-    setPassLength(e.target.value);
-  };
-
   const generatePassword = (e) => {
     e.preventDefault();
     let passData = ALPHA;
@@ -156,7 +151,7 @@ const CodePasswordGen = () => {
               min='8'
               max='64'
               value={passLength}
-              onChange={handleChange}
+              onChange={(e) => setPassLength(e.target.value)}
             />
             <StyledValue type='text' value={passLength} readOnly />
           </FormRow>

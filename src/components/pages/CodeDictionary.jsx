@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
 
@@ -107,13 +107,12 @@ const APICredit = styled(Link)`
 const CodeDictionary = () => {
   const [searchResult, setSearchResult] = useState();
   const [hasTitle, setHasTitle] = useState(true);
+  const [word, setWord] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const word = e.target[0].value;
-    const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
 
-    fetch(url)
+    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
       .then((response) => response.json())
       .then((result) => {
         if (result.title) {
@@ -139,6 +138,8 @@ const CodeDictionary = () => {
           <StyledInput
             type='text'
             id='searchBox'
+            onChange={(e) => setWord(e.target.value)}
+            value={word}
             required
             placeholder='Search Here'
           />

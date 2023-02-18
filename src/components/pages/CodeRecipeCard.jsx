@@ -1,6 +1,5 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
 
@@ -84,16 +83,7 @@ const CodeRecipeCard = () => {
   const [recipe, setRecipe] = useState();
   const [ingredientIndex, setIngredientIndex] = useState({});
 
-  function fetchRec() {
-    const currentRecipe = window.location.pathname.split('/')[3];
-    let url = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
-    fetch(`${url}${currentRecipe}`)
-      .then((response) => response.json())
-      .then((result) => setRecipe(result.meals[0]))
-      .catch((error) => {
-        console.error(error);
-      });
-  }
+  const { state } = useLocation();
 
   function createIngredientIndex() {
     let index = [{}];
@@ -107,8 +97,9 @@ const CodeRecipeCard = () => {
   }
 
   useEffect(() => {
-    fetchRec();
+    setRecipe(state.recipe);
     createIngredientIndex();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

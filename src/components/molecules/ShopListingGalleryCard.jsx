@@ -1,7 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { font, palette } from 'styled-theme';
+
 import { Spacer, Label } from '../../components';
 
 const IMAGE_HEIGHT = '240px';

@@ -1,7 +1,11 @@
 export const SORT_OPTIONS = [
   {
-    label: 'Category',
-    value: 'STD',
+    label: 'Most Recent',
+    value: 'dateASC',
+  },
+  {
+    label: 'Oldest First',
+    value: 'dateDESC',
   },
   {
     label: 'Lowest Price',
@@ -20,11 +24,7 @@ export const SORT_OPTIONS = [
     value: 'titleDESC',
   },
   {
-    label: 'Most Recent',
-    value: 'dateASC',
-  },
-  {
-    label: 'Oldest First',
-    value: 'dateDESC',
+    label: 'Category',
+    value: 'STD',
   },
 ];

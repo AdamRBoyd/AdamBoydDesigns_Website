@@ -1,7 +1,6 @@
-import React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Button, PageTitleFrame, Paragraph, Spacer } from '../../components';
@@ -113,10 +112,6 @@ const CodeTicTacToe = () => {
     }
   };
 
-  const handleReset = () => {
-    navigate(0);
-  };
-
   function checkWin(a, b, c) {
     if (
       cellTable[a].symbol !== '' &&
@@ -185,7 +180,11 @@ const CodeTicTacToe = () => {
       {!playing && <GameIndicator>GAME OVER!!</GameIndicator>}
       {!playing && <WinnerIndicator>{`${winner}`}</WinnerIndicator>}
       <Spacer padding={2} />
-      <ResetButton onClick={handleReset} variant='ghost' buttonHeight={1.5}>
+      <ResetButton
+        onClick={() => navigate(0)}
+        variant='ghost'
+        buttonHeight={1.5}
+      >
         Reset
       </ResetButton>
       <Spacer padding={2} />

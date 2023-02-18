@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 import { font, palette } from 'styled-theme';
 
@@ -68,25 +67,37 @@ const Gallery = () => {
         </ParagraphWrapper>
         <GalleryWrapper>
           <CardWrapper>
-            <Link to='/gallery/rings'>
+            <Link
+              to='/gallery/rings'
+              state={{ title: 'Rings', section: 'rings' }}
+            >
               <StyledImage src='/images/gallery/Rings.png' alt='Rings' />
               <StyledLabel>Rings</StyledLabel>
             </Link>
           </CardWrapper>
           <CardWrapper>
-            <Link to='/gallery/pendants'>
+            <Link
+              to='/gallery/pendants'
+              state={{ title: 'Pendants', section: 'pendants' }}
+            >
               <StyledImage src='/images/gallery/Pendants.png' alt='Pendants' />
               <StyledLabel>Pendants</StyledLabel>
             </Link>
           </CardWrapper>
           <CardWrapper>
-            <Link to='/gallery/earrings'>
+            <Link
+              to='/gallery/earrings'
+              state={{ title: 'Earrings', section: 'earrings' }}
+            >
               <StyledImage src='/images/gallery/Earrings.png' alt='Earrings' />
               <StyledLabel>Earrings</StyledLabel>
             </Link>
           </CardWrapper>
           <CardWrapper>
-            <Link to='/gallery/other'>
+            <Link
+              to='/gallery/other'
+              state={{ title: 'Other', section: 'other' }}
+            >
               <StyledImage src='/images/gallery/Other.png' alt='Other' />
               <StyledLabel>Other</StyledLabel>
             </Link>
@@ -97,7 +108,10 @@ const Gallery = () => {
         <ParagraphWrapper>Pictures from the building process.</ParagraphWrapper>
         <GalleryWrapper>
           <CardWrapper>
-            <Link to='/gallery/fabrication'>
+            <Link
+              to='/gallery/fabrication'
+              state={{ title: 'Fabrication', section: 'fabrication' }}
+            >
               <StyledImage
                 src='/images/gallery/Fabrication.png'
                 alt='Fabrication'

@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { font, palette } from 'styled-theme';
@@ -17,7 +17,7 @@ const styles = css`
 
 const Heading = styled(
   ({ level, children, reverse, palette, theme, ...props }) =>
-    React.createElement(`h${level}`, props, children)
+    createElement(`h${level}`, props, children)
 )`
   ${styles}
 `;

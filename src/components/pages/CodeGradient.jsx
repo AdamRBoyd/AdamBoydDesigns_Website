@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { palette } from 'styled-theme';
@@ -89,18 +88,6 @@ const CodeGradient = () => {
   const [color2, setColor2] = useState('#0003ff');
   const [degree, setDegree] = useState(45);
 
-  const changeColor = (e) => {
-    if (e.target.id === 'color1') {
-      setColor1(e.target.value);
-    } else {
-      setColor2(e.target.value);
-    }
-  };
-
-  const changeDegree = (e) => {
-    setDegree(e.target.value);
-  };
-
   const copyToClipboard = () => {
     navigator.clipboard.writeText(
       `linear-gradient(${degree}deg, ${color1}, ${color2})`
@@ -143,14 +130,14 @@ const CodeGradient = () => {
               name='color1'
               id='color1'
               value={color1}
-              onChange={changeColor}
+              onChange={(e) => setColor1(e.target.value)}
             />
             <ColorInput
               type='color'
               name='color2'
               id='color2'
               value={color2}
-              onChange={changeColor}
+              onChange={(e) => setColor2(e.target.value)}
             />
           </StyledLabel>
           <Spacer padding={2} />
@@ -161,7 +148,7 @@ const CodeGradient = () => {
               value={degree}
               min='0'
               max='180'
-              onChange={changeDegree}
+              onChange={(e) => setDegree(e.target.value)}
             />
           </StyledLabel>
         </SelectionInputs>

@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 import { font, palette } from 'styled-theme';
 import { NavLink } from 'react-router-dom';

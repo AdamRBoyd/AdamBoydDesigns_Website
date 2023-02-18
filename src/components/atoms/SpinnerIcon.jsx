@@ -1,5 +1,3 @@
-import React from 'react';
-
 const SpinnerIcon = (props) => (
   <svg
     version='1.1'

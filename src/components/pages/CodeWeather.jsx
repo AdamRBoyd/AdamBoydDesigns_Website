@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-
+import { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { palette } from 'styled-theme';
-import { useEffect } from 'react';
 
 import apiKeys from '../apiKeys';
 
@@ -122,9 +120,9 @@ const CodeWeather = () => {
   function fetchWeather() {
     fetch(`https://ipapi.co/json/`)
       .then((response) => response.json())
-      .then((position) =>
-        fetchWeatherByPosition(position.latitude, position.longitude)
-      )
+      .then((position) => {
+        fetchWeatherByPosition(position.latitude, position.longitude);
+      })
       .catch(() => {});
   }
 
@@ -141,14 +139,6 @@ const CodeWeather = () => {
   //     alert('Geolocation is not supported by this browser.');
   //   }
   // }
-
-  const handleClick = () => {
-    fetchWeather();
-  };
-
-  const handleTempSwap = () => {
-    setTempCelsius(!tempCelsius);
-  };
 
   const handleCitySearch = (e) => {
     e.preventDefault();
@@ -225,10 +215,16 @@ const CodeWeather = () => {
             <StyledFormButton variant='primary'>Search</StyledFormButton>
           </StyledForm>
           <ButtonWrapper>
-            <StyledLoadByLocation onClick={handleClick} variant='primary'>
+            <StyledLoadByLocation
+              onClick={() => fetchWeather()}
+              variant='primary'
+            >
               Load By Location
             </StyledLoadByLocation>
-            <StyledSwapButton onClick={handleTempSwap} variant='ghost'>
+            <StyledSwapButton
+              onClick={() => setTempCelsius(!tempCelsius)}
+              variant='ghost'
+            >
               {tempCelsius ? 'Show in Fahrenheit' : 'Show in Celsius'}
             </StyledSwapButton>
           </ButtonWrapper>

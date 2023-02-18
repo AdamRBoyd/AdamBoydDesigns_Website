@@ -1,9 +1,7 @@
-import React, { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { font, palette } from 'styled-theme';
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 const MENU_WIDTH = '150px';
 

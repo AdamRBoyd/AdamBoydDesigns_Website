@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   min-height: 98.1vh;
   box-sizing: border-box;
-  overflow-y: overlay;
+
   @media screen and (max-width: 640px) {
     padding-top: 2rem;
   }

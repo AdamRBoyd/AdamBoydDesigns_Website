@@ -1,8 +1,6 @@
 import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, Suspense, lazy } from 'react';
 
-import './App.css';
-
 const About = lazy(() => import('../components/pages/About'));
 const Code = lazy(() => import('../components/pages/Code'));
 const CodeDictionary = lazy(() => import('../components/pages/CodeDictionary'));

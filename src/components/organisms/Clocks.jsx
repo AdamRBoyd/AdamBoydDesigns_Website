@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { palette } from 'styled-theme';
+import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import { AnalogClock, DigitalClock } from '../../components';
 

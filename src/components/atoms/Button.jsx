@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
 import { font, palette } from 'styled-theme';
 import { ifProp } from 'styled-tools';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
 
 const fontSize = ({ fontSize }) => `${fontSize}rem`;
 const buttonHeight = ({ buttonHeight }) => `${buttonHeight}em`;

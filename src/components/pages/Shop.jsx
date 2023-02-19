@@ -1,12 +1,14 @@
-import { useState } from 'react';
-import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import styled from 'styled-components';
+
+import { SHOP_CATEGORIES } from '../Constants/ShopCategories';
+import { SORT_OPTIONS } from '../Constants/SortOptions';
+import { SALE_ON, SALE_PERCENTAGE } from '../Constants/SaleDate';
 
 import { AllListings, Earrings, Nose, Pendants, Rings, Sets } from '../json';
-import { SORT_OPTIONS } from '../Constants/SortOptions';
-import { SHOP_CATEGORIES } from '../Constants/ShopCategories';
-import { saleOn, salePercentage } from '../Constants/SaleDate';
+
 import {
   Button,
   Dropdown,
@@ -213,8 +215,8 @@ const Shop = () => {
             >
               <ShopListingGalleryCard
                 showSold={showSold}
-                saleOn={saleOn}
-                salePercentage={salePercentage}
+                saleOn={SALE_ON}
+                salePercentage={SALE_PERCENTAGE}
                 {...listing}
               />
             </Link>

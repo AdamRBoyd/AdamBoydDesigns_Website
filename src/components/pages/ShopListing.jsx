@@ -1,7 +1,8 @@
-import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import { saleOn, salePercentage, saleTitle } from '../Constants/SaleDate';
+import { SALE_ON, SALE_PERCENTAGE, SALE_TITLE } from '../Constants/SaleDate';
+
 import { PageTitleFrame, ShopListingCard, Spacer } from '../../components';
 
 const ShopListing = () => {
@@ -15,9 +16,9 @@ const ShopListing = () => {
         subtitle={listing?.subtitle}
       >
         <ShopListingCard
-          saleOn={saleOn}
-          salePercentage={salePercentage}
-          saleTitle={saleTitle}
+          saleOn={SALE_ON}
+          salePercentage={SALE_PERCENTAGE}
+          saleTitle={SALE_TITLE}
           {...listing}
         />
       </PageTitleFrame>

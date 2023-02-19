@@ -1,5 +1,5 @@
-import { useEffect, Suspense, lazy } from 'react';
 import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect, Suspense, lazy } from 'react';
 
 import './App.css';
 

@@ -1,6 +1,6 @@
+import { font, palette } from 'styled-theme';
 import { useState } from 'react';
 import styled from 'styled-components';
-import { font, palette } from 'styled-theme';
 
 import {
   AreaUnitCard,

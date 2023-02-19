@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
-import PropTypes from 'prop-types';
 import { switchProp } from 'styled-tools';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
 
 const StyledUnderConstructionImage = styled.img`
   border-radius: 0.25rem;

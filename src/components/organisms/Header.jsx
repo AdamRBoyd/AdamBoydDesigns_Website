@@ -1,13 +1,13 @@
-import styled, { css } from 'styled-components';
 import { font, palette } from 'styled-theme';
+import styled, { css } from 'styled-components';
 
 import { Link, PrimaryNavigation } from '../../components';
 import {
-  start,
-  end,
-  saleOn,
-  salePercentage,
-  saleTitle,
+  END,
+  SALE_ON,
+  SALE_PERCENTAGE,
+  SALE_TITLE,
+  START,
 } from '../Constants/SaleDate';
 
 const LogoSaleWrapper = styled.div`
@@ -89,14 +89,14 @@ const Header = (props) => {
         <StyledLink to='/'>
           <ImageWrapper alt='Logo' src='/images/Signature.png' />
         </StyledLink>
-        {saleOn ? (
+        {SALE_ON ? (
           <SaleWrapper>
-            <SaleTitle>{saleTitle}</SaleTitle>
-            <SalePercentage>{`${salePercentage}% off`}</SalePercentage>
-            <SaleDate>{`${start.toLocaleString('default', {
+            <SaleTitle>{SALE_TITLE}</SaleTitle>
+            <SalePercentage>{`${SALE_PERCENTAGE}% off`}</SalePercentage>
+            <SaleDate>{`${START.toLocaleString('default', {
               month: 'short',
               day: 'numeric',
-            })} - ${end.toLocaleString('default', {
+            })} - ${END.toLocaleString('default', {
               month: 'short',
               day: 'numeric',
             })}`}</SaleDate>

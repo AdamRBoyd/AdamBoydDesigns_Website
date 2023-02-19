@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
 import { font, palette } from 'styled-theme';
 import { NavLink } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
 const styles = css`
   font-family: ${font('primary')};

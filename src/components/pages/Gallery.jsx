@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
 import { font, palette } from 'styled-theme';
+import styled, { css } from 'styled-components';
 
 import { Link, PageTitleFrame, Paragraph, Spacer } from '../../components';
 

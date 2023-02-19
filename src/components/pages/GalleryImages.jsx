@@ -1,7 +1,7 @@
+import { palette } from 'styled-theme';
+import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import styled from 'styled-components';
-import { useLocation } from 'react-router-dom';
-import { palette } from 'styled-theme';
 
 import { Images } from '../json';
 import { Modal, PageTitleFrame, Spacer } from '../../components';

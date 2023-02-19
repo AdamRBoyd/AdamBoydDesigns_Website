@@ -1,14 +1,14 @@
+import { font, palette } from 'styled-theme';
 import { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
-import { font, palette } from 'styled-theme';
 
 import {
   Button,
-  Heading,
-  Input,
-  Icon,
-  PageTitleFrame,
   Dropdown,
+  Heading,
+  Icon,
+  Input,
+  PageTitleFrame,
 } from '../../components';
 
 import { WORKOUT_SORT_OPTIONS } from '../Constants/WorkoutSort';

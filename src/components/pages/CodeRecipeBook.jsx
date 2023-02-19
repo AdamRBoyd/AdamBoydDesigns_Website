@@ -1,9 +1,8 @@
+import { palette } from 'styled-theme';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { palette } from 'styled-theme';
 
 import {
-  PageTitleFrame,
   Button,
   Heading,
   HorizontalRule,
@@ -11,6 +10,7 @@ import {
   Input,
   Label,
   Link,
+  PageTitleFrame,
   Spacer,
 } from '../../components';
 

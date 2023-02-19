@@ -1,16 +1,16 @@
+import { font, palette } from 'styled-theme';
 import { useState } from 'react';
 import styled from 'styled-components';
-import { font, palette } from 'styled-theme';
 
 import {
-  PageTitleFrame,
-  DictionaryMeaningCard,
   Button,
+  DictionaryMeaningCard,
   HorizontalRule,
   Icon,
   Input,
   Label,
   Link,
+  PageTitleFrame,
   Spacer,
 } from '../../components';
 

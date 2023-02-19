@@ -1,6 +1,6 @@
+import { font, palette } from 'styled-theme';
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
-import { font, palette } from 'styled-theme';
 
 import { PageTitleFrame, Spacer } from '../../components';
 

@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
 import { font, palette } from 'styled-theme';
 import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
 
 const AnalogClockContainer = styled.div`
   width: 250px;

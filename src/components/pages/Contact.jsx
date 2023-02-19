@@ -1,13 +1,14 @@
+import { font, palette } from 'styled-theme';
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
-import { font, palette } from 'styled-theme';
+
 // import emailjs from '@emailjs/browser';
 // import apiKeys from '../apiKeys';
 
 import {
   Button,
-  Input,
   Heading,
+  Input,
   Modal,
   PageTitleFrame,
   Paragraph,

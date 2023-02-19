@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import ReactModal from 'react-modal';
 import { font, palette } from 'styled-theme';
+import PropTypes from 'prop-types';
+import ReactModal from 'react-modal';
+import styled, { css } from 'styled-components';
 
 import { Heading } from '../../components';
 

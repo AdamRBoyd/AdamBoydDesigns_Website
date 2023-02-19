@@ -1,6 +1,6 @@
+import { palette } from 'styled-theme';
 import { useState } from 'react';
 import styled from 'styled-components';
-import { palette } from 'styled-theme';
 
 import { Icon, Input, Label, PageTitleFrame, Spacer } from '../../components';
 

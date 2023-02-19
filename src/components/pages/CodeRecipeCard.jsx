@@ -1,7 +1,7 @@
+import { font, palette } from 'styled-theme';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import { font, palette } from 'styled-theme';
 
 import { Icon, Link, PageTitleFrame, Spacer } from '../../components';
 

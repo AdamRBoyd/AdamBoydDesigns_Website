@@ -30,18 +30,13 @@ const Shop = lazy(() => import('../components/pages/Shop'));
 const ShopListing = lazy(() => import('../components/pages/ShopListing'));
 const Test = lazy(() => import('../components/pages/Test'));
 
-function ScrollToTop() {
+function App() {
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  return null;
-}
-
-function App() {
-  ScrollToTop();
   return (
     <Routes>
       <Route

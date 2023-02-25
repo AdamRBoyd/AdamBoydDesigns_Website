@@ -2,14 +2,7 @@ import { font, palette } from 'styled-theme';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import {
-  Button,
-  Heading,
-  Icon,
-  Input,
-  PageTitleFrame,
-  Spacer,
-} from '../../components';
+import { Button, Heading, Icon, Input, PageTitleFrame, Spacer } from '..';
 
 const MainWrapper = styled.div`
   display: flex;

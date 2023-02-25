@@ -10,7 +10,7 @@ import {
   TemperatureUnitCard,
   TimeUnitCard,
   VolumeUnitCard,
-} from '../../components';
+} from '..';
 
 const MainWrapper = styled.div`
   display: flex;

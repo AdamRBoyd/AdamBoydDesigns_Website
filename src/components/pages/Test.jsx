@@ -1,4 +1,4 @@
-import { PageTitleFrame, Spacer } from '../../components';
+import { PageTitleFrame, Spacer } from '..';
 
 // SECTION: Test Code
 const Test = () => {

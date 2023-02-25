@@ -8,7 +8,7 @@ import {
   PageTitleFrame,
   Paragraph,
   Spacer,
-} from '../../components';
+} from '..';
 
 const IMAGE_HEIGHT = '230px';
 const IMAGE_WIDTH = '300px';

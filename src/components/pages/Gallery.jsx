@@ -1,7 +1,7 @@
 import { font, palette } from 'styled-theme';
 import styled, { css } from 'styled-components';
 
-import { Link, PageTitleFrame, Paragraph, Spacer } from '../../components';
+import { Link, PageTitleFrame, Paragraph, Spacer } from '..';
 
 const ParagraphWrapper = styled(Paragraph)`
   display: flex;

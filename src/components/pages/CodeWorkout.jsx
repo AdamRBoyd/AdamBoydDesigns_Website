@@ -2,14 +2,7 @@ import { font, palette } from 'styled-theme';
 import { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
-import {
-  Button,
-  Dropdown,
-  Heading,
-  Icon,
-  Input,
-  PageTitleFrame,
-} from '../../components';
+import { Button, Dropdown, Heading, Icon, Input, PageTitleFrame } from '..';
 
 import { WORKOUT_SORT_OPTIONS } from '../../constants/WorkoutSort';
 

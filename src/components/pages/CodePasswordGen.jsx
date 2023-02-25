@@ -2,14 +2,7 @@ import { palette } from 'styled-theme';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import {
-  Button,
-  Icon,
-  Input,
-  Label,
-  PageTitleFrame,
-  Spacer,
-} from '../../components';
+import { Button, Icon, Input, Label, PageTitleFrame, Spacer } from '..';
 
 const ALPHA = 'abcdefghijklmnopqrstuvwxyz';
 const UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';

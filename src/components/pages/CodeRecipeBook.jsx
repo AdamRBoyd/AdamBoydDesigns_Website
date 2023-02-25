@@ -12,7 +12,7 @@ import {
   Link,
   PageTitleFrame,
   Spacer,
-} from '../../components';
+} from '..';
 
 const IMAGE_HEIGHT = '150px';
 const IMAGE_WIDTH = '200px';

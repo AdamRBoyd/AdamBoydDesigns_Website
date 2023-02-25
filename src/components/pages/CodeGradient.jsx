@@ -2,7 +2,7 @@ import { palette } from 'styled-theme';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { Icon, Input, Label, PageTitleFrame, Spacer } from '../../components';
+import { Icon, Input, Label, PageTitleFrame, Spacer } from '..';
 
 const Wrapper = styled.div`
   display: flex;

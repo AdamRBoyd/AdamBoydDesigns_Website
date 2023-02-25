@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { Button, PageTitleFrame, Paragraph, Spacer } from '../../components';
+import { Button, PageTitleFrame, Paragraph, Spacer } from '..';
 
 const Container = styled.div`
   display: flex;

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Icon, Link, PageTitleFrame, Spacer } from '../../components';
+import { Icon, Link, PageTitleFrame, Spacer } from '..';
 
 const IMAGE_HEIGHT = '450px';
 const IMAGE_WIDTH = '600px';

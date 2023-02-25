@@ -1,13 +1,7 @@
 import { font, palette } from 'styled-theme';
 import styled from 'styled-components';
 
-import {
-  Heading,
-  Link,
-  PageTitleFrame,
-  Paragraph,
-  Spacer,
-} from '../../components';
+import { Heading, Link, PageTitleFrame, Paragraph, Spacer } from '..';
 
 const StyledHeading = styled(Heading)`
   color: ${palette('primary', 0)};

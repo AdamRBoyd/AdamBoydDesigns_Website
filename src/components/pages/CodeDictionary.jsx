@@ -12,7 +12,7 @@ import {
   Link,
   PageTitleFrame,
   Spacer,
-} from '../../components';
+} from '..';
 
 const StyledForm = styled.form`
   display: flex;

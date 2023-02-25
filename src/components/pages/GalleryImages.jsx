@@ -4,7 +4,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 import { Images } from '../../json';
-import { Modal, PageTitleFrame, Spacer } from '../../components';
+import { Modal, PageTitleFrame, Spacer } from '..';
 
 const IMAGE_HEIGHT = '225px';
 const IMAGE_WIDTH = '225px';

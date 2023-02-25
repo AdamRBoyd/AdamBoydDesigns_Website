@@ -2,7 +2,7 @@ import { palette } from 'styled-theme';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { SpinnerIcon } from '../../components';
+import { SpinnerIcon } from '..';
 
 const LoadingWrapper = styled.section`
   position: ${(props) => props.position};

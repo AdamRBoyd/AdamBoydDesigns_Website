@@ -12,7 +12,7 @@ import {
   PageTitleFrame,
   Spacer,
   WeatherCard,
-} from '../../components';
+} from '..';
 
 const MainWrapper = styled.div`
   display: flex;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { SALE_ON, SALE_PERCENTAGE, SALE_TITLE } from '../../constants/SaleDate';
 
-import { PageTitleFrame, ShopListingCard, Spacer } from '../../components';
+import { PageTitleFrame, ShopListingCard, Spacer } from '..';
 
 const ShopListing = () => {
   const { state } = useLocation();

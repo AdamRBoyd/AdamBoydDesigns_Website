@@ -2,7 +2,7 @@ import { font, palette } from 'styled-theme';
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
 
-import { PageTitleFrame, Spacer } from '../../components';
+import { PageTitleFrame, Spacer } from '..';
 
 const MainWrapper = styled.div`
   display: flex;

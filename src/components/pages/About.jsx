@@ -12,7 +12,7 @@ import {
   PageTitleFrame,
   ReviewCard,
   Spacer,
-} from '../../components';
+} from '..';
 
 const CenteredFlexRow = css`
   display: flex;

@@ -13,7 +13,7 @@ import {
   PageTitleFrame,
   Paragraph,
   Spacer,
-} from '../../components';
+} from '..';
 
 const Wrapper = styled.div`
   display: flex;

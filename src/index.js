@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import App from './components/App';
-import PageTemplate from '../src/components/pages/PageTemplate';
+import PageTemplate from './components/templates/PageTemplate';
 import theme from './components/theme';
 import './index.css';
 

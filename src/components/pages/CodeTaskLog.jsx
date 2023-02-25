@@ -11,7 +11,7 @@ import {
   Label,
   PageTitleFrame,
   Spacer,
-} from '../../components';
+} from '..';
 
 const MainWrapper = styled.div`
   display: flex;

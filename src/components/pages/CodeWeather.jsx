@@ -2,7 +2,7 @@ import { palette } from 'styled-theme';
 import { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
-import apiKeys from '../apiKeys';
+import apiKeys from '../../json/apiKeys.json';
 
 import {
   Button,

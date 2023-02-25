@@ -14,7 +14,7 @@ Aside from the main website I have included a selection of projects I have worke
 
 <h2 style="color:#8a0000"><strong>If you would like to clone and run this repo:</strong></h2>
 
-There is a required apikey repository in `components` (same location as App.js) named `apiKeys.json`, this file is formatted as such:
+There is a required apikey repository in `src/json` named `apiKeys.json`, this file is formatted as such:
 
 ```JSON
 {

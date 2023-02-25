@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import styled from 'styled-components';
 
 // import emailjs from '@emailjs/browser';
-// import apiKeys from '../apiKeys';
+// import apiKeys from '../../json/apiKeys.json';
 
 import {
   Button,

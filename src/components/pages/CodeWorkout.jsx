@@ -11,7 +11,7 @@ import {
   PageTitleFrame,
 } from '../../components';
 
-import { WORKOUT_SORT_OPTIONS } from '../Constants/WorkoutSort';
+import { WORKOUT_SORT_OPTIONS } from '../../constants/WorkoutSort';
 
 const MainWrapper = styled.div`
   display: flex;

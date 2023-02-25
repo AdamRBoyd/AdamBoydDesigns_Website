@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { Images } from '../json';
+import { Images } from '../../json';
 import { Modal, PageTitleFrame, Spacer } from '../../components';
 
 const IMAGE_HEIGHT = '225px';

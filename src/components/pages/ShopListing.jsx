@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { SALE_ON, SALE_PERCENTAGE, SALE_TITLE } from '../Constants/SaleDate';
+import { SALE_ON, SALE_PERCENTAGE, SALE_TITLE } from '../../constants/SaleDate';
 
 import { PageTitleFrame, ShopListingCard, Spacer } from '../../components';
 

@@ -3,11 +3,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { SHOP_CATEGORIES } from '../Constants/ShopCategories';
-import { SORT_OPTIONS } from '../Constants/SortOptions';
-import { SALE_ON, SALE_PERCENTAGE } from '../Constants/SaleDate';
+import { SHOP_CATEGORIES } from '../../constants/ShopCategories';
+import { SORT_OPTIONS } from '../../constants/SortOptions';
+import { SALE_ON, SALE_PERCENTAGE } from '../../constants/SaleDate';
 
-import { AllListings, Earrings, Nose, Pendants, Rings, Sets } from '../json';
+import { AllListings, Earrings, Nose, Pendants, Rings, Sets } from '../../json';
 
 import {
   Button,

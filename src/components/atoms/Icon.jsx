@@ -20,7 +20,7 @@ const StyledIcon = styled.img`
 `;
 
 const Icon = ({ icon, size, color, ...props }) => {
-  const svg = require(`../svg/${icon}.svg`);
+  const svg = require(`../../svg/${icon}.svg`);
 
   return (
     <IconClickableArea title={icon} {...props}>

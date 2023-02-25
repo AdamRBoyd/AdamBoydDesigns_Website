@@ -8,7 +8,7 @@ import {
   SALE_PERCENTAGE,
   SALE_TITLE,
   START,
-} from '../Constants/SaleDate';
+} from '../../constants/SaleDate';
 
 const LogoSaleWrapper = styled.div`
   display: flex;

@@ -1,7 +1,7 @@
 import { palette } from 'styled-theme';
 import styled from 'styled-components';
 
-import { Heading, Label } from '../../components';
+import { Heading, Label } from '../..';
 
 const MainCard = styled.div`
   display: flex;

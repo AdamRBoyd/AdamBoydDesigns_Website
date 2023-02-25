@@ -3,7 +3,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Button, Link, Modal, Paragraph, Spacer } from '../../components';
+import { Button, Link, Modal, Paragraph, Spacer } from '../..';
 
 const IMAGE_HEIGHT = '400px';
 const IMAGE_WIDTH = '400px';

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 import styled, { css } from 'styled-components';
 
-import { Heading } from '../../components';
+import { Heading } from '../..';
 
 const overlayStyles = css`
   position: fixed;

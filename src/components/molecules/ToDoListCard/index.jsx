@@ -2,7 +2,7 @@ import { palette } from 'styled-theme';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Label } from '../../components';
+import { Label } from '../..';
 
 const ListItemWrapper = styled.div`
   color: ${palette('primary', 0)};

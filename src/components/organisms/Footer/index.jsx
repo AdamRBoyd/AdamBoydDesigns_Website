@@ -1,7 +1,7 @@
 import { font, palette } from 'styled-theme';
 import styled from 'styled-components';
 
-import { Icon, Link } from '../../components';
+import { Icon, Link } from '../..';
 
 const Wrapper = styled.div`
   display: flex;

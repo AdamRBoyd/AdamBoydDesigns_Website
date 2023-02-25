@@ -2,7 +2,7 @@ import { font, palette } from 'styled-theme';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Heading, Label } from '../../components';
+import { Heading, Label } from '../..';
 
 const Wrapper = styled.div`
   display: flex;

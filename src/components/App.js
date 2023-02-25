@@ -1,34 +1,30 @@
 import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, Suspense, lazy } from 'react';
 
-const About = lazy(() => import('../components/pages/About'));
-const Code = lazy(() => import('../components/pages/Code'));
-const CodeDictionary = lazy(() => import('../components/pages/CodeDictionary'));
-const CodeGradient = lazy(() => import('../components/pages/CodeGradient'));
-const CodePasswordGen = lazy(() =>
-  import('../components/pages/CodePasswordGen')
-);
-const CodeRecipeBook = lazy(() => import('../components/pages/CodeRecipeBook'));
-const CodeRecipeCard = lazy(() => import('../components/pages/CodeRecipeCard'));
-const CodeTicTacToe = lazy(() => import('../components/pages/CodeTicTacToe'));
-const CodeTipCalc = lazy(() => import('../components/pages/CodeTipCalc'));
-const CodeToDo = lazy(() => import('../components/pages/CodeToDo'));
-const CodeUnitConverter = lazy(() =>
-  import('../components/pages/CodeUnitConverter')
-);
-const CodeWeather = lazy(() => import('../components/pages/CodeWeather'));
-const CodeWorkout = lazy(() => import('../components/pages/CodeWorkout'));
-const CodeCalculator = lazy(() => import('../components/pages/CodeCalculator'));
-const CodeTaskLog = lazy(() => import('../components/pages/CodeTaskLog'));
-const Contact = lazy(() => import('../components/pages/Contact'));
-const Gallery = lazy(() => import('../components/pages/Gallery'));
-const GalleryImages = lazy(() => import('../components/pages/GalleryImages'));
-const HomePage = lazy(() => import('../components/pages/HomePage'));
-const LoadingPage = lazy(() => import('../components/pages/LoadingPage'));
-const NotFoundPage = lazy(() => import('../components/pages/NotFoundPage'));
-const Shop = lazy(() => import('../components/pages/Shop'));
-const ShopListing = lazy(() => import('../components/pages/ShopListing'));
-const Test = lazy(() => import('../components/pages/Test'));
+const About = lazy(() => import('./pages/About'));
+const Code = lazy(() => import('./pages/Code'));
+const CodeDictionary = lazy(() => import('./pages/CodeDictionary'));
+const CodeGradient = lazy(() => import('./pages/CodeGradient'));
+const CodePasswordGen = lazy(() => import('./pages/CodePasswordGen'));
+const CodeRecipeBook = lazy(() => import('./pages/CodeRecipeBook'));
+const CodeRecipeCard = lazy(() => import('./pages/CodeRecipeCard'));
+const CodeTicTacToe = lazy(() => import('./pages/CodeTicTacToe'));
+const CodeTipCalc = lazy(() => import('./pages/CodeTipCalc'));
+const CodeToDo = lazy(() => import('./pages/CodeToDo'));
+const CodeUnitConverter = lazy(() => import('./pages/CodeUnitConverter'));
+const CodeWeather = lazy(() => import('./pages/CodeWeather'));
+const CodeWorkout = lazy(() => import('./pages/CodeWorkout'));
+const CodeCalculator = lazy(() => import('./pages/CodeCalculator'));
+const CodeTaskLog = lazy(() => import('./pages/CodeTaskLog'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Gallery = lazy(() => import('./pages/Gallery'));
+const GalleryImages = lazy(() => import('./pages/GalleryImages'));
+const HomePage = lazy(() => import('./pages/HomePage'));
+const LoadingPage = lazy(() => import('./pages/LoadingPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const Shop = lazy(() => import('./pages/Shop'));
+const ShopListing = lazy(() => import('./pages/ShopListing'));
+const Test = lazy(() => import('./pages/Test'));
 
 function App() {
   const { pathname } = useLocation();

@@ -1,14 +1,14 @@
 import { font, palette } from 'styled-theme';
 import styled, { css } from 'styled-components';
 
-import { Link, PrimaryNavigation } from '../../components';
+import { Link, PrimaryNavigation } from '../..';
 import {
   END,
   SALE_ON,
   SALE_PERCENTAGE,
   SALE_TITLE,
   START,
-} from '../../constants/SaleDate';
+} from '../../../constants/SaleDate';
 
 const LogoSaleWrapper = styled.div`
   display: flex;

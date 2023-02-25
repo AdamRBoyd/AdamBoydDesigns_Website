@@ -2,7 +2,7 @@ import { font, palette } from 'styled-theme';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { Spacer, Label } from '../../components';
+import { Spacer, Label } from '../..';
 
 const IMAGE_HEIGHT = '240px';
 const IMAGE_WIDTH = '240px';

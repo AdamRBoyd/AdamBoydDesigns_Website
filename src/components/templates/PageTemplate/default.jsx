@@ -2,7 +2,7 @@ import { size } from 'styled-theme';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Footer, Header } from '..';
+import { Footer, Header } from '../..';
 
 const Wrapper = styled.div`
   display: flex;

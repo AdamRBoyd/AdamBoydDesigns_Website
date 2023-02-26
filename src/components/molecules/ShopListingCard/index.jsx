@@ -8,11 +8,19 @@ import { Button, Link, Modal, Paragraph, Spacer } from '../..';
 const IMAGE_HEIGHT = '400px';
 const IMAGE_WIDTH = '400px';
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
+const MainWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, auto);
   font-family: ${font('primary')};
   color: ${palette('grayscale', 0)};
+  gap: 1rem;
+  width: 90%;
+
+  @media (min-width: 875px) {
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: auto;
+  }
 `;
 
 const DescriptionWrapper = styled.div`
@@ -24,9 +32,7 @@ const DescriptionWrapper = styled.div`
   align-self: flex-start;
   align-content: flex-start;
   justify-content: center;
-  width: 50%;
-  height: 100%;
-  padding: 2.75rem 3rem 2rem 0;
+  padding: 2rem;
 `;
 
 const ParagraphWrapper = styled(Paragraph)`
@@ -36,16 +42,10 @@ const ParagraphWrapper = styled(Paragraph)`
 const ImageCard = styled.div`
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  flex-shrink: 1;
   align-items: center;
   align-self: flex-start;
   align-content: center;
   justify-content: center;
-  width: 50%;
-  margin-right: 1rem;
-  margin-bottom: 3rem;
-  padding: 0.5rem 1.5rem 2rem;
 `;
 
 const LargeImage = styled.img`
@@ -192,7 +192,7 @@ const ShopListingCard = ({
   };
 
   return (
-    <Wrapper {...props}>
+    <MainWrapper {...props}>
       <ImageCard>
         <LargeImage src={imageUrl.imageUrl570xN} onClick={() => openModal()} />
         <SmallImageRow>
@@ -278,7 +278,7 @@ const ShopListingCard = ({
           onClick={closeModal}
         />
       </Modal>
-    </Wrapper>
+    </MainWrapper>
   );
 };
 

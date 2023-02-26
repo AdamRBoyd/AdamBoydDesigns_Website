@@ -52,35 +52,50 @@ const NavContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 85%;
+  width: 400px;
   padding: 1rem 0;
   border-radius: 0.5rem;
   background-color: ${palette('grayscale', 6)};
+
+  @media (min-width: 875px) {
+    width: 85%;
+  }
 `;
 
 const InnerNavigation = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: 'left center right';
   width: 90%;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1rem;
+
+  @media (min-width: 875px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: 1fr;
+  }
 `;
 
 const StyledButton = styled(Button)`
-  grid-area: left;
-  justify-self: left;
-  width: 14%;
+  justify-self: center;
+  width: 200px;
   padding: 0 0.5rem;
+
+  @media (min-width: 875px) {
+    justify-self: left;
+    width: 150px;
+  }
 `;
 
 const CategoryDropdown = styled(Dropdown)`
-  grid-area: center;
   justify-self: center;
 `;
 
 const SortDropdown = styled(Dropdown)`
-  grid-area: right;
-  justify-self: right;
+  justify-self: center;
+
+  @media (min-width: 875px) {
+    justify-self: right;
+  }
 `;
 
 const FreeShippingFlag = styled.div`

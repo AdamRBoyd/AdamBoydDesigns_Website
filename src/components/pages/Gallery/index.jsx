@@ -6,7 +6,9 @@ import { Link, PageTitleFrame, Paragraph, Spacer } from '../..';
 const ParagraphWrapper = styled(Paragraph)`
   display: flex;
   justify-content: center;
+  text-align: center;
   color: ${palette('grayscale', 2)};
+  width: 90%;
 `;
 
 const GalleryWrapper = styled.div`

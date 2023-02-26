@@ -7,15 +7,12 @@ import { Icon, Link } from '../..';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-self: center;
   font-family: ${font('primary')};
   color: ${palette('grayscale', 0)};
   border: 1px solid ${palette('grayscale', 6)};
   border-radius: 0.5rem;
   box-shadow: 0px 0px 5px ${palette('grayscale', 5)};
   padding: 2rem;
-  width: 90%;
-  margin-bottom: 1rem;
 `;
 
 const ListingImage = styled.img`

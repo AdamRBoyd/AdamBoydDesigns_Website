@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 `;
 
 const StyledHeader = styled.header`
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
   z-index: 999;
@@ -28,7 +28,6 @@ const Content = styled.main`
   align-self: center;
   justify-self: center;
   max-width: ${size('maxWidth')};
-  padding-top: 4rem;
 `;
 
 const StyledFooter = styled.footer`

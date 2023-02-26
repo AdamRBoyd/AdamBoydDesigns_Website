@@ -12,14 +12,13 @@ import {
 
 const LogoSaleWrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   padding: 0.5rem;
   font-family: ${font('primary')};
   background-color: ${palette('grayscale', 0)};
-  width: 100%;
 `;
 
 const NavWrapper = styled.div`

@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding-top: 4.5rem;
+  padding-top: 0.75rem;
 `;
 
 const HeadingWrapper = styled(Heading)`

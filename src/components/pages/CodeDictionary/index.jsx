@@ -1,6 +1,7 @@
 import { font, palette } from 'styled-theme';
 import { useState } from 'react';
 import styled from 'styled-components';
+import useFetch from '../../../hooks/useFetch';
 
 import {
   Button,
@@ -47,7 +48,9 @@ const CloseIcon = styled(Icon)`
   cursor: pointer;
 `;
 
-const StyledButton = styled(Button)``;
+const StyledButton = styled(Button)`
+  padding: 0 1rem;
+`;
 
 const StyledError = styled(Label)`
   color: ${palette('danger', 3)};
@@ -105,30 +108,13 @@ const APICredit = styled(Link)`
 `;
 
 const CodeDictionary = () => {
-  const [searchResult, setSearchResult] = useState();
-  const [hasTitle, setHasTitle] = useState(true);
   const [word, setWord] = useState('');
+  const [url, setUrl] = useState('');
+  const { data, loading } = useFetch(url);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
-      .then((response) => response.json())
-      .then((result) => {
-        if (result.title) {
-          setHasTitle(true);
-        } else {
-          setSearchResult(result[0]);
-          setHasTitle(false);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
-  const handleReset = () => {
-    document.getElementById('searchBox').value = '';
+    setUrl(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
   };
 
   return (
@@ -147,7 +133,7 @@ const CodeDictionary = () => {
             name='close'
             icon='close'
             size={13}
-            onClick={handleReset}
+            onClick={() => setWord('')}
           />
         </InputGroup>
         <StyledButton type='submit' value='Submit' variant='primary'>
@@ -156,32 +142,48 @@ const CodeDictionary = () => {
       </StyledForm>
       <HorizontalRule />
       <DefinitionWrapper>
-        {hasTitle ? (
-          <StyledError>Please Enter a Valid Word</StyledError>
-        ) : (
+        {!loading && (
           <>
-            <WordPhoneticTitle>
-              <WordTitle>{`${searchResult.word}`}</WordTitle>
-              <StyledPhonetic>
-                {searchResult.phonetic ? <>{`${searchResult.phonetic}`}</> : ''}
-              </StyledPhonetic>
-            </WordPhoneticTitle>
-            {searchResult?.meanings.map((meaning, index) => (
-              <DictionaryMeaningCard
-                meaning={meaning}
-                word={searchResult.word}
-                key={index}
-              />
-            ))}
-            <Spacer padding={1} />
-            <LinkCard>
-              <Label>Source:</Label>
-              {searchResult.sourceUrls.map((url, index) => (
-                <StyledLinks href={url} target='_blank' key={index}>
-                  <div>{`${url}`}</div>
-                </StyledLinks>
-              ))}
-            </LinkCard>
+            {data?.title ? (
+              <>
+                <StyledError>{data.title}</StyledError>
+                <div>{data.message}</div>
+                <div>{data.resolution}</div>
+              </>
+            ) : (
+              <>
+                {data?.at(0)?.word && (
+                  <>
+                    <WordPhoneticTitle>
+                      <WordTitle>{`${data?.at(0)?.word}`}</WordTitle>
+                      <StyledPhonetic>
+                        {data?.at(0)?.phonetic ? (
+                          <>{`${data?.at(0)?.phonetic}`}</>
+                        ) : (
+                          ''
+                        )}
+                      </StyledPhonetic>
+                    </WordPhoneticTitle>
+                    {data?.at(0)?.meanings.map((meaning, index) => (
+                      <DictionaryMeaningCard
+                        meaning={meaning}
+                        word={data?.at(0)?.word}
+                        key={index}
+                      />
+                    ))}
+                    <Spacer padding={1} />
+                    <LinkCard>
+                      <Label>Source:</Label>
+                      {data?.at(0)?.sourceUrls.map((url, index) => (
+                        <StyledLinks href={url} target='_blank' key={index}>
+                          <div>{`${url}`}</div>
+                        </StyledLinks>
+                      ))}
+                    </LinkCard>
+                  </>
+                )}
+              </>
+            )}
           </>
         )}
       </DefinitionWrapper>

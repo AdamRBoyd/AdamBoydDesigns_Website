@@ -90,7 +90,7 @@ const StyledInfoLabel = styled(Label)`
   font-size: 0.8rem;
 `;
 
-const WeatherCard = ({ weather, loaded, tempCelsius, ...props }) => {
+const WeatherCard = ({ weather, tempCelsius, ...props }) => {
   // Kelvin to Fahrenheit T(K) × 9/5 - 459.67
   function fTemp(temp) {
     return Math.floor((temp * 9) / 5 - 459.67);
@@ -109,11 +109,13 @@ const WeatherCard = ({ weather, loaded, tempCelsius, ...props }) => {
         <StyledLocation>{`${weather?.coord?.lat} Lat., ${weather?.coord?.lon} Lon.`}</StyledLocation>
       </StyledHeader>
       <StyledIconLabel>
-        <WeatherIcon
-          src={`http://openweathermap.org/img/w/${
-            weather?.weather?.at(0)?.icon
-          }.png`}
-        />
+        {weather?.weather?.at(0)?.icon !== undefined && (
+          <WeatherIcon
+            src={`http://openweathermap.org/img/w/${
+              weather?.weather?.at(0)?.icon
+            }.png`}
+          />
+        )}
         {`${weather?.weather?.at(0)?.description}`}
       </StyledIconLabel>
       <TempWrapper>

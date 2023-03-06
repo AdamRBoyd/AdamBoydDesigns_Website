@@ -1,6 +1,7 @@
 import { palette } from 'styled-theme';
 import { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
+import useFetch from '../../../hooks/useFetch';
 
 import apiKeys from '../../../json/apiKeys.json';
 
@@ -94,45 +95,62 @@ const APICredit = styled(Link)`
 
 const CodeWeather = () => {
   const [weather, setWeather] = useState();
-  const [loaded, setLoaded] = useState(false);
   const [tempCelsius, setTempCelsius] = useState(false);
+  const [url, setUrl] = useState('');
+  const [method, setMethod] = useState('ip');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [country, setCountry] = useState('');
+  const [zip, setZip] = useState('');
+
   const appId = apiKeys.codeWeather.appid;
 
-  function fetchWeatherByPosition(latitude, longitude) {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${appId}`
-    )
-      .then((response) => response.json())
-      .then((result) => {
-        if (result.cod === 200) {
-          setWeather(result);
-          setLoaded(true);
-        } else {
-          setLoaded(false); // Used for refresh where already set to true
-        }
-      })
-      .catch((error) => {
-        console.error();
-      });
-  }
+  const { data, loading } = useFetch(url);
+
+  useEffect(() => {
+    if (!loading) {
+      var latitude;
+      var longitude;
+      switch (method) {
+        case 'ip':
+          latitude = data?.latitude;
+          longitude = data?.longitude;
+          break;
+        case 'city':
+          latitude = data?.[0]?.lat;
+          longitude = data?.[0]?.lon;
+          break;
+        case 'zip':
+          latitude = data?.lat;
+          longitude = data?.lon;
+          break;
+        default:
+          break;
+      }
+      if (latitude && longitude) {
+        setUrl(
+          `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${appId}`
+        );
+      }
+    }
+    if (data?.cod === 200) {
+      setWeather(data);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, loading]);
 
   // NOTE: Less accurate location fetch method
-  function fetchWeather() {
-    fetch(`https://ipapi.co/json/`)
-      .then((response) => response.json())
-      .then((position) => {
-        fetchWeatherByPosition(position.latitude, position.longitude);
-      })
-      .catch(() => {});
+  function handleIPLocationSearch() {
+    setMethod('ip');
+    setUrl(`https://ipapi.co/json/`);
   }
 
   // NOTE: Requires HTTPS and Certificate
-  // function fetchWeather() {
+  // function handleIPLocationSearch() {
   //   if (navigator.geolocation) {
   //     navigator.geolocation.getCurrentPosition(function (position) {
-  //       fetchWeatherByPosition(
-  //         position.coords.latitude,
-  //         position.coords.longitude
+  //       setUrl(
+  //         `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${appId}`
   //       );
   //     });
   //   } else {
@@ -142,63 +160,60 @@ const CodeWeather = () => {
 
   const handleCitySearch = (e) => {
     e.preventDefault();
-    const city = e.target[0].value;
-    const state = e.target[1].value;
-    const country = e.target[2].value;
-    fetch(
+    setMethod('city');
+    setUrl(
       `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},${country}&limit=100&appid=${appId}`
-    )
-      .then((response) => response.json())
-      .then((result) => {
-        fetchWeatherByPosition(result[0].lat, result[0].lon);
-      })
-      .catch((error) => {
-        console.error();
-      });
+    );
   };
 
   const handleZipSearch = (e) => {
     e.preventDefault();
-    const zip = e.target[0].value;
-    fetch(`http://api.openweathermap.org/geo/1.0/zip?zip=${zip}&appid=${appId}`)
-      .then((response) => response.json())
-      .then((result) => {
-        fetchWeatherByPosition(result.lat, result.lon);
-      })
-      .catch((error) => {
-        console.error();
-      });
+    setMethod('zip');
+    setUrl(
+      `http://api.openweathermap.org/geo/1.0/zip?zip=${zip}&appid=${appId}`
+    );
   };
 
   useEffect(() => {
-    fetchWeather();
+    handleIPLocationSearch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <PageTitleFrame title='Weather App Project' noBottomRule>
       <MainWrapper>
-        {!loaded && (
-          <ErrorWrapper>
-            <Label>OOPS! Something went wrong!</Label>
-            <Label>Please enter a valid location</Label>
-          </ErrorWrapper>
-        )}
-        {loaded && (
-          <WeatherCard
-            weather={weather}
-            tempCelsius={tempCelsius}
-            loaded={loaded}
-          />
+        {loading ? (
+          <Label>Loading...</Label>
+        ) : (
+          <>
+            {data?.cod === '404' && (
+              <ErrorWrapper>
+                <Label>OOPS! Something went wrong!</Label>
+                <Label>Please enter a valid location</Label>
+              </ErrorWrapper>
+            )}
+            {weather?.cod === 200 && data?.cod !== '404' && (
+              <WeatherCard weather={weather} tempCelsius={tempCelsius} />
+            )}
+          </>
         )}
         <ControlWrapper>
           <StyledForm onSubmit={handleCitySearch}>
-            <StyledInput type='text' id='city' placeholder='City' required />
+            <StyledInput
+              type='text'
+              id='city'
+              placeholder='City'
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              required
+            />
             <StyledInput
               type='text'
               id='state'
               placeholder='State Code'
               maxLength='2'
+              value={state}
+              onChange={(e) => setState(e.target.value)}
               required
             />
             <StyledInput
@@ -206,17 +221,24 @@ const CodeWeather = () => {
               id='country'
               placeholder='Country Code'
               maxLength='2'
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
               required
             />
             <StyledFormButton variant='primary'>Search</StyledFormButton>
           </StyledForm>
           <StyledForm onSubmit={handleZipSearch}>
-            <StyledInput type='text' placeholder='Zip Code' />
+            <StyledInput
+              type='text'
+              placeholder='Zip Code'
+              value={zip}
+              onChange={(e) => setZip(e.target.value)}
+            />
             <StyledFormButton variant='primary'>Search</StyledFormButton>
           </StyledForm>
           <ButtonWrapper>
             <StyledLoadByLocation
-              onClick={() => fetchWeather()}
+              onClick={() => handleIPLocationSearch()}
               variant='primary'
             >
               Load By Location

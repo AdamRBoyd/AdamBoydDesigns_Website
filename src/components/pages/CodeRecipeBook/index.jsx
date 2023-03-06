@@ -13,6 +13,7 @@ import {
   PageTitleFrame,
   Spacer,
 } from '../..';
+import useFetch from '../../../hooks/useFetch';
 
 const IMAGE_HEIGHT = '150px';
 const IMAGE_WIDTH = '200px';
@@ -123,11 +124,15 @@ const APICredit = styled(Link)`
 `;
 
 const CodeRecipeBook = () => {
-  let localSearch = localStorage.getItem('recipeSearch');
   const [recipeList, setRecipeList] = useState();
   const [recipeTitle, setRecipeTitle] = useState('');
-  const [searchTerm, setSearchTerm] = useState(localSearch || '');
+  const [searchTerm, setSearchTerm] = useState(
+    localStorage.getItem('recipeSearch') || ''
+  );
   const [searchChanged, setSearchChanged] = useState(false);
+  const [url, setUrl] = useState('');
+
+  const { data, loading } = useFetch(url);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -135,17 +140,19 @@ const CodeRecipeBook = () => {
   };
 
   const fetchRecipes = () => {
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`)
-      .then((response) => response.json())
-      .then((result) => {
-        setRecipeTitle(searchTerm);
-        setRecipeList(result.meals);
-        setSearchChanged(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    setUrl(
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`
+    );
   };
+
+  useEffect(() => {
+    if (!loading) {
+      setRecipeList(data?.meals);
+      setRecipeTitle(searchTerm);
+      setSearchChanged(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, loading]);
 
   // If a local search term exists, fetch the recipes on page load
   useEffect(() => {
